@@ -1,5 +1,6 @@
 {
   "expo": {
+    "owner": "churchlifeapps",
     "name": "SongsV2",
     "slug": "SongsV2",
     "version": "1.0.0",
