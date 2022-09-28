@@ -2,7 +2,7 @@
   "expo": {
     "owner": "churchlifeapps",
     "name": "SongsV2",
-    "slug": "SongsV2",
+    "slug": "songsv2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,16 +19,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.churchlifeapps.songsv2"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.churchlifeapps.songsv2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "931eeda6-ff32-49fd-85f1-01fd3a12761c"
+      }
     }
   }
 }
