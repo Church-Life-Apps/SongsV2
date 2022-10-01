@@ -17,7 +17,7 @@ export default function App() {
     <View style={styles.container}>
       <Image source={{ uri: link + String(num).padStart(3, "0") + suffix }} style={styles.image}></Image>
       <TouchableOpacity onPress={refreshNum} style={styles.button}>
-        <Text style={styles.buttonText}>Refresh</Text>
+        <Text style={styles.buttonText}>Refresh Song</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
