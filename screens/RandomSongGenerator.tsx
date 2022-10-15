@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native-web";
+import { TouchableOpacity, Text, View, Image, StyleSheet } from "react-native";
+import { globalStyles } from "../styles/GlobalStyles";
 
 const link = "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_";
 const suffix = ".png";
@@ -13,7 +14,7 @@ const RandomSongGenerator = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Image source={{ uri: link + String(num).padStart(3, "0") + suffix }} style={styles.image}></Image>
       <TouchableOpacity onPress={refreshNum} style={styles.button}>
         <Text style={styles.buttonText}>Refresh Song</Text>
@@ -24,12 +25,6 @@ const RandomSongGenerator = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   welcomeText: {
     fontSize: 50,
   },
@@ -43,6 +38,10 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 10,
+    color: "#222222",
   },
 });
 
