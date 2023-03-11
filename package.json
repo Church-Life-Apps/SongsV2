@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
-    "@types/react": "~18.0.24",
-    "@types/react-native": "~0.70.6",
     "expo": "~47.0.13",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
@@ -23,6 +21,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@types/react": "^18.0.28",
+    "@types/react-native": "^0.71.3",
     "@types/uuid": "^9.0.0"
   },
   "private": true
