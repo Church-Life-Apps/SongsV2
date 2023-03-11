@@ -68,7 +68,7 @@ export function lyricTypeToString(lyricType: LyricType): string {
   } else if (lyricType === LyricType.LYRIC_TYPE_CHORUS) {
     return "Chorus";
   } else if (lyricType === LyricType.LYRIC_TYPE_PRECHORUS) {
-    return "Prechorus";
+    return "Pre-Chorus";
   } else {
     return "Verse";
   }
