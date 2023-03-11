@@ -70,7 +70,7 @@ export const TEST_SONG_WITH_LYRIC: SongWithLyrics = {
 export const TEST_SONG_LIST: Song[] = [
   TEST_SONG,
   {
-    id: uuidv4,
+    id: uuidv4(),
     songbookId: "shl",
     number: 2,
     title: "Glory Be To God The Father",
