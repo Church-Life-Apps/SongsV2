@@ -74,3 +74,17 @@ export const TEST_SONG_WITH_LYRIC: SongWithLyrics = {
   song: TEST_SONG,
   lyrics: [TEST_LYRIC_V1, TEST_LYRIC_V2, TEST_LYRIC_V3, TEST_CHORUS_C1],
 };
+
+export const TEST_SONG_LIST: Song[] = [
+  TEST_SONG,
+  {
+    id: uuidv4,
+    songbookId: "shl",
+    number: 2,
+    title: "Glory Be To God The Father",
+    author: "J. F. Garland",
+    music: "Ira David Sankey (1840-1908)",
+    presentationOrder: "v1 v2 v3 v4",
+    imageUrl: "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_002.png",
+  }
+]
