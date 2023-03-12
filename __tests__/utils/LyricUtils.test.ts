@@ -42,7 +42,7 @@ const lyrics = [TEST_LYRIC_V1, TEST_LYRIC_V2, TEST_LYRIC_V3, TEST_CHORUS_C1];
 test("Test LyricType toString Method", () => {
   expect(lyricTypeToString(LyricType.LYRIC_TYPE_BRIDGE)).toBe("Bridge");
   expect(lyricTypeToString(LyricType.LYRIC_TYPE_CHORUS)).toBe("Chorus");
-  expect(lyricTypeToString(LyricType.LYRIC_TYPE_PRECHORUS)).toBe("Prechorus");
+  expect(lyricTypeToString(LyricType.LYRIC_TYPE_PRECHORUS)).toBe("Pre-Chorus");
   expect(lyricTypeToString(LyricType.LYRIC_TYPE_VERSE)).toBe("Verse");
 });
 
