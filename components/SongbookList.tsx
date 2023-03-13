@@ -1,5 +1,5 @@
 import React from "react";
-import { Song } from "../models/SongsApiModels";
+import { Song, Songbook } from "../models/SongsApiModels";
 import {
   SafeAreaView,
   FlatList,
@@ -9,27 +9,23 @@ import {
   StatusBar,
 } from "react-native";
 
-const SongItem = ({ song, onPress }) => (
+const BookItem = ({ songbook, onPress }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item]}>
     <Text style={[styles.title]}>
-      {song.number}. {song.title}
+      {songbook.fullName}
     </Text>
-    <Text style={[styles.author]}>{song.author}</Text>
   </TouchableOpacity>
 );
 
-const SongList = ({ songs, onPress }) => {
-  const LoadSong = (song: Song) =>
-    console.log("load song number ", song.number);
-
+const SongbookList = ({ songbooks, onPress }) => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={songs}
-        renderItem={({ item: song }) => (
-          <SongItem song={song} onPress={() => onPress(song.number)} />
+        data={songbooks}
+        renderItem={({ item: songbook }) => (
+          <BookItem songbook={songbook} onPress={() => onPress(songbook)} />
         )}
-        keyExtractor={(item) => item.number}
+        keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
   );
@@ -61,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SongList;
+export default SongbookList;
