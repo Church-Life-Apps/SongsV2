@@ -4,6 +4,7 @@ import { StatusBar } from "react-native";
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 16,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
@@ -12,14 +13,14 @@ export const globalStyles = StyleSheet.create({
 
 export const listStyles = StyleSheet.create({
   list: {
+    width: "100%",
     marginTop: StatusBar.currentHeight || 0,
   },
   contentContainer: {
-    display: "flex",
-    alignItems: "center",
+    alignSelf: "center",
   },
   item: {
-    width: 400,
+    minWidth: 350,
     paddingVertical: 16,
     paddingHorizontal: 12,
     marginVertical: 4,
