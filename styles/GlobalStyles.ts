@@ -12,15 +12,19 @@ export const globalStyles = StyleSheet.create({
 });
 
 export const listStyles = StyleSheet.create({
+  // the list container
   list: {
     width: "100%",
     marginTop: StatusBar.currentHeight || 0,
   },
+  // the inner list container. Items are placed in here
   contentContainer: {
     alignSelf: "center",
+    maxWidth: 400,
   },
+  // Individual list item
   item: {
-    minWidth: 350,
+    maxWidth: 400,
     paddingVertical: 16,
     paddingHorizontal: 12,
     marginVertical: 4,
@@ -35,6 +39,7 @@ export const listStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+  // Smaller, gray colored text. Used for author
   subTitle: {
     fontSize: 12,
     color: "#4a4a4a",
