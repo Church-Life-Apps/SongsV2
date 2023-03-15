@@ -10,9 +10,9 @@ const prefix = Linking.createURL("/");
 const config = {
   screens: {
     Home: "",
-    Songlist: ":songbookId"
-  }
-}
+    Songlist: ":songbookId",
+  },
+};
 const linking = {
   prefixes: [prefix],
   config,
