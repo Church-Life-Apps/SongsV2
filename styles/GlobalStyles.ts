@@ -14,6 +14,7 @@ export const globalStyles = StyleSheet.create({
 export const listStyles = StyleSheet.create({
   // the list container
   list: {
+    // 100% width otherwise the scrollable area for the list is only where the items themselves are
     width: "100%",
     marginTop: StatusBar.currentHeight || 0,
   },
@@ -24,7 +25,6 @@ export const listStyles = StyleSheet.create({
   },
   // Individual list item
   item: {
-    maxWidth: 400,
     paddingVertical: 16,
     paddingHorizontal: 12,
     marginVertical: 4,
