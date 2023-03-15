@@ -39,4 +39,4 @@ export const listStyles = StyleSheet.create({
     fontSize: 12,
     color: "#4a4a4a",
   },
-})
+});

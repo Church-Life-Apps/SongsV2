@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  FlatList,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Text, TouchableOpacity } from "react-native";
 import { listStyles } from "../styles/GlobalStyles";
 
 const SongItem = ({ song, onPress }) => (
