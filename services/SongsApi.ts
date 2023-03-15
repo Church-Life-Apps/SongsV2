@@ -1,6 +1,6 @@
 import { Song, Songbook, SongWithLyrics } from "../models/SongsApiModels";
 
-const baseUrl = "https://songs-wzfmn.ondigitalocean.app";
+const baseUrl = "https://songs-wzfmn.ondigitalocean.app/api";
 
 export async function fetchSongbooks(): Promise<Songbook[]> {
   return await fetch(`${baseUrl}/songbooks`).then((response) =>
