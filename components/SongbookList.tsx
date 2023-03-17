@@ -12,9 +12,7 @@ const SongbookList = ({ songbooks, onPress }) => {
   return (
     <FlatList
       data={songbooks}
-      renderItem={({ item: songbook }) => (
-        <BookItem songbook={songbook} onPress={() => onPress(songbook)} />
-      )}
+      renderItem={({ item: songbook }) => <BookItem songbook={songbook} onPress={() => onPress(songbook)} />}
       keyExtractor={(item) => item.id}
       style={listStyles.list}
       contentContainerStyle={listStyles.contentContainer}

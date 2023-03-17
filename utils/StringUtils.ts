@@ -15,3 +15,20 @@ export function removePunctuation(s: string): string {
 export function removeDoubleSpaces(s: string): string {
   return s.replace(/\s{2,}/g, " ");
 }
+
+/**
+ * Removes content within square brackets of a string.
+ * (chatgpt code)
+ */
+export function removeSquareBrackets(str: string): string {
+  let output = "";
+  let count = 0;
+
+  for (const char of str) {
+    if (char === "[") count++;
+    else if (char === "]" && count) count--;
+    else if (!count) output += char;
+  }
+
+  return output;
+}

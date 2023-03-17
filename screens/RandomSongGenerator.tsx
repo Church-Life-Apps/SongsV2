@@ -3,8 +3,7 @@ import React from "react";
 import { TouchableOpacity, Text, View, Image, StyleSheet } from "react-native";
 import { globalStyles } from "../styles/GlobalStyles";
 
-const link =
-  "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_";
+const link = "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_";
 const suffix = ".png";
 
 const RandomSongGenerator = () => {
@@ -16,10 +15,7 @@ const RandomSongGenerator = () => {
 
   return (
     <View style={globalStyles.container}>
-      <Image
-        source={{ uri: link + String(num).padStart(3, "0") + suffix }}
-        style={styles.image}
-      ></Image>
+      <Image source={{ uri: link + String(num).padStart(3, "0") + suffix }} style={styles.image}></Image>
       <TouchableOpacity onPress={refreshNum} style={styles.button}>
         <Text style={styles.buttonText}>Refresh Song</Text>
       </TouchableOpacity>

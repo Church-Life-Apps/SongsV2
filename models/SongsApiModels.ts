@@ -4,7 +4,6 @@ export interface Songbook {
   fullName: string;
   staticMetadataLink: string;
   imageUrl: string;
-  audioUrl: string;
 }
 
 // Data object for individual song in songlist, so we have a songlist, and also the view when we click on a song which shows us either the sheet music or just the lyrics depending on what mode we choose. I'm going to call them SHEET MUSIC and LYRIC mode.
@@ -17,6 +16,7 @@ export interface Song {
   music: string;
   presentationOrder: string /* this won't be shown in the songlist UI, but is required to order the verses of the lyrics in LYRIC mode */;
   imageUrl: string /* optional image of the sheet music as not every song will have sheet music */;
+  audioUrl: string /* optional audio recording of the song */;
 }
 
 // Lyric Type Enum
@@ -41,6 +41,23 @@ export interface SongWithLyrics {
   lyrics: Lyric[];
 }
 
+// Data object for Pending Songs
+export interface PendingSong {
+  id: string; // uuid
+  songbookId: string;
+  number: number;
+  title: string;
+  author: string;
+  music: string;
+  presentationOrder: string;
+  imageUrl: string;
+  audioUrl: string;
+  lyrics: Lyric[];
+  requesterName: string;
+  requesterEmail: string;
+  requesterNote: string;
+}
+
 // after pressing create new songbook in Songbooks List UI
 export function toSongbook(data: any): Songbook {
   return {
@@ -48,6 +65,5 @@ export function toSongbook(data: any): Songbook {
     fullName: data.fullName ?? "",
     staticMetadataLink: data.staticMetadataLink ?? "",
     imageUrl: data.imageUrl ?? "",
-    audioUrl: data.audioUrl ?? "",
   };
 }
