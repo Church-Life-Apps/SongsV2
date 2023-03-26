@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, SafeAreaView } from "react-native";
 import { globalStyles } from "../styles/GlobalStyles";
-import { Song, Songbook } from "../models/SongsApiModels";
-import { fetchSongbooks, fetchSongs } from "../services/SongsApi";
+import { Song } from "../models/SongsApiModels";
+import { fetchSongs } from "../services/SongsApi";
 import SongList from "../components/SongList";
 
 const SongListScreen = ({ route }) => {
@@ -28,9 +28,7 @@ const SongListScreen = ({ route }) => {
       ) : (
         <SongList
           songs={data}
-          onPress={(songNumber: Number) =>
-            console.log("Go to song view for", songbookId, " #", songNumber)
-          }
+          onPress={(songNumber: Number) => console.log("Go to song view for", songbookId, " #", songNumber)}
         ></SongList>
       )}
     </SafeAreaView>

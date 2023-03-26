@@ -6,3 +6,5 @@ export interface LyricBlock {
   verseTitle: string;
   lyrics: string;
 }
+
+// TODO: Design Lyrics With Chord Display

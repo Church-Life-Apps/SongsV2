@@ -45,3 +45,32 @@ export const listStyles = StyleSheet.create({
     color: "#4a4a4a",
   },
 });
+
+export const lyricStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: "#fff",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  author: {
+    fontSize: 18,
+    fontStyle: "italic",
+    marginBottom: 16,
+  },
+  lyrics: {
+    fontSize: 16,
+    lineHeight: 24,
+    marginBottom: 16,
+    marginLeft: 20,
+  },
+  verseTitle: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: "bold",
+  },
+});

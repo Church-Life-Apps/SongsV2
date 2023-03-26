@@ -15,26 +15,27 @@ import {
   getPresentationOrder,
   lyricTypeToString,
 } from "../../utils/LyricUtils";
+import { removeSquareBrackets } from "../../utils/StringUtils";
 
 const v1lb: LyricBlock = {
   verseShorthand: "v1",
   verseTitle: "Verse 1",
-  lyrics: TEST_LYRIC_V1.lyrics,
+  lyrics: removeSquareBrackets(TEST_LYRIC_V1.lyrics),
 };
 const v2lb: LyricBlock = {
   verseShorthand: "v2",
   verseTitle: "Verse 2",
-  lyrics: TEST_LYRIC_V2.lyrics,
+  lyrics: removeSquareBrackets(TEST_LYRIC_V2.lyrics),
 };
 const v3lb: LyricBlock = {
   verseShorthand: "v3",
   verseTitle: "Verse 3",
-  lyrics: TEST_LYRIC_V3.lyrics,
+  lyrics: removeSquareBrackets(TEST_LYRIC_V3.lyrics),
 };
 const c1lb: LyricBlock = {
   verseShorthand: "c1",
   verseTitle: "Chorus",
-  lyrics: TEST_CHORUS_C1.lyrics,
+  lyrics: removeSquareBrackets(TEST_CHORUS_C1.lyrics),
 };
 
 const lyrics = [TEST_LYRIC_V1, TEST_LYRIC_V2, TEST_LYRIC_V3, TEST_CHORUS_C1];

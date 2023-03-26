@@ -28,14 +28,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <SongbookList
-          songbooks={data}
-          onPress={navigateToSonglist}
-        ></SongbookList>
-      )}
+      {isLoading ? <ActivityIndicator /> : <SongbookList songbooks={data} onPress={navigateToSonglist}></SongbookList>}
     </SafeAreaView>
   );
 };
