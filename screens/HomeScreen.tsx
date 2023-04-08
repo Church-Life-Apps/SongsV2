@@ -5,7 +5,7 @@ import { Songbook } from "../models/SongsApiModels";
 import { fetchSongbooks } from "../services/SongsApi";
 import SongbookList from "../components/SongbookList";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation,route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<Songbook[]>([]);
 
@@ -24,6 +24,7 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     getSongbooks();
+    console.log(route);
   }, []);
 
   return (
