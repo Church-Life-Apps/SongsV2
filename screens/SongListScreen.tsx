@@ -21,10 +21,10 @@ const SongListScreen = ({ navigation, route }) => {
     loadSongs();
   }, []);
 
-
   const navigateToSong = (song: Song) => {
     navigation.navigate("Lyric", {
-      //need to finish this - DL
+      songbookId: song.songbookId,
+      number: song.number,
     });
   };
 

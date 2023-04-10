@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, SafeAreaView, Text} from "react-native";
+import { ActivityIndicator, SafeAreaView } from "react-native";
 import { globalStyles } from "../styles/GlobalStyles";
-import { Song, SongWithLyrics } from "../models/SongsApiModels";
-import { fetchSongDetails, fetchSongs } from "../services/SongsApi";
+import { SongWithLyrics } from "../models/SongsApiModels";
+import { fetchSongDetails } from "../services/SongsApi";
 import LyricComponent from "../components/LyricComponent";
+import { TEST_SONG_WITH_LYRIC } from "../models/TempApiObjects";
 
 const LyricScreen = ({ route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
-  const [data, setData] = useState<SongWithLyrics>();
+  const [data, setData] = useState<SongWithLyrics>(TEST_SONG_WITH_LYRIC);
 
   const songbookId = route.params.songbookId;
-  const songNumber = route.params.songNumber;
+  const songNumber = route.params.number;
 
   const loadLyrics = async () => {
-    const lyrics = await fetchSongDetails(songbookId,songNumber);
+    const lyrics = await fetchSongDetails(songbookId, songNumber);
     setData(lyrics);
     setLoading(false);
   };
@@ -24,11 +25,9 @@ const LyricScreen = ({ route }) => {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      {isLoading ? <ActivityIndicator /> : <Text>Test</Text>}
+      {isLoading ? <ActivityIndicator /> : <LyricComponent songData={data} removeDuplicates={false}></LyricComponent>}
     </SafeAreaView>
   );
 };
 
 export default LyricScreen;
-
-//need to finish by using LyricComponent instead of placeholder Text - DL

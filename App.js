@@ -12,6 +12,7 @@ const config = {
   screens: {
     Home: "",
     Songlist: ":songbookId",
+    Lyric: ":songbookId/:number",
     //need to add something here but not sure what yet
   },
 };
@@ -31,11 +32,10 @@ export default function App() {
           options={({ route }) => ({ title: route.params.title })}
         />
 
-        {/*created new Stack for the Lyric Screen, still need to add the correct options for the title to make sense*/}
         <Stack.Screen
           name="Lyric"
           component={LyricScreen}
-          options={() => ({})}
+          options={({ route }) => ({ songbookId: route.params.songbookId, number: route.params.number })}
         />
       </Stack.Navigator>
     </NavigationContainer>
