@@ -6,7 +6,7 @@ import { fetchSongDetails } from "../services/SongsApi";
 import LyricComponent from "../components/LyricComponent";
 import { TEST_SONG_WITH_LYRIC } from "../models/TempApiObjects";
 
-const LyricScreen = ({ route }) => {
+const SongScreen = ({ route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<SongWithLyrics>(TEST_SONG_WITH_LYRIC);
 
@@ -30,4 +30,4 @@ const LyricScreen = ({ route }) => {
   );
 };
 
-export default LyricScreen;
+export default SongScreen;

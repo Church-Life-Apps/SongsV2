@@ -22,7 +22,7 @@ const SongListScreen = ({ navigation, route }) => {
   }, []);
 
   const navigateToSong = (song: Song) => {
-    navigation.navigate("Lyric", {
+    navigation.navigate("Song", {
       songbookId: song.songbookId,
       number: song.number,
     });

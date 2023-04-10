@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import SongListScreen from "./screens/SongListScreen";
 import * as Linking from "expo-linking";
-import LyricScreen from "./screens/LyricScreen";
+import SongScreen from "./screens/SongScreen";
 
 const Stack = createNativeStackNavigator();
 const prefix = Linking.createURL("/");
@@ -12,8 +12,7 @@ const config = {
   screens: {
     Home: "",
     Songlist: ":songbookId",
-    Lyric: ":songbookId/:number",
-    //need to add something here but not sure what yet
+    Song: ":songbookId/:number",
   },
 };
 const linking = {
@@ -33,8 +32,8 @@ export default function App() {
         />
 
         <Stack.Screen
-          name="Lyric"
-          component={LyricScreen}
+          name="Song"
+          component={SongScreen}
           options={({ route }) => ({ songbookId: route.params.songbookId, number: route.params.number })}
         />
       </Stack.Navigator>

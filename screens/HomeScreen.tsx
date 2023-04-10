@@ -5,7 +5,7 @@ import { Songbook } from "../models/SongsApiModels";
 import { fetchSongbooks } from "../services/SongsApi";
 import SongbookList from "../components/SongbookList";
 
-const HomeScreen = ({ navigation, route }) => {
+const HomeScreen = ({ navigation}) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<Songbook[]>([]);
 
