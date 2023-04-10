@@ -15,7 +15,7 @@ const SongList = ({ songs, onPress }) => {
   return (
     <FlatList
       data={songs}
-      renderItem={({ item: song }) => <SongItem song={song} onPress={() => onPress(song.number)} />}
+      renderItem={({ item: song }) => <SongItem song={song} onPress={() => onPress(song)} />}
       keyExtractor={(item) => item.number}
       style={listStyles.list}
       contentContainerStyle={listStyles.contentContainer}

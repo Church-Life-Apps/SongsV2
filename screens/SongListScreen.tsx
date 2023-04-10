@@ -5,7 +5,7 @@ import { Song } from "../models/SongsApiModels";
 import { fetchSongs } from "../services/SongsApi";
 import SongList from "../components/SongList";
 
-const SongListScreen = ({ route }) => {
+const SongListScreen = ({ navigation, route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<Song[]>([]);
 
@@ -21,16 +21,16 @@ const SongListScreen = ({ route }) => {
     loadSongs();
   }, []);
 
+  const navigateToSong = (song: Song) => {
+    navigation.navigate("Song", {
+      songbookId: song.songbookId,
+      number: song.number,
+    });
+  };
+
   return (
     <SafeAreaView style={globalStyles.container}>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <SongList
-          songs={data}
-          onPress={(songNumber: Number) => console.log("Go to song view for", songbookId, " #", songNumber)}
-        ></SongList>
-      )}
+      {isLoading ? <ActivityIndicator /> : <SongList songs={data} onPress={navigateToSong} />}
     </SafeAreaView>
   );
 };
