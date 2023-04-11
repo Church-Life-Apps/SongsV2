@@ -10,6 +10,7 @@ const SongListScreen = ({ navigation, route }) => {
   const [data, setData] = useState<Song[]>([]);
 
   const songbookId = route.params.songbookId;
+  const songbookFullName = route.params.title;
 
   const loadSongs = async () => {
     const songs = await fetchSongs(songbookId);
@@ -21,16 +22,21 @@ const SongListScreen = ({ navigation, route }) => {
     loadSongs();
   }, []);
 
-  const navigateToSong = (song: Song) => {
+  const navigateToSong = (song: Song, songbookFullName: string) => {
     navigation.navigate("Song", {
       songbookId: song.songbookId,
       number: song.number,
+      title: `${songbookFullName} #${song.number}`,
     });
   };
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      {isLoading ? <ActivityIndicator /> : <SongList songs={data} onPress={navigateToSong} />}
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <SongList songs={data} songbookFullName={songbookFullName} onPress={navigateToSong} />
+      )}
     </SafeAreaView>
   );
 };

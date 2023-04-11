@@ -11,11 +11,11 @@ const SongItem = ({ song, onPress }) => (
   </TouchableOpacity>
 );
 
-const SongList = ({ songs, onPress }) => {
+const SongList = ({ songs, songbookFullName, onPress}) => {
   return (
     <FlatList
       data={songs}
-      renderItem={({ item: song }) => <SongItem song={song} onPress={() => onPress(song)} />}
+      renderItem={({ item: song }) => <SongItem song={song} onPress={() => onPress(song, songbookFullName )} />}
       keyExtractor={(item) => item.number}
       style={listStyles.list}
       contentContainerStyle={listStyles.contentContainer}
