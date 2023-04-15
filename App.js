@@ -24,7 +24,11 @@ export default function App() {
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={() => ({ title: "Select A Songbook!" })} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={() => ({ title: "Select A Songbook!" })}
+        />
         <Stack.Screen
           name="Songlist"
           component={SongListScreen}

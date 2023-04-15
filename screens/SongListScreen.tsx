@@ -27,6 +27,7 @@ const SongListScreen = ({ navigation, route }) => {
       songbookId: song.songbookId,
       number: song.number,
       title: `${songbookFullName} #${song.number}`,
+      sheetMusic: song.imageUrl,
     });
   };
 
@@ -35,7 +36,11 @@ const SongListScreen = ({ navigation, route }) => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <SongList songs={data} songbookFullName={songbookFullName} onPress={navigateToSong} />
+        <SongList
+          songs={data}
+          songbookFullName={songbookFullName}
+          onPress={navigateToSong}
+        />
       )}
     </SafeAreaView>
   );
