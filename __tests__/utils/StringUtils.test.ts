@@ -13,6 +13,7 @@ test("Remove square bracket function test", () => {
     "There this line has  nothing"
   );
 
-  expect (removeSquareBrackets("[hi]] this will ignore ] [hi] non finished brackets]["))
-  .toBe("] this will ignore ]  non finished brackets]")
+  expect(removeSquareBrackets("[hi]] this will ignore ] [hi] non finished brackets][")).toBe(
+    "] this will ignore ]  non finished brackets]"
+  );
 });

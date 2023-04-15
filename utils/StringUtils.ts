@@ -2,18 +2,21 @@
  * Util functions for strings.
  */
 
+const PUNCTUATION_REGEX = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
+const DOUBLE_SPACES_REGEX = /\s{2,}/g;
+
 /**
  * Removes special characters from the string.
  */
 export function removePunctuation(s: string): string {
-  return s.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, "");
+  return s.replace(PUNCTUATION_REGEX, "");
 }
 
 /**
  * Replaces occurences of 2 or more spaces with a single space.
  */
 export function removeDoubleSpaces(s: string): string {
-  return s.replace(/\s{2,}/g, " ");
+  return s.replace(DOUBLE_SPACES_REGEX, " ");
 }
 
 /**

@@ -25,7 +25,12 @@ const SongScreen = ({ route }) => {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      {isLoading ? <ActivityIndicator /> : <LyricComponent songData={data} removeDuplicates={false}></LyricComponent>}
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        // TODO: Make these configurable from user preferences.
+        <LyricComponent songData={data} removeDuplicates={false} displayChords={false}></LyricComponent>
+      )}
     </SafeAreaView>
   );
 };

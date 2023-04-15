@@ -52,6 +52,10 @@ export const lyricStyles = StyleSheet.create({
     padding: 16,
     backgroundColor: "#fff",
   },
+  scrollViewContainer: {
+    paddingVertical: 16,
+    paddingHorizontal: 4,
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
@@ -65,12 +69,19 @@ export const lyricStyles = StyleSheet.create({
   lyrics: {
     fontSize: 16,
     lineHeight: 24,
-    marginBottom: 16,
+    marginBottom: 0,
     marginLeft: 20,
+  },
+  chords: {
+    fontSize: 16,
+    lineHeight: 16,
+    marginLeft: 20,
+    // fontWeight: "200",
   },
   verseTitle: {
     fontSize: 16,
     lineHeight: 24,
     fontWeight: "bold",
+    marginTop: 16,
   },
 });
