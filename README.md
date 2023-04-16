@@ -4,7 +4,11 @@ Hymnal App V2
 
 
 # Making Expo Builds
-Run one of these commands in the terminal:
+To update main build – While on `main` branch in git locally, run `eas update --auto`
+
+To create new builds:
 `eas build --platform android`
+
 `eas build --platform ios`
+
 `eas build --platform all`
