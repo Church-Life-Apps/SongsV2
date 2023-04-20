@@ -1,24 +1,19 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Song } from "../models/SongsApiModels";
-import { lyricStyles } from "../styles/GlobalStyles";
-import { convertSongToLyricBlocks } from "../utils/LyricUtils";
+import { View, Text, ScrollView, Image } from "react-native";
 
 //define the component props
 interface SheetMusicComponentProps {
-  sheetMusic: string;
+  imageUrl: string;
 }
 
-const SheetMusicComponent: React.FC<SheetMusicComponentProps> = (
-  sheetMusic
-) => {
-  console.log(sheetMusic);
+const SheetMusicComponent: React.FC<SheetMusicComponentProps> = ({ imageUrl }) => {
+  console.log(imageUrl);
 
-  //need to figure out what should actually be returned
+  //sheet music shows up in web, but not app
   return (
-    <View>
-      <Text>{`${sheetMusic}`}</Text>
-    </View>
+    <ScrollView>
+      <Image source={{ uri: imageUrl }} style={{ width: 2000, height: 2000 }} resizeMode="contain" />
+    </ScrollView>
   );
 };
 
