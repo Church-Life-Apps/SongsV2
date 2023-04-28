@@ -5,10 +5,14 @@ import { SongWithLyrics } from "../models/SongsApiModels";
 import { fetchSongDetails } from "../services/SongsApi";
 import LyricComponent from "../components/LyricComponent";
 import { TEST_SONG_WITH_LYRIC } from "../models/TempApiObjects";
+import SheetMusicComponent from "../components/SheetMusicComponent";
 
 const SongScreen = ({ route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<SongWithLyrics>(TEST_SONG_WITH_LYRIC);
+
+  //temporarily used to display with lyric or sheetmusic, true for lyrics, false for sheetmusic
+  const mode: boolean = false;
 
   const songbookId = route.params.songbookId;
   const songNumber = route.params.number;
@@ -25,7 +29,13 @@ const SongScreen = ({ route }) => {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      {isLoading ? <ActivityIndicator /> : <LyricComponent songData={data} removeDuplicates={false}></LyricComponent>}
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : mode ? (
+        <LyricComponent songData={data} removeDuplicates={false} />
+      ) : (
+        <SheetMusicComponent imageUrl={data.song.imageUrl} />
+      )}
     </SafeAreaView>
   );
 };
