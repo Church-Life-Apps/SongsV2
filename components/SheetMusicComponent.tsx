@@ -1,18 +1,21 @@
 import React from "react";
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, Dimensions } from "react-native";
 
 //define the component props
 interface SheetMusicComponentProps {
   imageUrl: string;
 }
 
-const SheetMusicComponent: React.FC<SheetMusicComponentProps> = ({ imageUrl }) => {
-  console.log(imageUrl);
+//used Dimensions to get specific device window width and height, we may want to move this to our screens.
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
-  //sheet music shows up in web, but not app
+const SheetMusicComponent: React.FC<SheetMusicComponentProps> = ({ imageUrl }) => {
   return (
-    <ScrollView>
-      <Image source={{ uri: imageUrl }} style={{ width: 2000, height: 2000 }} resizeMode="contain" />
+    <ScrollView style={{ flex: 1 }}>
+      <View style={{ width: windowWidth, height: windowHeight }}>
+        <Image source={{ uri: imageUrl }} style={{ flex: 1 }} resizeMode="contain" />
+      </View>
     </ScrollView>
   );
 };
