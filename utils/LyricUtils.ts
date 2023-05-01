@@ -1,6 +1,8 @@
-import { LyricBlock } from "../models/LocalModels";
+import { LyricBlock, LineWithChords, ChordWithIndex } from "../models/LocalModels";
 import { Lyric, LyricType, SongWithLyrics } from "../models/SongsApiModels";
 import { removeDoubleSpaces, removePunctuation, removeSquareBrackets } from "./StringUtils";
+
+const SQUARE_BRACKETS_REGEX = /\[([^\]]+)\]/g;
 
 /**
  * Converts a SongWithLyrics object to a LyricBlock List for visualizing the right lyrics in the right order.
@@ -20,7 +22,7 @@ export function convertSongToLyricBlocks(songWithLyrics: SongWithLyrics, skipDup
     const lyricBlock: LyricBlock = {
       verseShorthand: verseShorthand,
       verseTitle: getVerseTitle(lyrics, i),
-      lyrics: removeSquareBrackets(lyric.lyrics),
+      lyrics: parseLyricsWithChords(lyric.lyrics),
     };
     lyricsMap.set(verseShorthand, lyricBlock);
   }
@@ -116,4 +118,45 @@ export function getVerseTitle(lyrics: Lyric[], index: number): string {
   } else {
     return lyricTypeString;
   }
+}
+
+/**
+ * Parses the chords out of the lyrics interwoven with chords,
+ * returning the lyrics without chords, and the chords by themselves.
+ */
+export function parseLyricsWithChords(lyrics: string): LineWithChords[] {
+  const lines = lyrics.split("\n");
+
+  return lines.map((l) => {
+    const line = l.trim();
+    const chordsMap: ChordWithIndex[] = [];
+    let offset = 0;
+    let match: RegExpExecArray;
+    while ((match = SQUARE_BRACKETS_REGEX.exec(line)) !== null) {
+      const index = match.index - offset;
+      const chordWithBracket = match[0];
+      const chord = match[1];
+      chordsMap.push({ index: index, text: chord });
+      offset += chordWithBracket.length;
+    }
+    return { line: removeSquareBrackets(line), chords: chordsMap };
+  });
+}
+
+/**
+ * Expands chord to render as a line of text above the lyrics.
+ * 
+ * TODO: Enhance this: This only renders space between the chords according to the number of
+ * characters between each one, but not every character takes up the same number of 
+ * pixels, so the spacing is gonna be a little off. Possible solution of using a monospaced font.
+ */
+export function expandChordMap(lineWithChords: LineWithChords): string {
+  let chordLine = ''
+  let offset = 0;
+  lineWithChords.chords.forEach((chord) => {
+    chordLine += ' '.repeat(chord.index - offset)
+    chordLine += chord.text
+    offset = chord.index;
+  })
+  return chordLine
 }
