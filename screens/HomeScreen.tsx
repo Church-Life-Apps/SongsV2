@@ -17,8 +17,7 @@ const HomeScreen = ({ navigation}) => {
 
   const navigateToSonglist = (songbook: Songbook) => {
     navigation.navigate("Songlist", {
-      songbookId: songbook.id,
-      title: songbook.fullName,
+      songbookId: songbook.id
     });
   };
 
