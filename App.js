@@ -32,16 +32,17 @@ export default function App() {
             title: "Select A Songbook!",
             headerBackVisible: false,
             // enforce no headerLeft
-            headerLeft: () => {}
-          })} />
+            headerLeft: () => {},
+          })}
+        />
         <Stack.Screen
           name="Songlist"
           component={SongListScreen}
           options={({ navigation }) => ({
             // these options are overidden in the component
-            title: '',
+            title: "",
             headerLeft: () => (
-              <HeaderBackButton onPress={() => navigation.navigate('Home')} />
+              <HeaderBackButton onPress={() => navigation.navigate("Home")} />
             ),
           })}
         />
@@ -50,10 +51,8 @@ export default function App() {
           component={SongScreen}
           options={({ navigation }) => ({
             // these options are overidden in the component
-            title: '',
-            headerLeft: () => (
-              <HeaderBackButton />
-            ),
+            title: "",
+            headerLeft: () => <HeaderBackButton />,
           })}
         />
       </Stack.Navigator>

@@ -10,7 +10,7 @@ import { HeaderBackButton } from "@react-navigation/elements";
 const SongScreen = ({ navigation, route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<SongWithLyrics>(TEST_SONG_WITH_LYRIC);
-  let songbookFullName : String;
+  let songbookFullName: String;
 
   const songbookId = route.params.songbookId;
   const songNumber = route.params.number;
@@ -19,14 +19,21 @@ const SongScreen = ({ navigation, route }) => {
     const lyrics = await fetchSongDetails(songbookId, songNumber);
     setData(lyrics);
     setLoading(false);
-    
-    songbookFullName = (await fetchSongbooks()).find((value: Songbook, index: number, obj: Songbook[]) => value.id === songbookId).fullName;
+
+    songbookFullName = (await fetchSongbooks()).find(
+      (value: Songbook, index: number, obj: Songbook[]) =>
+        value.id === songbookId
+    ).fullName;
     navigation.setOptions({
       title: `${songbookFullName} #${songNumber}`,
       headerLeft: () => (
-        <HeaderBackButton onPress={() => navigation.navigate('Songlist', {
-          songbookId: songbookId
-        })} />
+        <HeaderBackButton
+          onPress={() =>
+            navigation.navigate("Songlist", {
+              songbookId: songbookId,
+            })
+          }
+        />
       ),
     });
   };
@@ -41,7 +48,11 @@ const SongScreen = ({ navigation, route }) => {
         <ActivityIndicator />
       ) : (
         // TODO: Make these configurable from user preferences.
-        <LyricComponent songData={data} removeDuplicates={false} displayChords={false}></LyricComponent>
+        <LyricComponent
+          songData={data}
+          removeDuplicates={false}
+          displayChords={false}
+        ></LyricComponent>
       )}
     </SafeAreaView>
   );

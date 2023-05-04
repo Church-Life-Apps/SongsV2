@@ -8,7 +8,7 @@ import SongList from "../components/SongList";
 const SongListScreen = ({ navigation, route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<Song[]>([]);
-  var songbookFullName : String;
+  var songbookFullName: String;
 
   const songbookId = route.params.songbookId;
 
@@ -16,7 +16,10 @@ const SongListScreen = ({ navigation, route }) => {
     const songs = await fetchSongs(songbookId);
     setData(songs);
     setLoading(false);
-    songbookFullName = (await fetchSongbooks()).find((value: Songbook, index: number, obj: Songbook[]) => value.id === songbookId).fullName;
+    songbookFullName = (await fetchSongbooks()).find(
+      (value: Songbook, index: number, obj: Songbook[]) =>
+        value.id === songbookId
+    ).fullName;
     navigation.setOptions({ title: songbookFullName });
   };
 
@@ -36,7 +39,11 @@ const SongListScreen = ({ navigation, route }) => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <SongList songs={data} songbookFullName={songbookFullName} onPress={navigateToSong} />
+        <SongList
+          songs={data}
+          songbookFullName={songbookFullName}
+          onPress={navigateToSong}
+        />
       )}
     </SafeAreaView>
   );

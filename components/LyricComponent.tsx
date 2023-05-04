@@ -12,7 +12,11 @@ interface LyricComponentProps {
   displayChords: boolean;
 }
 
-const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplicates, displayChords }) => {
+const LyricComponent: React.FC<LyricComponentProps> = ({
+  songData,
+  removeDuplicates,
+  displayChords,
+}) => {
   const song = songData.song;
   const lyricBlocks = convertSongToLyricBlocks(songData, removeDuplicates);
 
@@ -28,11 +32,17 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
           {lyric.lyrics.map((lineWithChords, lineIndex) => (
             <View key={`View ${lyric.verseShorthand}:${lineIndex}`}>
               {displayChords && lineWithChords.chords.length > 0 ? (
-                <Text key={`${lineIndex}:${lyric.verseShorthand}`} style={lyricStyles.chords}>
+                <Text
+                  key={`${lineIndex}:${lyric.verseShorthand}`}
+                  style={lyricStyles.chords}
+                >
                   {expandChordMap(lineWithChords)}
                 </Text>
               ) : null}
-              <Text key={`${lyric.verseShorthand} Line ${lineIndex}`} style={lyricStyles.lyrics}>
+              <Text
+                key={`${lyric.verseShorthand} Line ${lineIndex}`}
+                style={lyricStyles.lyrics}
+              >
                 {lineWithChords.line}
               </Text>
             </View>
@@ -43,7 +53,9 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
   );
 
   return isMobile() ? (
-    <ScrollView contentContainerStyle={lyricStyles.scrollViewContainer}>{content}</ScrollView>
+    <ScrollView contentContainerStyle={lyricStyles.scrollViewContainer}>
+      {content}
+    </ScrollView>
   ) : (
     <View style={lyricStyles.container}>{content}</View>
   );

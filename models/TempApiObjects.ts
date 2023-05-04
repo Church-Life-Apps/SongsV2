@@ -1,12 +1,20 @@
 import { v4 as uuidv4 } from "uuid";
-import { Songbook, Song, Lyric, LyricType, SongWithLyrics } from "./SongsApiModels";
+import {
+  Songbook,
+  Song,
+  Lyric,
+  LyricType,
+  SongWithLyrics,
+} from "./SongsApiModels";
 
 // hard coded Data object for individual songbook in Songbooks List API
 export const SHL: Songbook = {
   id: "shl",
   fullName: "Songs and Hymns of Life",
-  staticMetadataLink: "https://github.com/Church-Life-Apps/Resources/blob/master/resources/metadata/shl.json",
-  imageUrl: "https://i0.wp.com/asweetsavor.org/wp-content/uploads/SHL-on-Piano-e1602105678283.jpg?fit=882%2C686&ssl=1",
+  staticMetadataLink:
+    "https://github.com/Church-Life-Apps/Resources/blob/master/resources/metadata/shl.json",
+  imageUrl:
+    "https://i0.wp.com/asweetsavor.org/wp-content/uploads/SHL-on-Piano-e1602105678283.jpg?fit=882%2C686&ssl=1",
 };
 
 // hard coded Data object for individual song in songlist
@@ -18,8 +26,10 @@ export const TEST_SONG: Song = {
   author: "Thomas O. Chisholm",
   music: "William Marion Runyan (1870-1957)",
   presentationOrder: "v1 c1 v2 c1 v3 c1",
-  imageUrl: "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_010.png",
-  audioUrl: "https://raw.githubusercontent.com/brandonxia01/CodingClub/master/websites/piano/notes/c-4.mp3",
+  imageUrl:
+    "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_010.png",
+  audioUrl:
+    "https://raw.githubusercontent.com/brandonxia01/CodingClub/master/websites/piano/notes/c-4.mp3",
 };
 
 export const TEST_SONG_2: Song = {
@@ -30,8 +40,10 @@ export const TEST_SONG_2: Song = {
   author: "J. F. Garland",
   music: "Ira David Sankey (1840-1908)",
   presentationOrder: "v1 v2 v3 v4",
-  imageUrl: "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_002.png",
-  audioUrl: "https://raw.githubusercontent.com/brandonxia01/CodingClub/master/websites/piano/notes/c-4.mp3",
+  imageUrl:
+    "https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_002.png",
+  audioUrl:
+    "https://raw.githubusercontent.com/brandonxia01/CodingClub/master/websites/piano/notes/c-4.mp3",
 };
 
 // hard coded Data object for Lyrics
