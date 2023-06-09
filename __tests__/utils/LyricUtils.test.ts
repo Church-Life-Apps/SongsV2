@@ -1,8 +1,4 @@
-import {
-  LyricBlock,
-  LineWithChords,
-  ChordWithIndex,
-} from "../../models/LocalModels";
+import { LyricBlock, LineWithChords, ChordWithIndex } from "../../models/LocalModels";
 import { Lyric, LyricType, SongWithLyrics } from "../../models/SongsApiModels";
 import {
   TEST_CHORUS_C1,
@@ -54,26 +50,9 @@ test("Test LyricType toString Method", () => {
 });
 
 test("Test GetPresentationOrder method", () => {
-  assertJsonEquality(getPresentationOrder("v1 c1 v2 c1 v3 c1", false), [
-    "v1",
-    "c1",
-    "v2",
-    "c1",
-    "v3",
-    "c1",
-  ]);
-  assertJsonEquality(getPresentationOrder("v1 c1 v2 c1 v3 c1", true), [
-    "v1",
-    "c1",
-    "v2",
-    "v3",
-  ]);
-  assertJsonEquality(getPresentationOrder("v1, c1, v2, c1, v3, c1", true), [
-    "v1",
-    "c1",
-    "v2",
-    "v3",
-  ]);
+  assertJsonEquality(getPresentationOrder("v1 c1 v2 c1 v3 c1", false), ["v1", "c1", "v2", "c1", "v3", "c1"]);
+  assertJsonEquality(getPresentationOrder("v1 c1 v2 c1 v3 c1", true), ["v1", "c1", "v2", "v3"]);
+  assertJsonEquality(getPresentationOrder("v1, c1, v2, c1, v3, c1", true), ["v1", "c1", "v2", "v3"]);
 });
 
 test("Test GetLyricShorthand Method", () => {
@@ -101,20 +80,8 @@ test("Test GetLyricTitle Method", () => {
 });
 
 test("Test Convert Song to Lyric Blocks", () => {
-  assertJsonEquality(convertSongToLyricBlocks(TEST_SONG_WITH_LYRIC, false), [
-    v1lb,
-    c1lb,
-    v2lb,
-    c1lb,
-    v3lb,
-    c1lb,
-  ]);
-  assertJsonEquality(convertSongToLyricBlocks(TEST_SONG_WITH_LYRIC, true), [
-    v1lb,
-    c1lb,
-    v2lb,
-    v3lb,
-  ]);
+  assertJsonEquality(convertSongToLyricBlocks(TEST_SONG_WITH_LYRIC, false), [v1lb, c1lb, v2lb, c1lb, v3lb, c1lb]);
+  assertJsonEquality(convertSongToLyricBlocks(TEST_SONG_WITH_LYRIC, true), [v1lb, c1lb, v2lb, v3lb]);
 
   const alternativeSong: SongWithLyrics = {
     song: {
@@ -124,25 +91,12 @@ test("Test Convert Song to Lyric Blocks", () => {
     lyrics: lyrics,
   };
 
-  assertJsonEquality(convertSongToLyricBlocks(alternativeSong, false), [
-    c1lb,
-    v1lb,
-    v3lb,
-    v3lb,
-    v3lb,
-    v2lb,
-  ]);
-  assertJsonEquality(convertSongToLyricBlocks(alternativeSong, true), [
-    c1lb,
-    v1lb,
-    v3lb,
-    v2lb,
-  ]);
+  assertJsonEquality(convertSongToLyricBlocks(alternativeSong, false), [c1lb, v1lb, v3lb, v3lb, v3lb, v2lb]);
+  assertJsonEquality(convertSongToLyricBlocks(alternativeSong, true), [c1lb, v1lb, v3lb, v2lb]);
 });
 
 test("Test Parse LyricWithChords Function", () => {
-  const testLyric =
-    "[Ab]This is a [Ebm]lyric for a so[Db]ng.\n[Bb]Th[Cm]is is another line[Gm]";
+  const testLyric = "[Ab]This is a [Ebm]lyric for a so[Db]ng.\n[Bb]Th[Cm]is is another line[Gm]";
   const lyricWithChords = parseLyricsWithChords(testLyric);
 
   const line1Chords: ChordWithIndex[] = [
@@ -191,9 +145,7 @@ test("Test ExpandChordMap Function", () => {
       chords: line2Chords,
     },
   ];
-  expect(expandChordMap(linesWithChords[0])).toBe(
-    "Ab          Ebm              Db"
-  );
+  expect(expandChordMap(linesWithChords[0])).toBe("Ab          Ebm              Db");
   expect(expandChordMap(linesWithChords[1])).toBe("Bb  Cm                  Gm");
 });
 

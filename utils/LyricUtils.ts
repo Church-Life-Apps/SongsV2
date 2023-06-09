@@ -1,29 +1,15 @@
-import {
-  LyricBlock,
-  LineWithChords,
-  ChordWithIndex,
-} from "../models/LocalModels";
+import { LyricBlock, LineWithChords, ChordWithIndex } from "../models/LocalModels";
 import { Lyric, LyricType, SongWithLyrics } from "../models/SongsApiModels";
-import {
-  removeDoubleSpaces,
-  removePunctuation,
-  removeSquareBrackets,
-} from "./StringUtils";
+import { removeDoubleSpaces, removePunctuation, removeSquareBrackets } from "./StringUtils";
 
 const SQUARE_BRACKETS_REGEX = /\[([^\]]+)\]/g;
 
 /**
  * Converts a SongWithLyrics object to a LyricBlock List for visualizing the right lyrics in the right order.
  */
-export function convertSongToLyricBlocks(
-  songWithLyrics: SongWithLyrics,
-  skipDuplicates: boolean
-): LyricBlock[] {
+export function convertSongToLyricBlocks(songWithLyrics: SongWithLyrics, skipDuplicates: boolean): LyricBlock[] {
   // Get presentation order of lyrics for the song.
-  const presentationOrder = getPresentationOrder(
-    songWithLyrics.song.presentationOrder,
-    skipDuplicates
-  );
+  const presentationOrder = getPresentationOrder(songWithLyrics.song.presentationOrder, skipDuplicates);
   const lyrics = songWithLyrics.lyrics;
 
   // Create a map of presentation order string to LyricBlock using just the lyrics of the song object
@@ -66,13 +52,8 @@ export function convertSongToLyricBlocks(
 /**
  * Turns presentation order string to the corresponding array of shorthand verse names.
  */
-export function getPresentationOrder(
-  presentationOrderString: string,
-  skipDuplicates: boolean
-): string[] {
-  const verseList = removePunctuation(
-    removeDoubleSpaces(presentationOrderString.trim())
-  ).split(" ");
+export function getPresentationOrder(presentationOrderString: string, skipDuplicates: boolean): string[] {
+  const verseList = removePunctuation(removeDoubleSpaces(presentationOrderString.trim())).split(" ");
   if (skipDuplicates) {
     return [...new Set(verseList)];
   } else {

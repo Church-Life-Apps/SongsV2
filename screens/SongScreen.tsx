@@ -21,8 +21,7 @@ const SongScreen = ({ navigation, route }) => {
     setLoading(false);
 
     songbookFullName = (await fetchSongbooks()).find(
-      (value: Songbook, index: number, obj: Songbook[]) =>
-        value.id === songbookId
+      (value: Songbook, index: number, obj: Songbook[]) => value.id === songbookId
     ).fullName;
     navigation.setOptions({
       title: `${songbookFullName} #${songNumber}`,
@@ -48,11 +47,7 @@ const SongScreen = ({ navigation, route }) => {
         <ActivityIndicator />
       ) : (
         // TODO: Make these configurable from user preferences.
-        <LyricComponent
-          songData={data}
-          removeDuplicates={false}
-          displayChords={false}
-        ></LyricComponent>
+        <LyricComponent songData={data} removeDuplicates={false} displayChords={false}></LyricComponent>
       )}
     </SafeAreaView>
   );

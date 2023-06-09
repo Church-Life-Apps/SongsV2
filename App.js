@@ -41,9 +41,7 @@ export default function App() {
           options={({ navigation }) => ({
             // these options are overidden in the component
             title: "",
-            headerLeft: () => (
-              <HeaderBackButton onPress={() => navigation.navigate("Home")} />
-            ),
+            headerLeft: () => <HeaderBackButton onPress={() => navigation.navigate("Home")} />,
           })}
         />
         <Stack.Screen

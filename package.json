@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest",
-    "prettier": "prettier -w ."
+    "prettier": "prettier --print-width 120 -w ."
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",

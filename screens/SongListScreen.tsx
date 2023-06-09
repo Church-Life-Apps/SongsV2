@@ -17,8 +17,7 @@ const SongListScreen = ({ navigation, route }) => {
     setData(songs);
     setLoading(false);
     songbookFullName = (await fetchSongbooks()).find(
-      (value: Songbook, index: number, obj: Songbook[]) =>
-        value.id === songbookId
+      (value: Songbook, index: number, obj: Songbook[]) => value.id === songbookId
     ).fullName;
     navigation.setOptions({ title: songbookFullName });
   };
@@ -39,11 +38,7 @@ const SongListScreen = ({ navigation, route }) => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <SongList
-          songs={data}
-          songbookFullName={songbookFullName}
-          onPress={navigateToSong}
-        />
+        <SongList songs={data} songbookFullName={songbookFullName} onPress={navigateToSong} />
       )}
     </SafeAreaView>
   );
