@@ -24,7 +24,7 @@ const SongListScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     loadSongs();
-  }, []);
+  }, [songbookId]);
 
   const navigateToSong = (song: Song) => {
     navigation.navigate("Song", {
