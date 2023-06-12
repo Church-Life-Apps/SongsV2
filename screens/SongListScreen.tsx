@@ -15,7 +15,6 @@ const SongListScreen = ({ navigation, route }) => {
   const loadSongs = async () => {
     const songs = await fetchSongs(songbookId);
     setData(songs);
-    setLoading(false);
     songbookFullName = (await fetchSongbooks()).find(
       (value: Songbook, index: number, obj: Songbook[]) => value.id === songbookId
     ).fullName;
@@ -23,7 +22,9 @@ const SongListScreen = ({ navigation, route }) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     loadSongs();
+    setLoading(false);
   }, [songbookId]);
 
   const navigateToSong = (song: Song) => {
