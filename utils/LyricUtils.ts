@@ -145,18 +145,18 @@ export function parseLyricsWithChords(lyrics: string): LineWithChords[] {
 
 /**
  * Expands chord to render as a line of text above the lyrics.
- * 
+ *
  * TODO: Enhance this: This only renders space between the chords according to the number of
- * characters between each one, but not every character takes up the same number of 
+ * characters between each one, but not every character takes up the same number of
  * pixels, so the spacing is gonna be a little off. Possible solution of using a monospaced font.
  */
 export function expandChordMap(lineWithChords: LineWithChords): string {
-  let chordLine = ''
+  let chordLine = "";
   let offset = 0;
   lineWithChords.chords.forEach((chord) => {
-    chordLine += ' '.repeat(chord.index - offset)
-    chordLine += chord.text
+    chordLine += " ".repeat(chord.index - offset);
+    chordLine += chord.text;
     offset = chord.index;
-  })
-  return chordLine
+  });
+  return chordLine;
 }

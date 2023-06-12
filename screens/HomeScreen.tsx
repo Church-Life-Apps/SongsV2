@@ -5,7 +5,7 @@ import { Songbook } from "../models/SongsApiModels";
 import { fetchSongbooks } from "../services/SongsApi";
 import SongbookList from "../components/SongbookList";
 
-const HomeScreen = ({ navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [data, setData] = useState<Songbook[]>([]);
 
@@ -18,7 +18,6 @@ const HomeScreen = ({ navigation}) => {
   const navigateToSonglist = (songbook: Songbook) => {
     navigation.navigate("Songlist", {
       songbookId: songbook.id,
-      title: songbook.fullName,
     });
   };
 

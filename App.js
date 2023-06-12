@@ -5,6 +5,7 @@ import HomeScreen from "./screens/HomeScreen";
 import SongListScreen from "./screens/SongListScreen";
 import * as Linking from "expo-linking";
 import SongScreen from "./screens/SongScreen";
+import { HeaderBackButton } from "@react-navigation/elements";
 
 const Stack = createNativeStackNavigator();
 const prefix = Linking.createURL("/");
@@ -24,23 +25,32 @@ export default function App() {
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={() => ({ title: "Select A Songbook!" })} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={() => ({
+            title: "Select A Songbook!",
+            headerBackVisible: false,
+            // enforce no headerLeft
+            headerLeft: () => {},
+          })}
+        />
         <Stack.Screen
           name="Songlist"
           component={SongListScreen}
-          options={({ route }) => ({
-            title: route.params.title,
-            // TODO: Add permananent Back button to the header bar using headerLeft option to Home screen
+          options={({ navigation }) => ({
+            // these options are overidden in the component
+            title: "",
+            headerLeft: () => <HeaderBackButton onPress={() => navigation.navigate("Home")} />,
           })}
         />
         <Stack.Screen
           name="Song"
           component={SongScreen}
-          options={({ route }) => ({
-            songbookId: route.params.songbookId,
-            number: route.params.number,
-            title: route.params.title,
-            // TODO: Add permananent Back button to the header bar using headerLeft option to Songlist screen
+          options={({ navigation }) => ({
+            // these options are overidden in the component
+            title: "",
+            headerLeft: () => <HeaderBackButton />,
           })}
         />
       </Stack.Navigator>
