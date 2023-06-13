@@ -4,6 +4,7 @@ import { SongWithLyrics } from "../models/SongsApiModels";
 import { lyricStyles } from "../styles/GlobalStyles";
 import { convertSongToLyricBlocks, expandChordMap } from "../utils/LyricUtils";
 import { isMobile } from "../utils/PlatformUtils";
+import AudioPlayerComponent from "./AudioPlayerComponent";
 
 // Define the component props
 interface LyricComponentProps {
@@ -20,6 +21,9 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
     <>
       <Text style={lyricStyles.title}>{song.title}</Text>
       <Text style={lyricStyles.author}>by {song.author}</Text>
+
+      <AudioPlayerComponent />
+
       {lyricBlocks.map((lyric, lyricIndex) => (
         <View key={`View ${lyricIndex}`}>
           <Text key={`${lyricIndex}:verseTitle`} style={lyricStyles.verseTitle}>
