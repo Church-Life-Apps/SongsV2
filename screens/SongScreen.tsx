@@ -6,6 +6,7 @@ import { fetchSongDetails, fetchSongbooks } from "../services/SongsApi";
 import LyricComponent from "../components/LyricComponent";
 import { TEST_SONG_WITH_LYRIC } from "../models/TempApiObjects";
 import { HeaderBackButton } from "@react-navigation/elements";
+import AudioPlayerComponent from "../components/AudioPlayerComponent";
 
 const SongScreen = ({ navigation, route }) => {
   const [isLoading, setLoading] = useState<Boolean>(true);
@@ -47,7 +48,10 @@ const SongScreen = ({ navigation, route }) => {
         <ActivityIndicator />
       ) : (
         // TODO: Make these configurable from user preferences.
-        <LyricComponent songData={data} removeDuplicates={false} displayChords={false}></LyricComponent>
+        <>
+          <LyricComponent songData={data} removeDuplicates={false} displayChords={false}></LyricComponent>
+          {data.song.audioUrl ? <AudioPlayerComponent audioUrl={data.song.audioUrl} /> : null}
+        </>
       )}
     </SafeAreaView>
   );
