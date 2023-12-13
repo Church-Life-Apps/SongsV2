@@ -1,8 +1,10 @@
 import React from "react";
-import { FlatList, Text, TouchableOpacity } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { listStyles } from "../styles/GlobalStyles";
+import { Song } from "../models/SongsApiModels";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const SongItem = ({ song, onPress }) => (
+const SongItem = ({ song, onPress }: {song:Song, onPress: any}) => (
   <TouchableOpacity onPress={onPress} style={[listStyles.item]}>
     <Text style={[listStyles.title]}>
       {song.number}. {song.title}
@@ -11,15 +13,20 @@ const SongItem = ({ song, onPress }) => (
   </TouchableOpacity>
 );
 
-const SongList = ({ songs, songbookFullName, onPress }) => {
+const SongList = ({ songs, onPress }: {songs: Song[], onPress: any}) => {
   return (
-    <FlatList
-      data={songs}
-      renderItem={({ item: song }) => <SongItem song={song} onPress={() => onPress(song, songbookFullName)} />}
-      keyExtractor={(item) => item.number}
-      style={listStyles.list}
-      contentContainerStyle={listStyles.contentContainer}
-    />
+    <SafeAreaView>
+    { songs.length === 0 ? 
+      (<Text>No songs found for this book.</Text>)
+      : <FlatList
+          data={songs}
+          renderItem={({ item }: { item: Song }) => <SongItem song={item} onPress={() => onPress(item)} />}
+          keyExtractor={(item:Song) => item.number.toString()}
+          style={listStyles.list}
+          contentContainerStyle={listStyles.contentContainer}
+        />
+    }
+  </SafeAreaView>
   );
 };
 
