@@ -23,7 +23,7 @@ export default function Page() {
     loadSongs();
     fetchSongbookMetadata(songbookId)
       .then(meta => navigation.setOptions({ title: meta.fullName }));
-    }, []);
+    }, [songbookId]);
 
   const navigateToSong = (song: Song) => {
     router.push({
