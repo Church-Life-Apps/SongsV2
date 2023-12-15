@@ -7,12 +7,11 @@ export async function fetchSongbooks(): Promise<Songbook[]> {
 }
 
 export async function fetchSongbookMetadata(songbookId: string): Promise<Songbook> {
-  return { fullName: "This is Fake", id: songbookId, staticMetadataLink: "", imageUrl: "" }
-  // return await fetch(`${baseUrl}/songbooks/${songbookId}`).then((response) => response.json());
+  return await fetch(`${baseUrl}/songbooks/${songbookId}`).then((response) => response.json());
 }
 
 export async function fetchSongs(songbookId: string): Promise<Song[]> {
-  return await fetch(`${baseUrl}/songbooks/${songbookId}`).then((response) => response.json());
+  return await fetch(`${baseUrl}/songbooks/${songbookId}/songs`).then((response) => response.json());
 }
 
 export async function fetchSongDetails(songbookId: string, songNumber: number): Promise<SongWithLyrics> {

@@ -21,10 +21,12 @@ export const listStyles = StyleSheet.create({
   // the inner list container. Items are placed in here
   contentContainer: {
     alignSelf: "center",
-    maxWidth: 400,
+    maxWidth: 1000,
   },
   // Individual list item
   item: {
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 16,
     paddingHorizontal: 12,
     marginVertical: 4,
@@ -35,9 +37,14 @@ export const listStyles = StyleSheet.create({
     borderWidth: 1,
     borderLeftWidth: 8,
   },
+  number: {
+    fontSize: 32,
+    marginRight: 8,
+  },
   title: {
     fontSize: 16,
     fontWeight: "bold",
+    maxWidth: "100%",
   },
   // Smaller, gray colored text. Used for author
   subTitle: {
@@ -57,12 +64,12 @@ export const lyricStyles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   title: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: "bold",
     marginBottom: 8,
   },
   author: {
-    fontSize: 18,
+    fontSize: 16,
     fontStyle: "italic",
     marginBottom: 16,
   },

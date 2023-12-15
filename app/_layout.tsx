@@ -7,7 +7,13 @@ export const unstable_settings = {
 
 export default function Layout() {
   return (
-    <Stack>
+    <Stack 
+      screenOptions={{
+        headerStyle: {
+            backgroundColor: '#a3dbe8',
+        }
+      }}
+    >
       <Stack.Screen name="index" options={{ title: "Hymnal" }} />
       <Stack.Screen name="[songbookId]/index" options={{ title: "" }}/>
       <Stack.Screen name="[songbookId]/[songNumber]/index" options={{ title: "" }}/>

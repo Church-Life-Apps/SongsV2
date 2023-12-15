@@ -26,11 +26,12 @@ export default function Page() {
     }, [songbookId]);
 
   const navigateToSong = (song: Song) => {
+    console.log(song);
     router.push({
       pathname: "/[songbookId]/[songNumber]",
       params:{
         songbookId: song.songbookId,
-        number: song.number,
+        songNumber: song.number,
       }
     });
   };

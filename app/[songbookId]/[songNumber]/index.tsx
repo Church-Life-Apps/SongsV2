@@ -1,21 +1,39 @@
 
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, Text, View } from 'react-native';
 import LyricComponent from '../../../components/LyricComponent';
-import { Song } from '../../../models/SongsApiModels';
-import { lyricStyles } from '../../../styles/GlobalStyles';
+import { Song, SongWithLyrics } from '../../../models/SongsApiModels';
+import { globalStyles, lyricStyles } from '../../../styles/GlobalStyles';
+import { fetchSongDetails, fetchSongbookMetadata } from '../../../services/SongsApi';
 
 export default function Page() {
-  const { songbookId, songNumber }: { songbookId: string, songNumber: string} = useLocalSearchParams();
-  const [song, setSong] = useState<Song>({title: "TEST", author: "YOU"} as Song);
+  const { songbookId, songNumber: songNumberStr }: { songbookId: string, songNumber: string} = useLocalSearchParams();
+  const songNumber = parseInt(songNumberStr, 10);
+  const [song, setSong] = useState<SongWithLyrics>();
   const [isLoading, setIsLoading] = useState<Boolean>(true);
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const fetchSong = async () => {
+      const newSong = await fetchSongDetails(songbookId, songNumber);
+      setSong(newSong);
+      setIsLoading(false);
+    }
+    setIsLoading(true);
+    fetchSong();
+    fetchSongbookMetadata(songbookId).then(meta => navigation.setOptions({ title: `${meta.fullName} #${songNumber}` }));
+  }, [songbookId, songNumber])
 
   return (
-    <View>
-      <Text style={lyricStyles.title}>{song.title}</Text>
-      <Text style={lyricStyles.author}>by {song.author}</Text>
-      <LyricComponent songData={song} removeDuplicates={true} displayChords={false} />
-    </View>
+    <SafeAreaView style={[globalStyles.container]}>
+      {isLoading || !song ? (
+        <ActivityIndicator />
+      ) : (
+        <>
+          <LyricComponent songData={song} removeDuplicates={true} displayChords={false} />
+        </>
+      )}
+    </SafeAreaView>
   );
 }

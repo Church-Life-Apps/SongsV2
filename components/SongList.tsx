@@ -1,21 +1,13 @@
 import React from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { listStyles } from "../styles/GlobalStyles";
 import { Song } from "../models/SongsApiModels";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-const SongItem = ({ song, onPress }: {song:Song, onPress: any}) => (
-  <TouchableOpacity onPress={onPress} style={[listStyles.item]}>
-    <Text style={[listStyles.title]}>
-      {song.number}. {song.title}
-    </Text>
-    <Text style={[listStyles.subTitle]}>{song.author}</Text>
-  </TouchableOpacity>
-);
+import { SongItem } from "./SongItem";
 
 const SongList = ({ songs, onPress }: {songs: Song[], onPress: any}) => {
   return (
-    <SafeAreaView>
+    <>
     { songs.length === 0 ? 
       (<Text>No songs found for this book.</Text>)
       : <FlatList
@@ -26,7 +18,7 @@ const SongList = ({ songs, onPress }: {songs: Song[], onPress: any}) => {
           contentContainerStyle={listStyles.contentContainer}
         />
     }
-  </SafeAreaView>
+  </>
   );
 };
 
