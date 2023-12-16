@@ -22,6 +22,7 @@ export const listStyles = StyleSheet.create({
   contentContainer: {
     alignSelf: "center",
     maxWidth: 1000,
+    width: "100%"
   },
   // Individual list item
   item: {

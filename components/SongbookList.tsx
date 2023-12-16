@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, GestureResponderEvent, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { FlatList } from "react-native";
 import { listStyles } from "../styles/GlobalStyles";
 import { Songbook } from "../models/SongsApiModels";
-import { fetchSongbooks } from "../services/SongsApi";
-
-const BookItem = ({ songbook, onPress } : {songbook: Songbook, onPress: any}) => (
-  <TouchableOpacity onPress={onPress} style={[listStyles.item]}>
-    <Text style={[listStyles.title]}>{songbook.fullName}</Text>
-  </TouchableOpacity>
-);
+import { BookItem } from "./BookItem";
 
 const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[], onPress: any}) => {
   return (

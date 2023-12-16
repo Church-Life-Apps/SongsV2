@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { globalStyles, listStyles } from "../styles/GlobalStyles";
+import { listStyles } from "../styles/GlobalStyles";
 import { Song } from "../models/SongsApiModels";
 
 export const SongItem = ({ song, onPress }: { song: Song; onPress: any; }) => (
