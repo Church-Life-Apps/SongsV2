@@ -1,10 +1,10 @@
 
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { useState, useEffect } from 'react';
-import { ActivityIndicator, SafeAreaView, Text, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView } from 'react-native';
 import LyricComponent from '../../../components/LyricComponent';
-import { Song, SongWithLyrics } from '../../../models/SongsApiModels';
-import { globalStyles, lyricStyles } from '../../../styles/GlobalStyles';
+import { SongWithLyrics } from '../../../models/SongsApiModels';
+import { globalStyles } from '../../../styles/GlobalStyles';
 import { fetchSongDetails, fetchSongbookMetadata } from '../../../services/SongsApi';
 
 export default function Page() {

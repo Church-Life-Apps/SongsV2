@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 import { Songbook } from '../models/SongsApiModels';
 import { fetchSongbooks } from '../services/SongsApi';
 import { globalStyles } from "../styles/GlobalStyles";
-import { router } from 'expo-router';
+import { Href, router } from 'expo-router';
 
 const navigateToSongbookPage = (songbook: Songbook) => {
   console.log("navigate to ", songbook);
-  router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id}})
+  router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id}} as Href<{ pathname: string }>)
 };
 
 export default function Page() {

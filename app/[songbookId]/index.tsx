@@ -1,9 +1,9 @@
-import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
+import { Href, useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
 import { SafeAreaView, ActivityIndicator } from 'react-native';
 import SongList from '../../components/SongList';
-import { Song, Songbook } from '../../models/SongsApiModels';
-import { fetchSongs, fetchSongbooks, fetchSongbookMetadata } from '../../services/SongsApi';
+import { Song } from '../../models/SongsApiModels';
+import { fetchSongs, fetchSongbookMetadata } from '../../services/SongsApi';
 import { globalStyles } from '../../styles/GlobalStyles';
 
 export default function Page() {
@@ -33,7 +33,7 @@ export default function Page() {
         songbookId: song.songbookId,
         songNumber: song.number,
       }
-    });
+    } as Href<{pathname: string}>);
   };
 
   return (
