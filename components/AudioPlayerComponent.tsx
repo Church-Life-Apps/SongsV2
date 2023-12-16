@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, View, Text, Button } from "react-native";
+import { ActivityIndicator, View, Button } from "react-native";
 import { Audio } from "expo-av";
 
 // Define the component props

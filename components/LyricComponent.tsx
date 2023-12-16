@@ -13,14 +13,12 @@ interface LyricComponentProps {
 }
 
 const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplicates, displayChords }) => {
-  const song = songData.song;
   const lyricBlocks = convertSongToLyricBlocks(songData, removeDuplicates);
 
   const content = (
     <>
-      <Text style={lyricStyles.title}>{song.title}</Text>
-      <Text style={lyricStyles.author}>by {song.author}</Text>
-
+      <Text style={lyricStyles.title}>{songData.song.title}</Text>
+      <Text style={lyricStyles.author}>by {songData.song.author}</Text>
       {lyricBlocks.map((lyric, lyricIndex) => (
         <View key={`View ${lyricIndex}`}>
           <Text key={`${lyricIndex}:verseTitle`} style={lyricStyles.verseTitle}>
