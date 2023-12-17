@@ -11,6 +11,7 @@ export default function Layout() {
     <>
     <Head>
       <title>Hymnal</title>
+      <meta name="description" content="A collection of hymnals and spiritual song books" />
     </Head>
     <Stack 
       screenOptions={{

@@ -19,3 +19,9 @@ export async function fetchSongDetails(songbookId: string, songNumber: number): 
     response.json()
   );
 }
+
+export async function searchSongs(searchText: string, songbookId: string | undefined) {
+  return await fetch(`${baseUrl}/search`, { method: 'POST', body: JSON.stringify({searchText, songbook: songbookId})})
+    .then(response => response.json())
+    .then(searchSongsResponse => searchSongsResponse.matchedSongs);
+}
