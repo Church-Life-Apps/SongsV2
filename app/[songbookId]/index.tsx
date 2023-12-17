@@ -16,7 +16,6 @@ export default function Page() {
   useEffect(() => {
     const loadSongs = async () => {
       const data = await fetchSongs(songbookId);
-      console.log("Songs: ", data);
       setSongs(data);
       setIsLoading(false);
     }
@@ -26,7 +25,6 @@ export default function Page() {
     }, [songbookId]);
 
   const navigateToSong = (song: Song) => {
-    console.log(song);
     router.push({
       pathname: "/[songbookId]/[songNumber]",
       params:{

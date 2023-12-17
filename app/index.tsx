@@ -8,7 +8,6 @@ import { globalStyles } from "../styles/GlobalStyles";
 import { Href, router } from 'expo-router';
 
 const navigateToSongbookPage = (songbook: Songbook) => {
-  console.log("navigate to ", songbook);
   router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id}} as Href<{ pathname: string }>)
 };
 
@@ -18,9 +17,7 @@ export default function Page() {
   
   useEffect(() => {
     const loadSongbooks = async () => {
-      console.log("home");
       const newSongbooks = await fetchSongbooks();
-      console.log("songbooks: ", newSongbooks);
       setSongbooks(newSongbooks);
       setIsLoading(false);
     };

@@ -1,4 +1,3 @@
-
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { useState, useEffect } from 'react';
 import { ActivityIndicator, SafeAreaView } from 'react-native';
