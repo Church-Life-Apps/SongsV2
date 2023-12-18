@@ -52,7 +52,7 @@ export default function Page() {
   }
 
   return (
-    <SafeAreaView style={{...globalStyles.container, paddingTop: 16, justifyContent: "flex-start"}}>
+    <SafeAreaView style={[globalStyles.container, {paddingTop: 16, justifyContent: "flex-start"}]}>
       <SearchBar placeholder='Search...' onChange={search} style={{maxWidth: 1000, marginBottom: 8}}/>
       {isLoading ? (
         <ActivityIndicator />

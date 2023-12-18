@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { useState, useEffect } from 'react';
-import { ActivityIndicator, SafeAreaView } from 'react-native';
+import { ActivityIndicator, SafeAreaView, ScrollView, View } from 'react-native';
 import LyricComponent from '../../../components/LyricComponent';
 import { SongWithLyrics } from '../../../models/SongsApiModels';
 import { globalStyles } from '../../../styles/GlobalStyles';
@@ -25,14 +25,18 @@ export default function Page() {
   }, [songbookId, songNumber])
 
   return (
-    <SafeAreaView style={[globalStyles.container]}>
-      {isLoading || !song ? (
-        <ActivityIndicator />
+    <>
+    {isLoading || !song ? (
+        <SafeAreaView style={[globalStyles.container]}>
+          <ActivityIndicator />
+        </SafeAreaView>
       ) : (
-        <>
-          <LyricComponent songData={song} removeDuplicates={true} displayChords={false} />
-        </>
+        <ScrollView style={{backgroundColor: '#fff'}}>
+          <View style={[globalStyles.container, {paddingBottom: 64}]}>
+            <LyricComponent songData={song} removeDuplicates={true} displayChords={false} />
+          </View>
+        </ScrollView>
       )}
-    </SafeAreaView>
+    </>
   );
 }
