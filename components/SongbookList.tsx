@@ -4,7 +4,7 @@ import { listStyles } from "../styles/GlobalStyles";
 import { Songbook } from "../models/SongsApiModels";
 import { BookItem } from "./BookItem";
 
-const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[], onPress: any}) => {
+const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[]; onPress: (item: Songbook) => void }) => {
   return (
     <FlatList
       data={songbooks}

@@ -1,3 +1,8 @@
 {
+  "bracketSpacing": true,
+  "singleQuote": false,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "arrowParens": "always",
   "printWidth": 120
 }
