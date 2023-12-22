@@ -37,7 +37,7 @@ export default function Page() {
       ) : (
         <SafeAreaView>
           <View style={{ alignItems: "center", marginVertical: 16, flexDirection: "row", justifyContent: "center" }}>
-            <Button title="Title" onPress={() => setIndex(0)} />
+            <Button title="Text" onPress={() => setIndex(0)} />
             <Button title="Piano" onPress={() => setIndex(1)} />
           </View>
           {index === 0 ? (
@@ -47,7 +47,7 @@ export default function Page() {
               </View>
             </ScrollView>
           ) : (
-            <SheetMusicComponent imageUrl="https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_001.png" />
+            <SheetMusicComponent imageUrl={song.song.imageUrl} />
           )}
         </SafeAreaView>
       )}
