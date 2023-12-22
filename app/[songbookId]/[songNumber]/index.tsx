@@ -41,7 +41,7 @@ export default function Page() {
             <Button title="Piano" onPress={() => setIndex(1)} />
           </View>
           {index === 0 ? (
-            <ScrollView style={{ backgroundColor: "#fff" }}>
+            <ScrollView>
               <View style={[globalStyles.container, { paddingBottom: 64 }]}>
                 <LyricComponent songData={song} removeDuplicates={true} displayChords={false} />
               </View>
