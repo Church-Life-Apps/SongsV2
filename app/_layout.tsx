@@ -19,6 +19,7 @@ export default function Layout() {
           headerStyle: {
             backgroundColor: "#a3dbe8",
           },
+          contentStyle: { backgroundColor: "#fff" },
         }}
       >
         <Stack.Screen name="index" options={{ title: "Hymnal" }} />

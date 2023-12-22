@@ -1,16 +1,18 @@
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, SafeAreaView, ScrollView, View } from "react-native";
+import { ActivityIndicator, Button, SafeAreaView, ScrollView, View } from "react-native";
 import LyricComponent from "../../../components/LyricComponent";
 import { SongWithLyrics } from "../../../models/SongsApiModels";
 import { globalStyles } from "../../../styles/GlobalStyles";
 import { fetchSongDetails, fetchSongbookMetadata } from "../../../services/SongsApi";
+import SheetMusicComponent from "../../../components/SheetMusicComponent";
 
 export default function Page() {
   const { songbookId, songNumber: songNumberStr }: { songbookId: string; songNumber: string } = useLocalSearchParams();
   const songNumber = parseInt(songNumberStr, 10);
   const [song, setSong] = useState<SongWithLyrics>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [index, setIndex] = useState(0);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -33,11 +35,21 @@ export default function Page() {
           <ActivityIndicator />
         </SafeAreaView>
       ) : (
-        <ScrollView style={{ backgroundColor: "#fff" }}>
-          <View style={[globalStyles.container, { paddingBottom: 64 }]}>
-            <LyricComponent songData={song} removeDuplicates={true} displayChords={false} />
+        <SafeAreaView>
+          <View style={{ alignItems: "center", marginVertical: 16, flexDirection: "row", justifyContent: "center" }}>
+            <Button title="Title" onPress={() => setIndex(0)} />
+            <Button title="Piano" onPress={() => setIndex(1)} />
           </View>
-        </ScrollView>
+          {index === 0 ? (
+            <ScrollView style={{ backgroundColor: "#fff" }}>
+              <View style={[globalStyles.container, { paddingBottom: 64 }]}>
+                <LyricComponent songData={song} removeDuplicates={true} displayChords={false} />
+              </View>
+            </ScrollView>
+          ) : (
+            <SheetMusicComponent imageUrl="https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/resources/images/shl/SHL_001.png" />
+          )}
+        </SafeAreaView>
       )}
     </>
   );
