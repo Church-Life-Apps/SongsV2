@@ -1,6 +1,7 @@
 # Ignore expo directories:
 .expo
 .expo-shared
+dist
 
 # Ignore node packages
 node_modules
