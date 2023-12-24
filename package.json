@@ -16,6 +16,7 @@
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^19.0.0",
     "@react-navigation/native": "^6.0.2",
+    "@tw-classed/react": "^1.7.0",
     "expo": "~49.0.18",
     "expo-av": "~13.2.1",
     "expo-constants": "~14.4.2",

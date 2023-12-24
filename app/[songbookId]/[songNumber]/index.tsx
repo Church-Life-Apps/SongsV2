@@ -36,8 +36,8 @@ export default function Page() {
         </SafeAreaView>
       ) : (
         <SafeAreaView>
-          <View style={{ alignItems: "center", marginVertical: 16, flexDirection: "row", justifyContent: "center" }}>
-            <Button title="Text" onPress={() => setIndex(0)} />
+          <View className="align-center justify-center flex-1">
+            <Button title="Text" color="bg-blue-500" onPress={() => setIndex(0)} />
             <Button title="Piano" onPress={() => setIndex(1)} />
           </View>
           {index === 0 ? (
