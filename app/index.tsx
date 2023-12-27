@@ -7,6 +7,7 @@ import { globalStyles } from "../styles/GlobalStyles";
 import { Href, router } from "expo-router";
 import React from "react";
 
+import "../styles/tailwind-styles.css";
 const navigateToSongbookPage = (songbook: Songbook) => {
   router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id } } as Href<{ pathname: string }>);
 };
