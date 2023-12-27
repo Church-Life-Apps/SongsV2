@@ -1,27 +1,30 @@
-import { classed } from "@tw-classed/react";
 import React from "react";
 import { Text, Pressable } from "react-native";
 
 const variantStyles = {
-  default: "rounded",
-  primary: "bg-blue-500 text-white",
-  secondary: "bg-white-500 text-black",
+  primary: "bg-blue-300 text-black",
+  secondary: "bg-gray-400 text-white",
+  success: "bg-green-600 hover:bg-green-700 text-white",
+  outline: "bg-transparent border border-gray-500 text-gray-500 hover:bg-gray-500 hover:text-white",
 };
 
-const Base = (props) => {
-  const { onPress, title = "Save" } = props;
+type Variant = "primary" | "secondary" | "success" | "outline";
+
+type ButtonProps = {
+  onPress: () => void;
+  title: string;
+  variant: Variant;
+};
+
+const Button = (props: ButtonProps) => {
+  const { onPress, title = "Save", variant } = props;
   return (
-    <Pressable onPress={onPress}>
-      <Text>{title}</Text>
+    <Pressable onPress={onPress} className={`rounded px-3 py-2 ${variantStyles[variant]}`}>
+      <Text className="text-center font-bold" style={{ color: "inherit" }}>
+        {title}
+      </Text>
     </Pressable>
   );
 };
 
-export const Button = classed(Base, {
-  variants: {
-    backgroundColor: {
-      primary: "bg-blue-400",
-      secondary: "bg-gray-500",
-    },
-  },
-});
+export default Button;
