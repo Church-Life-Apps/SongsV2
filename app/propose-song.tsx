@@ -1,6 +1,5 @@
 import { SafeAreaView } from "react-native";
-import { globalStyles } from "../styles/GlobalStyles";
-import { CreateSongForm } from "../components/CreateSongForm";
+import { CreateSongForm } from "../components/forms/CreateSongForm";
 
 export default function Page() {
   return (
