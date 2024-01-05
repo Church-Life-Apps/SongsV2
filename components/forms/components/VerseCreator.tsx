@@ -5,7 +5,7 @@ import { LyricTypePicker, TextInputGroup } from ".";
 import { LyricType } from "../../../models/SongsApiModels";
 
 export type LyricField = {
-  value: string;
+  text: string;
   lyricType: LyricType;
 };
 
@@ -34,7 +34,7 @@ const VerseCreator = ({ field, onChangeText, onChangeType, onDelete, onUp, onDow
           inputMode="text"
           multiline
           numberOfLines={5}
-          value={field.value}
+          value={field.text}
           onChangeText={onChangeText}
         />
       </View>

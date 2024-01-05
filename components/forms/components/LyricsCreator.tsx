@@ -1,49 +1,55 @@
-import React, { useState } from "react";
-import { View } from "react-native";
+import React from "react";
+import { Text, View } from "react-native";
 import VerseCreator, { LyricField } from "./VerseCreator";
 import Button from "../../Button";
 import { LyricType } from "../../../models/SongsApiModels";
 import { swapArrayElements } from "../../../utils/ArrayUtils";
+import { FormikErrors } from "formik";
 
-const LyricsCreator = ({}: {}) => {
-  const [lyricFields, setLyricFields] = useState<LyricField[]>([{ value: "", lyricType: LyricType.LYRIC_TYPE_VERSE }]);
+interface LyricsCreatorProps {
+  value: LyricField[];
+  onChange: (e: LyricField[]) => void;
+  error?: string | string[] | FormikErrors<LyricField>[] | undefined;
+}
 
+const LyricsCreator = ({ value, onChange, error }: LyricsCreatorProps) => {
   function addLyricField(): void {
-    setLyricFields([...lyricFields, { value: "", lyricType: LyricType.LYRIC_TYPE_VERSE }]);
+    onChange([...value, { text: "", lyricType: LyricType.LYRIC_TYPE_VERSE }]);
   }
 
   function removeLyricField(index: number): void {
-    let newFields = [...lyricFields];
+    let newFields = [...value];
     newFields.splice(index, 1);
-    setLyricFields(newFields);
+    onChange(newFields);
   }
 
   function lyricFieldUp(index: number) {
     if (index === 0) return;
-    var newFields = swapArrayElements(lyricFields, index, index - 1);
-    setLyricFields(newFields);
+    var newFields = swapArrayElements(value, index, index - 1);
+    onChange(newFields);
   }
 
   function lyricFieldDown(index: number) {
-    if (index === lyricFields.length - 1) {
+    if (index === value.length - 1) {
       return;
     }
-    var newFields = swapArrayElements(lyricFields, index, index + 1);
-    setLyricFields(newFields);
+    var newFields = swapArrayElements(value, index, index + 1);
+    onChange(newFields);
   }
   return (
     <>
-      {lyricFields.map((field, index) => (
+      {error && typeof error === "string" && <Text className="text-red-700 font-semibold">{error}</Text>}
+      {value.map((field, index) => (
         <VerseCreator
           field={field}
           key={index}
-          onChangeText={(value) => {
-            field.value = value;
-            setLyricFields([...lyricFields]);
+          onChangeText={(text) => {
+            field.text = text;
+            onChange([...value]);
           }}
           onChangeType={(type) => {
             field.lyricType = type;
-            setLyricFields([...lyricFields]);
+            onChange([...value]);
           }}
           onDelete={() => removeLyricField(index)}
           onUp={() => lyricFieldUp(index)}
