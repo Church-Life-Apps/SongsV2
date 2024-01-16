@@ -63,14 +63,7 @@ export const CreateSongForm = () => {
         <View className="container mx-auto xl:px-32 2xl:px-64 mb-8">
           <View className="my-4">
             <Text className="text-3xl text-center">Propose a Song</Text>
-            <Text>
-              This is some longer description text, I wonder how it will be displayed in the block. This is some longer
-              description text, I wonder how it will be displayed in the block. This is some longer description text, I
-              wonder how it will be displayed in the block. This is some longer description text, I wonder how it will
-              be displayed in the block. This is some longer description text, I wonder how it will be displayed in the
-              block. This is some longer description text, I wonder how it will be displayed in the block. This is some
-              longer description text, I wonder how it will be displayed in the block.
-            </Text>
+            <Text>Use the below form to propose a song be added to a songbook!</Text>
           </View>
           <View>
             <View className="flex flex-row flex-wrap mb-1">
