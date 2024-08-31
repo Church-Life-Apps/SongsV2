@@ -1,8 +1,8 @@
 {
   "expo": {
-    "owner": "churchlifeapps",
-    "name": "SongsV2",
-    "slug": "songsv2",
+    "owner": "calebziamba",
+    "name": "hymnal app",
+    "slug": "hymnal-app",
     "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.churchlifeapps.songsv2"
+      "bundleIdentifier": "com.churchlifeapps.songs"
     },
     "android": {
       "adaptiveIcon": {
@@ -31,7 +31,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "931eeda6-ff32-49fd-85f1-01fd3a12761c"
+        "projectId": "49a01eb5-75ad-45a5-aba2-20db059e8d75"
       }
     },
     "plugins": ["expo-router"],
