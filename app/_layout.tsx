@@ -3,6 +3,9 @@ import Head from "expo-router/head";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 
+// Import tailwind styles
+import "../styles/tailwind-styles.css"
+
 export const unstable_settings = {
   // Ensure that reloading on a subroute keeps a back button present.
   initialRouteName: "index",
