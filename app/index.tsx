@@ -1,4 +1,4 @@
-import { ActivityIndicator, SafeAreaView } from "react-native";
+import { ActivityIndicator, SafeAreaView, View } from "react-native";
 import SongbookList from "../components/SongbookList";
 import { useState, useEffect } from "react";
 import { Songbook } from "../models/SongsApiModels";
@@ -6,6 +6,7 @@ import { fetchSongbooks } from "../services/SongsApi";
 import { globalStyles } from "../styles/GlobalStyles";
 import { Href, router } from "expo-router";
 import React from "react";
+import { SECONDARY_COLOR } from "../utils/Constants";
 
 const navigateToSongbookPage = (songbook: Songbook) => {
   router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id } } as Href<{ pathname: string }>);
@@ -26,9 +27,11 @@ export default function Page() {
   }, []);
 
   return (
-    <SafeAreaView style={globalStyles.container}>
+    <SafeAreaView className="items-center justify-center">
       {isLoading ? (
-        <ActivityIndicator />
+        <View className="my-4">
+          <ActivityIndicator size="large" color={SECONDARY_COLOR} />
+        </View>
       ) : (
         <SongbookList songbooks={songbooks} onPress={navigateToSongbookPage}></SongbookList>
       )}
