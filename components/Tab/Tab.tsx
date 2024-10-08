@@ -5,9 +5,11 @@ export interface TabProps {
   onPress?: () => void;
   active?: boolean;
   title: string;
+  hide?: boolean;
 }
 
-export const Tab = ({ active, title, onPress = () => {}, ...rest }: TabProps) => {
+export const Tab = ({ active, title, hide, onPress = () => {}, ...rest }: TabProps) => {
+  if (hide) return;
   return (
     <Pressable
       onPress={() => onPress()}
