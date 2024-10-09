@@ -18,7 +18,7 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
   const content = (
     <>
       <Text style={lyricStyles.title}>{songData.song.title}</Text>
-      <Text style={lyricStyles.author}>by {songData.song.author}</Text>
+      { songData.song.author.length > 0 && <Text style={lyricStyles.author}>by {songData.song.author}</Text>}
       {lyricBlocks.map((lyric, lyricIndex) => (
         <View key={`View ${lyricIndex}`}>
           <Text key={`${lyricIndex}:verseTitle`} style={lyricStyles.verseTitle}>
