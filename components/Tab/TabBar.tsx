@@ -7,7 +7,7 @@ export interface TabBarProps extends ViewProps {
   onChange?: (value: number) => void;
 }
 
-export const TabBar = ({ children, value = 0, onChange = (_value) => {}, style, ...rest }: TabBarProps) => {
+export const TabBar = ({ children, value = 0, onChange = () => {}, style, ...rest }: TabBarProps) => {
   const validChildren = React.useMemo(() => React.Children.toArray(children), [children]);
 
   return (
