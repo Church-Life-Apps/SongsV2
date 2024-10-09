@@ -27,6 +27,9 @@ export default function Page() {
     fetchSongbookMetadata(songbookId).then((meta) =>
       navigation.setOptions({ title: `${meta.fullName} #${songNumber}` })
     );
+    if (index === 1 && song?.song.imageUrl == null) {
+      setIndex(0);
+    }
   }, [songbookId, songNumber]);
 
   return (
@@ -38,8 +41,8 @@ export default function Page() {
       ) : (
         <SafeAreaView>
           <TabBar onChange={setIndex} value={index} style={{ marginTop: 16, justifyContent: "center" }}>
-            <Tab title="Lyrics" />
-            <Tab title="Piano" />
+            <Tab title="Lyrics" hide={song.song.imageUrl == ""} />
+            <Tab title="Music" hide={song.song.imageUrl == ""} />
           </TabBar>
           <TabView active={index === 0}>
             <View style={[globalStyles.container, { paddingBottom: 64 }]}>
