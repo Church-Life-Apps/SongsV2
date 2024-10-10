@@ -1,31 +1,29 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import VerseCreator, { LyricField } from "./VerseCreator";
 import Button from "../../Button";
 import { LyricType } from "../../../models/SongsApiModels";
 import { swapArrayElements } from "../../../utils/ArrayUtils";
-import { FormikErrors } from "formik";
 
 interface LyricsCreatorProps {
   value: LyricField[];
   onChange: (e: LyricField[]) => void;
-  error?: string | string[] | FormikErrors<LyricField>[] | undefined;
 }
 
-const LyricsCreator = ({ value, onChange, error }: LyricsCreatorProps) => {
+const LyricsCreator = ({ value, onChange }: LyricsCreatorProps) => {
   function addLyricField(): void {
     onChange([...value, { text: "", lyricType: LyricType.LYRIC_TYPE_VERSE }]);
   }
 
   function removeLyricField(index: number): void {
-    let newFields = [...value];
+    const newFields = [...value];
     newFields.splice(index, 1);
     onChange(newFields);
   }
 
   function lyricFieldUp(index: number) {
     if (index === 0) return;
-    var newFields = swapArrayElements(value, index, index - 1);
+    const newFields = swapArrayElements(value, index, index - 1);
     onChange(newFields);
   }
 
@@ -33,12 +31,11 @@ const LyricsCreator = ({ value, onChange, error }: LyricsCreatorProps) => {
     if (index === value.length - 1) {
       return;
     }
-    var newFields = swapArrayElements(value, index, index + 1);
+    const newFields = swapArrayElements(value, index, index + 1);
     onChange(newFields);
   }
   return (
     <>
-      {error && typeof error === "string" && <Text className="text-red-700 font-semibold">{error}</Text>}
       {value.map((field, index) => (
         <VerseCreator
           field={field}

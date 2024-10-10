@@ -26,6 +26,14 @@ export async function proposeSong(song: PendingSong) {
   });
 }
 
+export async function createSong(song: PendingSong, apiKey: string) {
+  return await fetch(`${baseUrl}/songbooks/${song.songbookId}/${song.number}`, {
+    method: "PUT",
+    body: JSON.stringify(song),
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` }
+  });
+}
+
 export async function searchSongs(searchText: string, songbookId: string | undefined) {
   return await fetch(`${baseUrl}/search`, {
     method: "POST",
