@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native";
-import { CreateSongForm, CreateSongFormSubmissionData } from "../components/forms/CreateSongForm";
+import { CreateSongForm, ICreateSongFormInput } from "../components/forms/CreateSongForm";
 import { useNavigation } from "expo-router";
 import { useEffect } from "react";
 import React from "react";
@@ -14,7 +14,7 @@ export default function Page() {
     navigation.setOptions({ title: "Propose a Song" });
   }, []);
 
-  const onSubmit = (data: CreateSongFormSubmissionData) => {
+  const onSubmit = (data: ICreateSongFormInput) => {
     const songId = uuidv4().toString()
     const lyricCounts = { 
       [LyricType.LYRIC_TYPE_BRIDGE]: 0,
@@ -45,7 +45,7 @@ export default function Page() {
       requesterNote: ""
     };
     console.log(song);
-    createSong(song, "my key");
+    createSong(song, "");
   }
 
   return (

@@ -13,7 +13,7 @@ interface CreateSongFormProps {
   onSubmit: (data) => void;
 }
 
-export interface CreateSongFormSubmissionData {
+export interface ICreateSongFormInput {
   bookId: string;
   number: string;
   title: string;
@@ -27,7 +27,7 @@ export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
   const {
     control,
     handleSubmit,
-  } = useForm<CreateSongFormSubmissionData>({
+  } = useForm<ICreateSongFormInput>({
     defaultValues: {
       bookId: "sfog",
       number: "",
