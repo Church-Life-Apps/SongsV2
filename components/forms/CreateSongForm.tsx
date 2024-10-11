@@ -7,10 +7,12 @@ import { useForm, Controller } from "react-hook-form"
 import LyricsCreator from "./components/LyricsCreator";
 import { LyricField } from "./components/VerseCreator";
 import { fetchSongbooks } from "../../services/SongsApi";
-import { LyricType, Songbook } from "../../models/SongsApiModels";
+import { Lyric, LyricType, Songbook, SongWithLyrics } from "../../models/SongsApiModels";
+import { v4 as uuidv4 } from "uuid";
+import LyricComponent from "../LyricComponent";
 
 interface CreateSongFormProps {
-  onSubmit: (data) => void;
+  onSubmit: (data: ICreateSongFormInput) => void;
 }
 
 export interface ICreateSongFormInput {
@@ -19,13 +21,49 @@ export interface ICreateSongFormInput {
   title: string;
   songwriter: string;
   composer: string;
-  lyrics: LyricField[]
+  presentationOrder: string;
+  lyrics: LyricField[];
 }
 
 export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
   const [songbooks, setSongbooks] = useState<Songbook[]>([]);
+  const [song, setSong] = useState<SongWithLyrics>();
+
+  const songFormToSong = (data : ICreateSongFormInput) => {
+    const songId = uuidv4().toString()
+    const lyricCounts = { 
+      [LyricType.LYRIC_TYPE_BRIDGE]: 0,
+      [LyricType.LYRIC_TYPE_CHORUS]: 0,
+      [LyricType.LYRIC_TYPE_PRECHORUS]: 0,
+      [LyricType.LYRIC_TYPE_VERSE]: 0
+    };
+    return {
+      song: {
+        id: songId,
+        songbookId: data.bookId,
+        number: parseInt(data.number, 10),
+        title: data.title,
+        author: data.songwriter,
+        music: data.composer,
+        presentationOrder: "",
+        imageUrl: "",
+        audioUrl: ""
+      },
+      lyrics: data.lyrics.map((value => {
+        return {
+          songId: songId, // uuid
+          lyricType: value.lyricType,
+          verseNumber: ++lyricCounts[value.lyricType],
+          lyrics: value.text
+        } as Lyric;
+      }))
+      
+    };
+  }
+
   const {
     control,
+    watch,
     handleSubmit,
   } = useForm<ICreateSongFormInput>({
     defaultValues: {
@@ -34,6 +72,7 @@ export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
       title: "",
       songwriter: "",
       composer: "",
+      presentationOrder: "",
       lyrics: [{ lyricType: LyricType.LYRIC_TYPE_VERSE, text: "" }]
     },
   })
@@ -45,7 +84,11 @@ export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
     };
 
     loadSongbooks();
-  }, []);
+
+    const watchSubscription = watch((value) => setSong(songFormToSong(value as ICreateSongFormInput)))
+    return () => watchSubscription.unsubscribe()
+  }, [watch]);
+
   return (
     <View className="container mx-auto xl:px-32 2xl:px-64 mb-8">
       <Controller
@@ -140,6 +183,22 @@ export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
         rules={{
           required: true,
         }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInputGroup
+            label="Presentation Order"
+            placeholder="Presentation Order"
+            value={value}
+            onChangeText={onChange}
+            onBlur={onBlur}
+          />
+        )}
+        name="presentationOrder"
+      />
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+        }}
         render={({ field: { onChange, value } }) => (      
           <LyricsCreator
             value={value as LyricField[]}
@@ -148,6 +207,9 @@ export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
         )}
         name="lyrics"
       />
+
+      { !song ? <></> : <LyricComponent songData={song} removeDuplicates={false} displayChords={false} /> }
+      
       <Button variant="green" title="Submit" onPress={handleSubmit(onSubmit)} />
     </View>
   );

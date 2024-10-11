@@ -27,10 +27,10 @@ export async function proposeSong(song: PendingSong) {
 }
 
 export async function createSong(song: PendingSong, apiKey: string) {
-  return await fetch(`${baseUrl}/songbooks/${song.songbookId}/${song.number}`, {
+  return await fetch(`${baseUrl}/songbooks/${song.songbookId}/songs/${song.number}`, {
     method: "PUT",
     body: JSON.stringify(song),
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` }
+    headers: { "Content-Type": "application/json", 'x-api-key': `${apiKey}` }
   });
 }
 
