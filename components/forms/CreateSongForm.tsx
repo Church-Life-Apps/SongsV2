@@ -45,7 +45,7 @@ export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
         title: data.title,
         author: data.songwriter,
         music: data.composer,
-        presentationOrder: "",
+        presentationOrder: data.presentationOrder,
         imageUrl: "",
         audioUrl: ""
       },
@@ -208,8 +208,8 @@ export const CreateSongForm = ( { onSubmit } : CreateSongFormProps) => {
         name="lyrics"
       />
 
-      { !song ? <></> : <LyricComponent songData={song} removeDuplicates={false} displayChords={false} /> }
-      
+      { !song ? <></> : <View><LyricComponent songData={song} removeDuplicates={false} displayChords={false} /></View> }
+
       <Button variant="green" title="Submit" onPress={handleSubmit(onSubmit)} />
     </View>
   );
