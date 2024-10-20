@@ -1,6 +1,6 @@
 import { PendingSong, Song, Songbook, SongWithLyrics } from "../models/SongsApiModels";
 
-const baseUrl = "https://api.calebziamba.net";
+const baseUrl = process.env.EXPO_PUBLIC_API_URL;
 
 export async function fetchSongbooks(): Promise<Songbook[]> {
   return await fetch(`${baseUrl}/songbooks`).then((response) => response.json());
@@ -26,11 +26,11 @@ export async function proposeSong(song: PendingSong) {
   });
 }
 
-export async function createSong(song: PendingSong, apiKey: string) {
+export async function createSong(song: PendingSong) {
   return await fetch(`${baseUrl}/songbooks/${song.songbookId}/songs/${song.number}`, {
     method: "PUT",
     body: JSON.stringify(song),
-    headers: { "Content-Type": "application/json", 'x-api-key': `${apiKey}` }
+    headers: { "Content-Type": "application/json", 'x-api-key': `${process.env.EXPO_PUBLIC_API_KEY}` }
   });
 }
 

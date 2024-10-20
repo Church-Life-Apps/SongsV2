@@ -14,7 +14,7 @@ export default function Page() {
   }, []);
 
   const onSubmit = (data: PendingSong) => {
-    createSong(data, "");
+    createSong(data);
   }
 
   return (
