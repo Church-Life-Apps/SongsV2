@@ -8,6 +8,7 @@ import { Href, router } from "expo-router";
 import React from "react";
 import { SECONDARY_COLOR } from "../utils/Constants";
 
+import "../styles/tailwind-styles.css";
 const navigateToSongbookPage = (songbook: Songbook) => {
   router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id } } as Href<{ pathname: string }>);
 };

@@ -2,13 +2,13 @@ import { TextInput, TextStyle } from "react-native";
 import { debounce } from "lodash";
 import React from "react";
 
-type SearchBarProps = {
+interface SearchBarProps {
   value?: string;
   onChange: (value: string) => void;
   placeholder: string;
   debounceWait?: number;
   style?: TextStyle;
-};
+}
 
 const defaultStyle: TextStyle = {
   height: "auto",
