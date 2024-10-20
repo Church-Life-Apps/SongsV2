@@ -28,7 +28,7 @@ export interface ICreateSongFormInput {
 
 export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProps) => {
   const [songbooks, setSongbooks] = useState<Songbook[]>([]);
-  const [song, setSong] = useState<SongWithLyrics>();
+  const [songPreview, setSongPreview] = useState<SongWithLyrics>();
 
   const songFormInputToPendingSong = (data: ICreateSongFormInput) => {
     const lyricCounts = {
@@ -118,7 +118,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
 
     loadSongbooks();
 
-    const watchSubscription = watch((value) => setSong(songFormToSongWithLyrics(value as ICreateSongFormInput)))
+    const watchSubscription = watch((value) => setSongPreview(songFormToSongWithLyrics(value as ICreateSongFormInput)))
     return () => watchSubscription.unsubscribe()
   }, [watch]);
 
@@ -241,7 +241,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
         name="lyrics"
       />
 
-      { !song ? <></> : <View><LyricComponent songData={song} removeDuplicates={false} displayChords={false} /></View> }
+      { !songPreview ? <></> : <View><LyricComponent songData={songPreview} removeDuplicates={false} displayChords={false} /></View> }
 
       <Button variant="green" title="Submit" onPress={handleSubmit((data) => { onSubmit(songFormInputToPendingSong(data))})} />
     </View>

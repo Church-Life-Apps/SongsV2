@@ -37,6 +37,7 @@ export default function Page() {
   
 
   const onSubmit = (data: PendingSong) => {
+    data.id = song!.song.id;
     createSong(data);
   }
 
