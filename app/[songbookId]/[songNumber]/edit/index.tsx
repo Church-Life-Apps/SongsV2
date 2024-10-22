@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native";
 import { PendingSong, SongWithLyrics } from "../../../../models/SongsApiModels";
 import { createSong, fetchSongDetails, fetchSongbookMetadata } from "../../../../services/SongsApi";
 import { ICreateSongFormInput, CreateSongForm } from "../../../../components/forms/CreateSongForm";
+import { convertSongToLyricFields } from "../../../../utils/LyricUtils";
 
 const ToSongFormInput = (song: SongWithLyrics) : ICreateSongFormInput => {
   return {
@@ -13,7 +14,7 @@ const ToSongFormInput = (song: SongWithLyrics) : ICreateSongFormInput => {
     songwriter: song.song.author,
     composer: "",
     presentationOrder: song.song.presentationOrder,
-    lyrics: song.lyrics.map((value) => { return { text: value.lyrics, lyricType: value.lyricType }})
+    lyrics: convertSongToLyricFields(song)
   }
 }
 
