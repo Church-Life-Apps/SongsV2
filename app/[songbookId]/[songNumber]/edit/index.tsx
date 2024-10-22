@@ -38,6 +38,9 @@ export default function Page() {
 
   const onSubmit = (data: PendingSong) => {
     data.id = song!.song.id;
+    data.lyrics = data.lyrics.map((lyric) => { 
+      return { ...lyric, songId: song!.song.id }
+    });
     createSong(data);
   }
 
