@@ -19,6 +19,7 @@ interface ButtonProps {
   title: string;
   variant: Variant;
   className?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: any;
   disabled?: boolean;
 }
