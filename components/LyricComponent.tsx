@@ -30,7 +30,7 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
                   {expandChordMap(lineWithChords)}
                 </Text>
               ) : null}
-              <Text key={`${lyric.verseShorthand} Line ${lineIndex}`} className="dark:text-gray-200">
+              <Text key={`${lyric.verseShorthand} Line ${lineIndex}`} className="text-lg mb-1 leading-[1.25] ms-6 dark:text-gray-200">
                 {lineWithChords.line}
               </Text>
             </View>
