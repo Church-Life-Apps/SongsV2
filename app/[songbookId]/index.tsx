@@ -1,7 +1,6 @@
 import { Href, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, ActivityIndicator, TouchableOpacity, StatusBar, Text } from "react-native";
-import { useColorScheme } from "nativewind";
+import { SafeAreaView, ActivityIndicator, StatusBar } from "react-native";
 
 import SongList from "../../components/SongList";
 import { Song } from "../../models/SongsApiModels";
@@ -14,10 +13,6 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigation = useNavigation();
   const router = useRouter();
-  // Use imperatively
-  const { colorScheme, setColorScheme } = useColorScheme();
-
-  console.log(colorScheme);
 
   const loadSongs = async () => {
     const data = await fetchSongs(songbookId);
