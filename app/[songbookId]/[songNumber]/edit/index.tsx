@@ -3,20 +3,8 @@ import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { PendingSong, SongWithLyrics } from "../../../../models/SongsApiModels";
 import { createSong, fetchSongDetails, fetchSongbookMetadata } from "../../../../services/SongsApi";
-import { ICreateSongFormInput, CreateSongForm } from "../../../../components/forms/CreateSongForm";
-import { convertSongToLyricFields } from "../../../../utils/LyricUtils";
-
-const ToSongFormInput = (song: SongWithLyrics) : ICreateSongFormInput => {
-  return {
-    bookId: song.song.songbookId,
-    number: song.song.number.toString(),
-    title: song.song.title,
-    songwriter: song.song.author,
-    composer: "",
-    presentationOrder: song.song.presentationOrder,
-    lyrics: convertSongToLyricFields(song)
-  }
-}
+import { CreateSongForm } from "../../../../components/forms/CreateSongForm";
+import { songWithLyricsToSongFormInput } from "../../../../utils/SongFormUtils";
 
 export default function Page() {
   const { songbookId, songNumber: songNumberStr }: { songbookId: string; songNumber: string } = useLocalSearchParams();
@@ -35,8 +23,6 @@ export default function Page() {
     );
   }, [songbookId, songNumber]);
 
-  
-
   const onSubmit = (data: PendingSong) => {
     data.id = song!.song.id;
     data.lyrics = data.lyrics.map((lyric) => { 
@@ -51,7 +37,7 @@ export default function Page() {
 
   return (
     <SafeAreaView>
-      <CreateSongForm onSubmit={onSubmit} defaultValues={ToSongFormInput(song)}/>
+      <CreateSongForm onSubmit={onSubmit} defaultValues={songWithLyricsToSongFormInput(song)}/>
     </SafeAreaView>
   );
 }
