@@ -28,7 +28,7 @@ export interface ICreateSongFormInput {
 
 export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProps) => {
   const [songbooks, setSongbooks] = useState<Songbook[]>([]);
-  const [songPreview, setSongPreview] = useState<SongWithLyrics>(songFormInputToSongWithLyrics(defaultValues!));
+  const [songPreview, setSongPreview] = useState<SongWithLyrics>();
 
   const {
     control,
@@ -53,6 +53,10 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
     };
 
     loadSongbooks();
+
+    if (defaultValues !== undefined) {
+      setSongPreview(songFormInputToSongWithLyrics(defaultValues!));
+    }
 
     const watchSubscription = watch((value) => setSongPreview(songFormInputToSongWithLyrics(value as ICreateSongFormInput)))
     return () => watchSubscription.unsubscribe()
