@@ -1,3 +1,4 @@
+import { LyricField } from "../components/forms/components/VerseCreator";
 import { LyricBlock, LineWithChords, ChordWithIndex } from "../models/LocalModels";
 import { Lyric, LyricType, SongWithLyrics } from "../models/SongsApiModels";
 import { removeDoubleSpaces, removePunctuation, removeSquareBrackets } from "./StringUtils";
@@ -14,7 +15,7 @@ export function convertSongToLyricBlocks(songWithLyrics: SongWithLyrics, skipDup
 
   // Create a map of presentation order string to LyricBlock using just the lyrics of the song object
   // ie: "v1" -> {<lyric block object>}
-  let lyricsMap = new Map<string, LyricBlock>();
+  const lyricsMap = new Map<string, LyricBlock>();
 
   for (let i = 0; i < lyrics.length; i++) {
     const lyric = lyrics[i];
@@ -28,7 +29,7 @@ export function convertSongToLyricBlocks(songWithLyrics: SongWithLyrics, skipDup
   }
 
   // Create an array of LyricBlock objects and add to it based on presentationOrder.
-  let lyricBlocks: LyricBlock[] = [];
+  const lyricBlocks: LyricBlock[] = [];
   for (let i = 0; i < presentationOrder.length; i++) {
     const block = lyricsMap.get(presentationOrder[i]);
     if (block != null) {
@@ -41,12 +42,56 @@ export function convertSongToLyricBlocks(songWithLyrics: SongWithLyrics, skipDup
   for (let i = 0; i < presentationOrder.length; i++) {
     lyricsMap.delete(presentationOrder[i]);
   }
-  for (let leftoverLyric of lyricsMap.values()) {
+  for (const leftoverLyric of lyricsMap.values()) {
     lyricBlocks.push(leftoverLyric);
   }
 
   // Return the final set of lyric blocks.
   return lyricBlocks;
+}
+
+/**
+ * Converts a SongWithLyrics object to a LyricField List in Presentation order
+ */
+export function convertSongToLyricFields(songWithLyrics: SongWithLyrics): LyricField[] {
+  // Get presentation order of lyrics for the song.
+  const presentationOrder = getPresentationOrder(songWithLyrics.song.presentationOrder, true);
+  const lyrics = songWithLyrics.lyrics;
+
+  // Create a map of presentation order string to LyricField using just the lyrics of the song object
+  // ie: "v1" -> {<lyric field object>}
+  const lyricsMap = new Map<string, LyricField>();
+
+  for (let i = 0; i < lyrics.length; i++) {
+    const lyric = lyrics[i];
+    const verseShorthand = getVerseShorthand(lyric);
+    const lyricBlock: LyricField = {
+      text: lyric.lyrics,
+      lyricType: lyric.lyricType
+    };
+    lyricsMap.set(verseShorthand, lyricBlock);
+  }
+
+  // Create an ordered array of LyricField objects in Presentation order.
+  const lyricFields: LyricField[] = [];
+  for (let i = 0; i < presentationOrder.length; i++) {
+    const block = lyricsMap.get(presentationOrder[i]);
+    if (block != null) {
+      lyricFields.push(block);
+    }
+  }
+
+  // In case presentation order does not contain all the verses available to the song,
+  // for added robustness, add all unused lyrics to the back of the lyric block list.
+  for (let i = 0; i < presentationOrder.length; i++) {
+    lyricsMap.delete(presentationOrder[i]);
+  }
+  for (const leftoverLyric of lyricsMap.values()) {
+    lyricFields.push(leftoverLyric);
+  }
+
+  // Return the final set of lyric blocks.
+  return lyricFields;
 }
 
 /**

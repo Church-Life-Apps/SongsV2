@@ -3,10 +3,11 @@ import SongbookList from "../components/SongbookList";
 import { useState, useEffect } from "react";
 import { Songbook } from "../models/SongsApiModels";
 import { fetchSongbooks } from "../services/SongsApi";
-import { globalStyles } from "../styles/GlobalStyles";
 import { Href, router } from "expo-router";
 import React from "react";
 import { SECONDARY_COLOR } from "../utils/Constants";
+
+import "../styles/tailwind-styles.css";
 
 const navigateToSongbookPage = (songbook: Songbook) => {
   router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id } } as Href<{ pathname: string }>);

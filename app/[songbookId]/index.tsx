@@ -1,6 +1,6 @@
 import { Href, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, ActivityIndicator, View } from "react-native";
+import { SafeAreaView, ActivityIndicator } from "react-native";
 import SongList from "../../components/SongList";
 import { Song } from "../../models/SongsApiModels";
 import { fetchSongs, fetchSongbookMetadata, searchSongs } from "../../services/SongsApi";
