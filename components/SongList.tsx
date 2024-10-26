@@ -1,6 +1,5 @@
 import React from "react";
 import { FlatList, Text } from "react-native";
-import { listStyles } from "../styles/GlobalStyles";
 import { Song } from "../models/SongsApiModels";
 import { SongItem } from "./SongItem";
 

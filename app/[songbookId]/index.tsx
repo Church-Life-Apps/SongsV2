@@ -6,9 +6,7 @@ import { useColorScheme } from "nativewind";
 import SongList from "../../components/SongList";
 import { Song } from "../../models/SongsApiModels";
 import { fetchSongs, fetchSongbookMetadata, searchSongs } from "../../services/SongsApi";
-import { globalStyles } from "../../styles/GlobalStyles";
 import { SearchBar } from "../../components/SearchBar";
-import Button from "../../components/Button";
 
 export default function Page() {
   const { songbookId }: { songbookId: string } = useLocalSearchParams();
@@ -54,9 +52,8 @@ export default function Page() {
   };
 
   return (
-    <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4" style={[globalStyles.container, { }]}>
+    <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
       <StatusBar></StatusBar>
-      <TouchableOpacity className="my-5" onPress={() => {if (colorScheme === "dark") setColorScheme("light"); else setColorScheme("dark")} }><Text className="text-typography-light dark:text-typography-dark">Toggle</Text></TouchableOpacity>
       <SearchBar
         placeholder="Search..."
         className="text-typography-light dark:text-typography-dark"

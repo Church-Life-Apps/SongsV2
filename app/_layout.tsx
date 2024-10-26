@@ -15,11 +15,20 @@ export const unstable_settings = {
 };
 
 export default function Layout() {
-  const { colorScheme } = useColorScheme();
+  const { colorScheme, setColorScheme } = useColorScheme();
+
+  const toggleColorScheme = () => {
+    if (colorScheme === "dark") {
+      setColorScheme("light");
+    }
+    else {
+      setColorScheme("dark")
+    }
+  };
 
   const isDark = colorScheme === "dark";
   const headerBackground = isDark ? colors.neutral[900] : "#a3dbe8";
-  const contentBackground = isDark ? colors.zinc[700] : colors.zinc[100];
+  const contentBackground = isDark ? colors.zinc[800] : colors.zinc[100];
   const textColor = isDark ? colors.slate[100] : colors.gray[900];
 
   const navigation = useNavigation();
@@ -41,6 +50,15 @@ export default function Layout() {
               size={24}
               color={textColor}
               onPress={() => navigation.goBack()}
+            />
+          ),
+          headerRight: () => (
+            <Feather
+              name={colorScheme === "dark" ? "sun" : "moon"}
+              style={{ marginHorizontal: 12, marginVertical: 4 }}
+              size={24}
+              color={textColor}
+              onPress={toggleColorScheme}
             />
           ),
           headerStyle: {

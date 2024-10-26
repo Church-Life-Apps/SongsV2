@@ -21,13 +21,13 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
       { songData.song.author.length > 0 && <Text className="dark:text-gray-400" style={lyricStyles.author}>by {songData.song.author}</Text>}
       {lyricBlocks.map((lyric, lyricIndex) => (
         <View key={`View ${lyricIndex}`}>
-          <Text key={`${lyricIndex}:verseTitle`} className="dark:text-gray-200" style={lyricStyles.verseTitle}>
+          <Text key={`${lyricIndex}:verseTitle`} className="text-base font-bold mt-4 dark:text-gray-200">
             {lyric.verseTitle}
           </Text>
           {lyric.lyrics.map((lineWithChords, lineIndex) => (
             <View key={`View ${lyric.verseShorthand}:${lineIndex}`}>
               {displayChords && lineWithChords.chords.length > 0 ? (
-                <Text key={`${lineIndex}:${lyric.verseShorthand}`} className="dark:text-gray-200" style={lyricStyles.chords}>
+                <Text key={`${lineIndex}:${lyric.verseShorthand}`} className="text-base ms-6 dark:text-gray-200" style={lyricStyles.chords}>
                   {expandChordMap(lineWithChords)}
                 </Text>
               ) : null}
