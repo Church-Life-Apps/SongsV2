@@ -34,11 +34,11 @@ export default function Page() {
   return (
     <>
       {isLoading || !song ? (
-        <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4" >
+        <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
           <ActivityIndicator />
         </SafeAreaView>
       ) : (
-        <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4" >
+        <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
           <TabBar className="justify-center mt-4" onChange={setIndex} value={index}>
             <Tab title="Lyrics" hide={song.song.imageUrl == ""} />
             <Tab title="Music" hide={song.song.imageUrl == ""} />

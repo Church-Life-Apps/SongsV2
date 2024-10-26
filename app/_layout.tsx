@@ -5,7 +5,7 @@ import React from "react";
 import { Feather } from "@expo/vector-icons";
 
 // Import tailwind styles
-import "../styles/tailwind-styles.css"
+import "../styles/tailwind-styles.css";
 import { StatusBar } from "react-native";
 import { useColorScheme } from "nativewind";
 
@@ -20,9 +20,8 @@ export default function Layout() {
   const toggleColorScheme = () => {
     if (colorScheme === "dark") {
       setColorScheme("light");
-    }
-    else {
-      setColorScheme("dark")
+    } else {
+      setColorScheme("dark");
     }
   };
 
@@ -62,16 +61,16 @@ export default function Layout() {
             />
           ),
           headerStyle: {
-            backgroundColor: headerBackground
+            backgroundColor: headerBackground,
           },
           headerShadowVisible: !isDark,
           headerTitleStyle: {
-            color: textColor
+            color: textColor,
           },
           contentStyle: {
             backgroundColor: contentBackground,
-            shadowColor: headerBackground
-          }
+            shadowColor: headerBackground,
+          },
         }}
       >
         <Stack.Screen name="index" options={{ title: "Hymnal", headerLeft: undefined }} />
