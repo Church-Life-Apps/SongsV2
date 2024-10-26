@@ -35,7 +35,7 @@ export default function Page() {
   return (
     <>
       {isLoading || !song ? (
-        <SafeAreaView style={[globalStyles.container]}>
+        <SafeAreaView className="bg-slate-100 dark:bg-zinc-700 items-center justify-start px-4" style={[globalStyles.container]} >
           <ActivityIndicator />
         </SafeAreaView>
       ) : (

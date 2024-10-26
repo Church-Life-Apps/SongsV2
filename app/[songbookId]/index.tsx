@@ -54,11 +54,12 @@ export default function Page() {
   };
 
   return (
-    <SafeAreaView className="bg-slate-100 dark:bg-zinc-700 items-center justify-start px-4" style={[globalStyles.container, { }]}>
+    <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4" style={[globalStyles.container, { }]}>
       <StatusBar></StatusBar>
-      <TouchableOpacity className="my-5" onPress={() => {if (colorScheme === "dark") setColorScheme("light"); else setColorScheme("dark")} }><Text className="text-slate-800 dark:text-slate-100">Toggle</Text></TouchableOpacity>
+      <TouchableOpacity className="my-5" onPress={() => {if (colorScheme === "dark") setColorScheme("light"); else setColorScheme("dark")} }><Text className="text-typography-light dark:text-typography-dark">Toggle</Text></TouchableOpacity>
       <SearchBar
         placeholder="Search..."
+        className="text-typography-light dark:text-typography-dark"
         onChange={search}
         style={{ width: "80%", maxWidth: 1000, marginHorizontal: 8, fontSize: 20, marginVertical: 8 }}
       />

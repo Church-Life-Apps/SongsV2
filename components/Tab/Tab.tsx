@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, Text } from "react-native";
 
 export interface TabProps {
   onPress?: () => void;
@@ -9,8 +9,8 @@ export interface TabProps {
 }
 
 export const Tab = ({ active, title, hide, onPress = () => {}, ...rest }: TabProps) => {
-  const tabColor = active ? "bg-cyan-300 dark:bg-gray-500 hover:bg-gray-200 dark:hover:bg-gray-400" : "bg-transparent hover:bg-cyan-100 hover:dark:bg-gray-400";
-  const tabTextColor = active ? "text-gray-200" : "text-cyan-300 dark:text-gray-200 hover:text-gray-200 dark:hover:text-gray-200";
+  const tabColor = active ? "bg-brand-500 dark:bg-gray-500 hover:bg-brand-400 dark:hover:bg-gray-400" : "bg-transparent hover:bg-brand-200 hover:dark:bg-gray-400";
+  const tabTextColor = active ? "text-gray-200" : "text-brand-500 dark:text-gray-200 hover:text-brand-700 dark:hover:text-gray-200";
   if (hide) return;
   return (
     <Pressable

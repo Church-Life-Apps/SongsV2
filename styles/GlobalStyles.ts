@@ -10,49 +10,6 @@ export const globalStyles = StyleSheet.create({
   },
 });
 
-export const listStyles = StyleSheet.create({
-  // the list container
-  list: {
-    // 100% width otherwise the scrollable area for the list is only where the items themselves are
-    width: "100%",
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  // the inner list container. Items are placed in here
-  contentContainer: {
-    alignSelf: "center",
-    maxWidth: 1000,
-    width: "100%",
-  },
-  // Individual list item
-  item: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 12,
-    marginVertical: 4,
-    marginHorizontal: 16,
-    backgroundColor: "#fff",
-    borderColor: "#4a4a4a",
-    borderRadius: 4,
-    borderWidth: 1,
-    borderLeftWidth: 8,
-  },
-  number: {
-    fontSize: 32,
-    marginRight: 8,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    maxWidth: "100%",
-  },
-  // Smaller, gray colored text. Used for author
-  subTitle: {
-    fontSize: 12,
-    color: "#4a4a4a",
-  },
-});
-
 export const lyricStyles = StyleSheet.create({
   container: {
     flex: 1,
