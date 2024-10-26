@@ -47,7 +47,7 @@ export default function Page() {
   };
 
   return (
-    <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
+    <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark items-center justify-start px-4">
       <StatusBar></StatusBar>
       <SearchBar
         placeholder="Search..."
