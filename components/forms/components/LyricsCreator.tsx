@@ -10,6 +10,7 @@ interface LyricsCreatorProps {
   onChange: (e: LyricField[]) => void;
 }
 
+// TODO: Add animation for swapping lyrics
 const LyricsCreator = ({ value, onChange }: LyricsCreatorProps) => {
   function addLyricField(): void {
     onChange([...value, { text: "", lyricType: LyricType.LYRIC_TYPE_VERSE }]);
