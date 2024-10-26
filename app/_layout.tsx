@@ -16,12 +16,19 @@ export const unstable_settings = {
 
 export default function Layout() {
   const { colorScheme, setColorScheme } = useColorScheme();
+  const preferredColorScheme = window.localStorage.getItem("colorScheme") as "light" | "dark" | undefined;
+
+  if (preferredColorScheme !== undefined) {
+    setColorScheme(preferredColorScheme);
+  }
 
   const toggleColorScheme = () => {
     if (colorScheme === "dark") {
       setColorScheme("light");
+      window.localStorage.setItem("colorScheme", "light");
     } else {
       setColorScheme("dark");
+      window.localStorage.setItem("colorScheme", "dark");
     }
   };
 
@@ -54,6 +61,7 @@ export default function Layout() {
           headerRight: () => (
             <Feather
               name={colorScheme === "dark" ? "sun" : "moon"}
+              className="flex-shrink"
               style={{ marginHorizontal: 12, marginVertical: 4 }}
               size={24}
               color={textColor}
@@ -70,6 +78,7 @@ export default function Layout() {
           contentStyle: {
             backgroundColor: contentBackground,
             shadowColor: headerBackground,
+            // flex: 1,
           },
         }}
       >
