@@ -16,7 +16,6 @@ export const TabBar = ({ children, value = 0, onChange = () => {}, style, ...res
         children: (
           <>
             {validChildren.map((child, index) => {
-              console.log("make ", child);
               return React.cloneElement(child as React.ReactElement<TabProps>, {
                 onPress: () => onChange(index),
                 active: index === value,

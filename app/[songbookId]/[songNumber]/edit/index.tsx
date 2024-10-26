@@ -28,7 +28,10 @@ export default function Page() {
     data.lyrics = data.lyrics.map((lyric) => { 
       return { ...lyric, songId: song!.song.id }
     });
-    createSong(data);
+    createSong(data).then(json => {
+      if (json.status === 200) alert("Song updated")
+        else alert("Error while saving song")
+    });
   }
 
   if (!song) {

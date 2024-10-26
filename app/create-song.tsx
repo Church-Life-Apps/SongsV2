@@ -14,7 +14,10 @@ export default function Page() {
   }, []);
 
   const onSubmit = (data: PendingSong) => {
-    createSong(data);
+    createSong(data).then(json => {
+      if (json.status === 201) alert("Song created")
+      else alert("Error while creating song")
+    });
   }
 
   return (
