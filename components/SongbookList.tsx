@@ -20,7 +20,7 @@ const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[]; onPress: 
         : Math.min(windowWidth - 40, 380);
 
   return (
-    <View className="w-screen h-screen overflow-y-auto pb-20 mt-2 md:mt-0 align-center">
+    <View className="w-screen pb-20 mt-2 md:mt-0 align-center">
       <FlatGrid
         itemContainerStyle={{alignSelf: "flex-start"}}
         itemDimension={bookWidth}
