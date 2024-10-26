@@ -9,7 +9,7 @@ import { LyricField } from "./components/VerseCreator";
 import { fetchSongbooks } from "../../services/SongsApi";
 import { LyricType, PendingSong, Songbook, SongWithLyrics } from "../../models/SongsApiModels";
 import LyricComponent from "../LyricComponent";
-import { songFormInputToSongWithLyrics } from "../../utils/SongFormUtils";
+import { songFormInputToPendingSong, songFormInputToSongWithLyrics } from "../../utils/SongFormUtils";
 
 interface CreateSongFormProps {
   onSubmit: (data: PendingSong) => void;
