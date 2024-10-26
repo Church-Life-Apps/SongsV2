@@ -17,21 +17,21 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
 
   const content = (
     <>
-      <Text style={lyricStyles.title}>{songData.song.title}</Text>
-      { songData.song.author.length > 0 && <Text style={lyricStyles.author}>by {songData.song.author}</Text>}
+      <Text style={lyricStyles.title} className="dark:text-gray-200">{songData.song.title}</Text>
+      { songData.song.author.length > 0 && <Text className="dark:text-gray-200" style={lyricStyles.author}>by {songData.song.author}</Text>}
       {lyricBlocks.map((lyric, lyricIndex) => (
         <View key={`View ${lyricIndex}`}>
-          <Text key={`${lyricIndex}:verseTitle`} style={lyricStyles.verseTitle}>
+          <Text key={`${lyricIndex}:verseTitle`} className="dark:text-gray-200" style={lyricStyles.verseTitle}>
             {lyric.verseTitle}
           </Text>
           {lyric.lyrics.map((lineWithChords, lineIndex) => (
             <View key={`View ${lyric.verseShorthand}:${lineIndex}`}>
               {displayChords && lineWithChords.chords.length > 0 ? (
-                <Text key={`${lineIndex}:${lyric.verseShorthand}`} style={lyricStyles.chords}>
+                <Text key={`${lineIndex}:${lyric.verseShorthand}`} className="dark:text-gray-200" style={lyricStyles.chords}>
                   {expandChordMap(lineWithChords)}
                 </Text>
               ) : null}
-              <Text key={`${lyric.verseShorthand} Line ${lineIndex}`} style={lyricStyles.lyrics}>
+              <Text key={`${lyric.verseShorthand} Line ${lineIndex}`} className="dark:text-gray-200" style={lyricStyles.lyrics}>
                 {lineWithChords.line}
               </Text>
             </View>

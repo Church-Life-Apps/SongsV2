@@ -20,7 +20,7 @@ const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[]; onPress: 
         : Math.min(windowWidth - 40, 380);
 
   return (
-    <View className="w-screen h-screen overflow-y-auto pb-20 mt-8 md:mt-0 align-center">
+    <View className="w-screen h-screen overflow-y-auto pb-20 mt-2 md:mt-0 align-center">
       <FlatGrid
         itemContainerStyle={{alignSelf: "flex-start"}}
         itemDimension={bookWidth}
@@ -31,7 +31,7 @@ const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[]; onPress: 
         renderItem={({ item }) => (
           <TouchableOpacity
             style={{ maxWidth: bookWidth, maxHeight: bookWidth * 1.5 }}
-            className="cursor-pointer mb-2"
+            className="cursor-pointer mb-3"
             onPress={() => onPress(item.data)}
           >
             <Image

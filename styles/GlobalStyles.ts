@@ -5,7 +5,6 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -58,7 +57,6 @@ export const lyricStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#fff",
   },
   scrollViewContainer: {
     paddingVertical: 16,

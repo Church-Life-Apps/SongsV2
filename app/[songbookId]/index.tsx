@@ -1,11 +1,14 @@
 import { Href, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, ActivityIndicator } from "react-native";
+import { SafeAreaView, ActivityIndicator, TouchableOpacity, StatusBar, Text } from "react-native";
+import { useColorScheme } from "nativewind";
+
 import SongList from "../../components/SongList";
 import { Song } from "../../models/SongsApiModels";
 import { fetchSongs, fetchSongbookMetadata, searchSongs } from "../../services/SongsApi";
 import { globalStyles } from "../../styles/GlobalStyles";
 import { SearchBar } from "../../components/SearchBar";
+import Button from "../../components/Button";
 
 export default function Page() {
   const { songbookId }: { songbookId: string } = useLocalSearchParams();
@@ -13,6 +16,10 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigation = useNavigation();
   const router = useRouter();
+  // Use imperatively
+  const { colorScheme, setColorScheme } = useColorScheme();
+
+  console.log(colorScheme);
 
   const loadSongs = async () => {
     const data = await fetchSongs(songbookId);
@@ -47,7 +54,9 @@ export default function Page() {
   };
 
   return (
-    <SafeAreaView style={[globalStyles.container, { justifyContent: "flex-start" }]}>
+    <SafeAreaView className="bg-slate-100 dark:bg-zinc-700 items-center justify-start px-4" style={[globalStyles.container, { }]}>
+      <StatusBar></StatusBar>
+      <TouchableOpacity className="my-5" onPress={() => {if (colorScheme === "dark") setColorScheme("light"); else setColorScheme("dark")} }><Text className="text-slate-800 dark:text-slate-100">Toggle</Text></TouchableOpacity>
       <SearchBar
         placeholder="Search..."
         onChange={search}
