@@ -18,7 +18,7 @@ const LyricTypePicker = ({ value, onValueChange = () => {} }: LyricTypePickerPro
 
   return (
     <View className="grow mx-2 mb-2">
-      <Text className="text-sm font-semibold mb-1">Lyric Type</Text>
+      <Text className="text-sm font-semibold mb-1 text-typography-light dark:text-typography-dark">Lyric Type</Text>
       <Picker
         className="text-lg border border-slate-600 bg-slate-50 rounded-lg py-1 px-2"
         selectedValue={value}

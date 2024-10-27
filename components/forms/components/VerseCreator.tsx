@@ -20,7 +20,7 @@ interface LyricFieldProps {
 
 const VerseCreator = ({ field, onChangeText, onChangeType, onDelete, onUp, onDown }: LyricFieldProps) => {
   return (
-    <View className="flex flex-row mt-3 items-center border border-slate-600 rounded p-4">
+    <View className="flex flex-row mt-3 items-center border border-slate-600 dark:bg-zinc-900 rounded p-4">
       <View>
         <Button title="Up" variant={"outlineBlue"} className="mb-1" onPress={onUp} />
         <Button title="Down" variant={"outlineBlue"} className="mb-1" onPress={onDown} />
