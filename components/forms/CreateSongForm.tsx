@@ -63,7 +63,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
   }, [watch]);
 
   return (
-    <View className="container mx-auto xl:px-32 2xl:px-64 mb-8">
+    <View className="container mx-auto py-4 xl:px-32 2xl:px-64 mb-8">
       <Controller
         control={control}
         rules={{
