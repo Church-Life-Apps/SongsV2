@@ -39,7 +39,7 @@ export default function Page() {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="bg-background-light dark:bg-background-dark">
       <CreateSongForm onSubmit={onSubmit} defaultValues={songWithLyricsToSongFormInput(song)} />
     </SafeAreaView>
   );

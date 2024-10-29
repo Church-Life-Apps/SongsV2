@@ -78,7 +78,6 @@ export default function Layout() {
           contentStyle: {
             backgroundColor: contentBackground,
             shadowColor: headerBackground,
-            // flex: 1,
           },
         }}
       >
