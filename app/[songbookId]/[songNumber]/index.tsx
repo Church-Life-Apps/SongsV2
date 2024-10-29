@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { ActivityIndicator, SafeAreaView, View } from "react-native";
 import LyricComponent from "../../../components/LyricComponent";
 import { SongWithLyrics } from "../../../models/SongsApiModels";
-import { globalStyles } from "../../../styles/GlobalStyles";
 import { fetchSongDetails, fetchSongbookMetadata } from "../../../services/SongsApi";
 import SheetMusicComponent from "../../../components/SheetMusicComponent";
 import { TabBar, Tab, TabView } from "../../../components/Tab";
@@ -35,17 +34,17 @@ export default function Page() {
   return (
     <>
       {isLoading || !song ? (
-        <SafeAreaView style={[globalStyles.container]}>
+        <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
           <ActivityIndicator />
         </SafeAreaView>
       ) : (
-        <SafeAreaView>
-          <TabBar onChange={setIndex} value={index} style={{ marginTop: 16, justifyContent: "center" }}>
+        <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
+          <TabBar className="justify-center mt-4" onChange={setIndex} value={index}>
             <Tab title="Lyrics" hide={song.song.imageUrl == ""} />
             <Tab title="Music" hide={song.song.imageUrl == ""} />
           </TabBar>
           <TabView active={index === 0}>
-            <View style={[globalStyles.container, { paddingBottom: 64 }]}>
+            <View className="pb-5">
               <LyricComponent songData={song} removeDuplicates={false} displayChords={false} />
             </View>
           </TabView>

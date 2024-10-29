@@ -63,7 +63,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
   }, [watch]);
 
   return (
-    <View className="container mx-auto xl:px-32 2xl:px-64 mb-8">
+    <View className="container mx-auto py-4 xl:px-32 2xl:px-64 mb-8">
       <Controller
         control={control}
         rules={{
@@ -71,7 +71,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
         }}
         render={({ field: { onChange, value } }) => (
           <View className="grow mx-2 mb-2">
-            <Text className="text-sm font-semibold mb-1">Book</Text>
+            <Text className="text-sm font-semibold mb-1 text-typography-light dark:text-typography-dark">Book</Text>
             <Picker
               className="text-lg border border-slate-600 bg-slate-50 rounded-lg py-1 px-2"
               onValueChange={onChange}
@@ -183,7 +183,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
 
       { !songPreview ? <></> : <View><LyricComponent songData={songPreview} removeDuplicates={false} displayChords={false} /></View> }
 
-      <Button variant="green" title="Submit" onPress={handleSubmit((data) => { onSubmit(songFormInputToPendingSong(data))})} />
+      <Button variant="green" title="Submit" className="mt-5" onPress={handleSubmit((data) => { onSubmit(songFormInputToPendingSong(data))})} />
     </View>
   );
 };

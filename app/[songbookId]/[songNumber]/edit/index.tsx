@@ -25,23 +25,22 @@ export default function Page() {
 
   const onSubmit = (data: PendingSong) => {
     data.id = song!.song.id;
-    data.lyrics = data.lyrics.map((lyric) => { 
-      return { ...lyric, songId: song!.song.id }
+    data.lyrics = data.lyrics.map((lyric) => {
+      return { ...lyric, songId: song!.song.id };
     });
-    createSong(data).then(json => {
-      if (json.status === 200) alert("Song updated")
-        else alert("Error while saving song")
+    createSong(data).then((json) => {
+      if (json.status === 200) alert("Song updated");
+      else alert("Error while saving song");
     });
-  }
+  };
 
   if (!song) {
-    return (<></>)
+    return <></>;
   }
 
   return (
     <SafeAreaView>
-      <CreateSongForm onSubmit={onSubmit} defaultValues={songWithLyricsToSongFormInput(song)}/>
+      <CreateSongForm onSubmit={onSubmit} defaultValues={songWithLyricsToSongFormInput(song)} />
     </SafeAreaView>
   );
 }
-

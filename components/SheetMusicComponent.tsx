@@ -24,7 +24,7 @@ const SheetMusicComponent: React.FC<SheetMusicComponentProps> = ({ imageUrl }) =
   }
 
   return (
-    <View style={{ flex: 1, alignSelf: "center" }}>
+    <View className="mt-4">
       <ImageModal source={{ uri: imageUrl }} style={{ width: 320, height: 500 }} resizeMode="contain" />
       <Button
         onPress={handleDownload}

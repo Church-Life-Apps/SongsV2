@@ -8,6 +8,7 @@ interface SearchBarProps {
   placeholder: string;
   debounceWait?: number;
   style?: TextStyle;
+  className?: string;
 }
 
 const defaultStyle: TextStyle = {
@@ -20,9 +21,9 @@ const defaultStyle: TextStyle = {
   paddingVertical: 4,
 };
 
-export const SearchBar = ({ onChange, placeholder, style, debounceWait = 500 }: SearchBarProps) => {
+export const SearchBar = ({ onChange, placeholder, style, debounceWait = 500, className }: SearchBarProps) => {
   const debounced = debounce((value) => {
     onChange(value);
   }, debounceWait);
-  return <TextInput style={{ ...defaultStyle, ...style }} onChangeText={debounced} placeholder={placeholder} />;
+  return <TextInput className={className} style={{ ...defaultStyle, ...style }} onChangeText={debounced} placeholder={placeholder} />;
 };
