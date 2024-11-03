@@ -24,7 +24,7 @@ export default function Page() {
     setIsLoading(true);
     fetchSong();
     fetchSongbookMetadata(songbookId).then((meta) =>
-      navigation.setOptions({ title: `${meta.fullName} #${songNumber}` })
+      navigation.setOptions({ title: `${meta.fullName}` })
     );
     if (index === 1 && song?.song.imageUrl == null) {
       setIndex(0);
