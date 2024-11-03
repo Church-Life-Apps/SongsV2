@@ -28,7 +28,7 @@ export default function Page() {
   }, []);
 
   return (
-    <SafeAreaView className="items-center justify-center">
+    <SafeAreaView className="items-center justify-center bg-background-light dark:bg-background-dark">
       {isLoading ? (
         <View className="my-4">
           <ActivityIndicator size="large" color={SECONDARY_COLOR} />
