@@ -6,7 +6,7 @@ export interface Songbook {
   imageUrl: string;
 }
 
-// Data object for individual song in songlist, so we have a songlist, and also the view when we click on a song which shows us either the sheet music or just the lyrics depending on what mode we choose. I'm going to call them SHEET MUSIC and LYRIC mode.
+// Data object for a song as represented in a book's list.
 export interface Song {
   id: string; // uuid
   songbookId: string;
@@ -36,8 +36,7 @@ export interface Lyric {
 }
 
 // Data object for Songs with Lyrics
-export interface SongWithLyrics {
-  song: Song;
+export interface SongWithLyrics extends Song {
   lyrics: Lyric[];
 }
 
@@ -56,14 +55,4 @@ export interface PendingSong {
   requesterName: string;
   requesterEmail: string;
   requesterNote: string;
-}
-
-// after pressing create new songbook in Songbooks List UI
-export function toSongbook(data: any): Songbook {
-  return {
-    id: data.id ?? "",
-    fullName: data.fullName ?? "",
-    staticMetadataLink: data.staticMetadataLink ?? "",
-    imageUrl: data.imageUrl ?? "",
-  };
 }

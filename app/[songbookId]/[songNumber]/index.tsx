@@ -26,7 +26,7 @@ export default function Page() {
     fetchSongbookMetadata(songbookId).then((meta) =>
       navigation.setOptions({ title: `${meta.fullName}` })
     );
-    if (index === 1 && song?.song.imageUrl == null) {
+    if (index === 1 && song?.imageUrl == null) {
       setIndex(0);
     }
   }, [songbookId, songNumber]);
@@ -40,8 +40,8 @@ export default function Page() {
       ) : (
         <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
           <TabBar className="justify-center mt-4" onChange={setIndex} value={index}>
-            <Tab title="Lyrics" hide={song.song.imageUrl == ""} />
-            <Tab title="Music" hide={song.song.imageUrl == ""} />
+            <Tab title="Lyrics" hide={song.imageUrl == ""} />
+            <Tab title="Music" hide={song.imageUrl == ""} />
           </TabBar>
           <TabView active={index === 0}>
             <View className="pb-5">
@@ -49,7 +49,7 @@ export default function Page() {
             </View>
           </TabView>
           <TabView active={index === 1}>
-            <SheetMusicComponent imageUrl={song.song.imageUrl} />
+            <SheetMusicComponent imageUrl={song.imageUrl} />
           </TabView>
         </SafeAreaView>
       )}

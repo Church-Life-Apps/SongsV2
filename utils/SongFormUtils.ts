@@ -5,12 +5,12 @@ import { v4 as uuidv4 } from "uuid";
 
 export const songWithLyricsToSongFormInput = (song: SongWithLyrics) : ICreateSongFormInput => {
   return {
-    bookId: song.song.songbookId,
-    number: song.song.number.toString(),
-    title: song.song.title,
-    songwriter: song.song.author,
+    bookId: song.songbookId,
+    number: song.number.toString(),
+    title: song.title,
+    songwriter: song.author,
     composer: "",
-    presentationOrder: song.song.presentationOrder,
+    presentationOrder: song.presentationOrder,
     lyrics: convertSongToLyricFields(song)
   }
 }
@@ -56,17 +56,15 @@ export const songFormInputToSongWithLyrics = (data : ICreateSongFormInput) : Son
     [LyricType.LYRIC_TYPE_VERSE]: 0
   };
   return {
-    song: {
-      id: "",
-      songbookId: data.bookId,
-      number: parseInt(data.number, 10),
-      title: data.title,
-      author: data.songwriter,
-      music: data.composer,
-      presentationOrder: data.presentationOrder,
-      imageUrl: "",
-      audioUrl: ""
-    },
+    id: "",
+    songbookId: data.bookId,
+    number: parseInt(data.number, 10),
+    title: data.title,
+    author: data.songwriter,
+    music: data.composer,
+    presentationOrder: data.presentationOrder,
+    imageUrl: "",
+    audioUrl: "",
     lyrics: data.lyrics.map((value => {
       return {
         songId: "", // uuid

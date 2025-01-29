@@ -8,10 +8,10 @@ const SQUARE_BRACKETS_REGEX = /\[([^\]]+)\]/g;
 /**
  * Converts a SongWithLyrics object to a LyricBlock List for visualizing the right lyrics in the right order.
  */
-export function convertSongToLyricBlocks(songWithLyrics: SongWithLyrics, skipDuplicates: boolean): LyricBlock[] {
+export function convertSongToLyricBlocks(song: SongWithLyrics, skipDuplicates: boolean): LyricBlock[] {
   // Get presentation order of lyrics for the song.
-  const presentationOrder = getPresentationOrder(songWithLyrics.song.presentationOrder, skipDuplicates);
-  const lyrics = songWithLyrics.lyrics;
+  const presentationOrder = getPresentationOrder(song.presentationOrder, skipDuplicates);
+  const lyrics = song.lyrics;
 
   // Create a map of presentation order string to LyricBlock using just the lyrics of the song object
   // ie: "v1" -> {<lyric block object>}
@@ -53,10 +53,10 @@ export function convertSongToLyricBlocks(songWithLyrics: SongWithLyrics, skipDup
 /**
  * Converts a SongWithLyrics object to a LyricField List in Presentation order
  */
-export function convertSongToLyricFields(songWithLyrics: SongWithLyrics): LyricField[] {
+export function convertSongToLyricFields(song: SongWithLyrics): LyricField[] {
   // Get presentation order of lyrics for the song.
-  const presentationOrder = getPresentationOrder(songWithLyrics.song.presentationOrder, true);
-  const lyrics = songWithLyrics.lyrics;
+  const presentationOrder = getPresentationOrder(song.presentationOrder, true);
+  const lyrics = song.lyrics;
 
   // Create a map of presentation order string to LyricField using just the lyrics of the song object
   // ie: "v1" -> {<lyric field object>}
@@ -176,7 +176,7 @@ export function parseLyricsWithChords(lyrics: string): LineWithChords[] {
     const line = l.trim();
     const chordsMap: ChordWithIndex[] = [];
     let offset = 0;
-    let match: RegExpExecArray;
+    let match: RegExpExecArray | null;
     while ((match = SQUARE_BRACKETS_REGEX.exec(line)) !== null) {
       const index = match.index - offset;
       const chordWithBracket = match[0];

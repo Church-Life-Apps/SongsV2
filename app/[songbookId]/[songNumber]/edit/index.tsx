@@ -24,9 +24,9 @@ export default function Page() {
   }, [songbookId, songNumber]);
 
   const onSubmit = (data: PendingSong) => {
-    data.id = song!.song.id;
+    data.id = song!.id;
     data.lyrics = data.lyrics.map((lyric) => {
-      return { ...lyric, songId: song!.song.id };
+      return { ...lyric, songId: song!.id };
     });
     createSong(data).then((json) => {
       if (json.status === 200) alert("Song updated");
