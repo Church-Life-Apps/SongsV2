@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, SafeAreaView, View } from "react-native";
+import { ActivityIndicator, SafeAreaView, Text, View } from "react-native";
 import LyricComponent from "../../../components/LyricComponent";
 import { SongWithLyrics } from "../../../models/SongsApiModels";
 import { fetchSongDetails, fetchSongbookMetadata } from "../../../services/SongsApi";
@@ -13,6 +13,7 @@ export default function Page() {
   const [song, setSong] = useState<SongWithLyrics>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [index, setIndex] = useState(0);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function Page() {
       const newSong = await fetchSongDetails(songbookId, songNumber);
       setSong(newSong);
       setIsLoading(false);
+      setImageUrls(newSong.imageUrl.split(";"));
     };
     setIsLoading(true);
     fetchSong();
@@ -41,16 +43,27 @@ export default function Page() {
         <SafeAreaView className="bg-background-light dark:bg-background-dark items-center justify-start px-4">
           <TabBar className="justify-center mt-4" onChange={setIndex} value={index}>
             <Tab title="Lyrics" hide={song.imageUrl == ""} />
-            <Tab title="Music" hide={song.imageUrl == ""} />
+            {imageUrls.map((imageUrl: string, index: number) => {
+              const tabTitle = imageUrls.length > 1 ?
+              "Music (Tune " + (index + 1) + ")"
+              : "Music"
+
+              return <Tab key={index} title={tabTitle} hide={imageUrl == ""} />
+            })}
           </TabBar>
           <TabView active={index === 0}>
             <View className="pb-5">
               <LyricComponent songData={song} removeDuplicates={false} displayChords={false} />
             </View>
           </TabView>
-          <TabView active={index === 1}>
-            <SheetMusicComponent imageUrl={song.imageUrl} />
-          </TabView>
+          {imageUrls.map((imageUrl: string, urlIndex: number) => {
+            return (
+              <TabView key={urlIndex} active={index === urlIndex + 1}>
+                <SheetMusicComponent imageUrl={imageUrl} />
+              </TabView>
+            );
+          })}
+          
         </SafeAreaView>
       )}
     </>
