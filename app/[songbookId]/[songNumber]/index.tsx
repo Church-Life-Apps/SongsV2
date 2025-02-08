@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, SafeAreaView, Text, View } from "react-native";
+import { ActivityIndicator, SafeAreaView, View } from "react-native";
 import LyricComponent from "../../../components/LyricComponent";
 import { SongWithLyrics } from "../../../models/SongsApiModels";
 import { fetchSongDetails, fetchSongbookMetadata } from "../../../services/SongsApi";

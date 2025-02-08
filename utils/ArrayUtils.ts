@@ -6,9 +6,9 @@
  * @returns A new array with the items at indexA and indexB swapped
  */
 export function swapArrayElements(arr: any[], indexA: number, indexB: number) {
-  let newArray = [...arr];
-  let a = newArray[indexA];
-  let b = newArray[indexB];
+  const newArray = [...arr];
+  const a = newArray[indexA];
+  const b = newArray[indexB];
   newArray[indexA] = b;
   newArray[indexB] = a;
   return newArray;
