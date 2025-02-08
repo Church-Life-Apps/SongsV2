@@ -45,7 +45,7 @@ export default function Page() {
             <Tab title="Lyrics" hide={song.imageUrl == ""} />
             {imageUrls.map((imageUrl: string, index: number) => {
               const tabTitle = imageUrls.length > 1 ?
-              "Music (Tune " + (index + 1) + ")"
+              "Music " + (index + 1)
               : "Music"
 
               return <Tab key={index} title={tabTitle} hide={imageUrl == ""} />
