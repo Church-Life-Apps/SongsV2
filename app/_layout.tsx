@@ -16,9 +16,9 @@ export const unstable_settings = {
 
 export default function Layout() {
   const { colorScheme, setColorScheme } = useColorScheme();
-  const preferredColorScheme = window.localStorage.getItem("colorScheme") as "light" | "dark" | undefined;
+  const preferredColorScheme = window.localStorage.getItem("colorScheme") as "light" | "dark" | null;
 
-  if (preferredColorScheme !== undefined) {
+  if (preferredColorScheme !== null) {
     setColorScheme(preferredColorScheme);
   }
 
