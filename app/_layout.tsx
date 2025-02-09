@@ -41,7 +41,7 @@ export default function Layout() {
   return (
     <>
       <Head>
-        <title>Hymnal</title>
+        <title>Hymns and Spiritual Songs</title>
         <meta name="description" content="A collection of hymnals and spiritual song books" />
       </Head>
       <StatusBar />
@@ -81,7 +81,7 @@ export default function Layout() {
           },
         }}
       >
-        <Stack.Screen name="index" options={{ title: "Hymnal", headerLeft: undefined }} />
+        <Stack.Screen name="index" options={{ title: "Hymns and Spiritual Songs", headerLeft: undefined }} />
         <Stack.Screen name="[songbookId]/index" options={{ title: "" }} />
         <Stack.Screen name="[songbookId]/[songNumber]/index" options={{ title: "" }} />
       </Stack>

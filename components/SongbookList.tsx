@@ -11,6 +11,7 @@ const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[]; onPress: 
     GENERIC: require("../assets/images/book_covers/generic.jpg"),
     // Add more book cover images here
   };
+
   type ImageKeys = keyof typeof images; // "SHL" | "SFOG" | "GENERIC"
   const bookWidth =
     windowWidth > 700
