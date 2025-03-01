@@ -10,22 +10,10 @@ module.exports = {
     extend: {
       colors: {
         transparent: 'transparent',
-        brand: {
-          '50': '#f3f9fc',
-          '100': '#e6f3f8',
-          '200': '#c6e8f1',
-          '300': '#a3dbe8',
-          '400': '#5cbfd4',
-          '500': '#37a8c0',
-          '600': '#2789a2',
-          '700': '#206d84',
-          '800': '#1e5d6e',
-          '900': '#1e4d5c',
-          '950': '#14333d',
-        },
+        brand: colors.lime,
         background: {
           dark: colors.zinc[800],
-          light: colors.stone[100]
+          light: colors.orange[50]
         },
         typography: {
           dark: colors.gray[200],

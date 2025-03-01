@@ -33,9 +33,9 @@ export default function Layout() {
   };
 
   const isDark = colorScheme === "dark";
-  const headerBackground = isDark ? colors.neutral[900] : "#a3dbe8";
-  const contentBackground = isDark ? colors.zinc[800] : colors.zinc[100];
-  const textColor = isDark ? colors.slate[100] : colors.gray[900];
+  const headerBackground = isDark ? colors.neutral[900] : colors.lime[800];
+  const contentBackground = isDark ? colors.zinc[800] : colors.orange[50];
+  const textColor = isDark ? colors.slate[100] : colors.orange[50];
 
   const navigation = useNavigation();
   return (
