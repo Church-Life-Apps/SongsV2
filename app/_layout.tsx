@@ -1,4 +1,4 @@
-import { Stack, useNavigation } from "expo-router";
+import { router, Stack, useNavigation, usePathname } from "expo-router";
 import colors from "tailwindcss/colors";
 import Head from "expo-router/head";
 import React from "react";
@@ -16,21 +16,20 @@ export const unstable_settings = {
 
 export default function Layout() {
   const { colorScheme, setColorScheme } = useColorScheme();
+  const pathName = usePathname();
+  
   const preferredColorScheme = window.localStorage.getItem("colorScheme") as "light" | "dark" | null;
 
   if (preferredColorScheme !== null) {
     setColorScheme(preferredColorScheme);
   }
 
-  const toggleColorScheme = () => {
-    if (colorScheme === "dark") {
-      setColorScheme("light");
-      window.localStorage.setItem("colorScheme", "light");
-    } else {
-      setColorScheme("dark");
-      window.localStorage.setItem("colorScheme", "dark");
-    }
-  };
+  const preferredFontSize = window.localStorage.getItem("fontSize");
+
+  if (preferredFontSize === null) {
+    window.localStorage.setItem("fontSize", "16px");
+  }
+  document.documentElement.style.setProperty('font-size', window.localStorage.getItem("fontSize"));
 
   const isDark = colorScheme === "dark";
   const headerBackground = isDark ? colors.neutral[900] : colors.lime[800];
@@ -60,12 +59,12 @@ export default function Layout() {
           ),
           headerRight: () => (
             <Feather
-              name={colorScheme === "dark" ? "sun" : "moon"}
+              name={"settings"}
               className="flex-shrink"
               style={{ marginHorizontal: 12, marginVertical: 4 }}
               size={24}
               color={textColor}
-              onPress={toggleColorScheme}
+              onPress={() => pathName !== "/settings" && router.push("/settings") }
             />
           ),
           headerStyle: {
@@ -84,6 +83,7 @@ export default function Layout() {
         <Stack.Screen name="index" options={{ title: "Hymns and Spiritual Songs", headerLeft: undefined }} />
         <Stack.Screen name="[songbookId]/index" options={{ title: "" }} />
         <Stack.Screen name="[songbookId]/[songNumber]/index" options={{ title: "" }} />
+        <Stack.Screen name="settings" options={{ title: "Settings" }} />
       </Stack>
     </>
   );

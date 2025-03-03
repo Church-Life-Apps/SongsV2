@@ -5,6 +5,7 @@ import { Text, Pressable } from "react-native";
 const variantStyles = {
   blue: "bg-sky-500 text-black",
   slate: "bg-gray-400 text-white",
+  lime: "bg-lime-800 hover:bg-lime-700 text-white",
   green: "bg-green-600 hover:bg-green-700 text-white",
   outlineBlue: "bg-transparent border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white",
   outlineSlate: "bg-transparent border border-gray-400 text-gray-400 hover:bg-gray-400 hover:text-white",
@@ -12,7 +13,7 @@ const variantStyles = {
   disabled: "bg-stone-50 text-stone-300 border-stone-300",
 };
 
-type Variant = "blue" | "slate" | "green" | "outlineBlue" | "outlineSlate" | "outlineRed" | "disabled";
+type Variant = "lime" | "blue" | "slate" | "green" | "outlineBlue" | "outlineSlate" | "outlineRed" | "disabled";
 
 interface ButtonProps {
   onPress?: () => void;

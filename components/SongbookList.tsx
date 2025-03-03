@@ -43,8 +43,7 @@ const SongbookList = ({ songbooks, onPress }: { songbooks: Songbook[]; onPress: 
               resizeMode="cover"
             />
             <Text
-              style={{ fontWeight: 400, fontSize: 24 }}
-              className="mt-2 text-center whitespace-wrap text-typography-light dark:text-typography-dark"
+              className="mt-2 text-center font-normal text-lg whitespace-wrap text-typography-light dark:text-typography-dark"
             >
               {item.data.fullName}
             </Text>
