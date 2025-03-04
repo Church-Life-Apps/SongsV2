@@ -17,7 +17,7 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
   const content = (
     <>
       <Text className="ms-auto text-xl font-semibold text-zinc-500 dark:text-zinc-400">{songData.number}</Text>
-      <Text className="text-4xl font-bold my-2 text-zinc-700 dark:text-gray-200">{songData.title}</Text>
+      <Text className="text-center text-4xl font-bold my-2 text-zinc-700 dark:text-gray-200">{songData.title}</Text>
       <View className="mt-2 mb-10">
         {lyricBlocks.map((lyric, lyricIndex) => (
           <View key={`View ${lyricIndex}`} className="my-2">
