@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "./Button";
 
 const FontSizeAdjustor = () => {
-  const fontSizes = ["14px", "18px", "22px"];
+  const fontSizes = ["12px", "16px", "20px"];
   const [fontSizeIndex, setFontSizeIndex] = useState<number>();
 
   const onPress = (sizeIndex : number) => {
