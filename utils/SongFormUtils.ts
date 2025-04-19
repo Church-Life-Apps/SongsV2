@@ -11,6 +11,7 @@ export const songWithLyricsToSongFormInput = (song: SongWithLyrics) : ICreateSon
     songwriter: song.author,
     composer: "",
     presentationOrder: song.presentationOrder,
+    imageUrl: song.imageUrl,
     lyrics: convertSongToLyricFields(song)
   }
 }
@@ -31,7 +32,7 @@ export const songFormInputToPendingSong = (data: ICreateSongFormInput) : Pending
     author: data.songwriter,
     music: data.composer,
     presentationOrder: data.presentationOrder,
-    imageUrl: "",
+    imageUrl: data.imageUrl,
     audioUrl: "",
     lyrics: data.lyrics.map((value => {
       return {

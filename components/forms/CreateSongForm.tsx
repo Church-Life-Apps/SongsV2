@@ -23,6 +23,7 @@ export interface ICreateSongFormInput {
   songwriter: string;
   composer: string;
   presentationOrder: string;
+  imageUrl: string;
   lyrics: LyricField[];
 }
 
@@ -42,6 +43,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
       songwriter: defaultValues?.songwriter || "",
       composer: defaultValues?.composer || "",
       presentationOrder: defaultValues?.presentationOrder || "",
+      imageUrl: defaultValues?.imageUrl || "",
       lyrics: defaultValues?.lyrics || [{ lyricType: LyricType.LYRIC_TYPE_VERSE, text: "" }]
     },
   })
@@ -166,6 +168,19 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
           />
         )}
         name="presentationOrder"
+      />
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInputGroup
+            label="Image URL(s)"
+            placeholder="Semicolon-separated list of URLs"
+            value={value}
+            onChangeText={onChange}
+            onBlur={onBlur}
+          />
+        )}
+        name="imageUrl"
       />
       <Controller
         control={control}
