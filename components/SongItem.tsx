@@ -9,10 +9,10 @@ const itemTextClasses = "text-typography-light dark:text-typography-dark hover:t
 
 export const SongItem = ({ song, onPress }: { song: Song; onPress: () => void }) => (
   <TouchableOpacity onPress={onPress} className={itemStructuralClasses + itemBackgroundClasses + itemBorderClasses + itemTextClasses}>
-    <View className="flex-1">
-      <Text className="text-lg leading-[1.2] font-semibold max-w-full text-inherit">{song.title}</Text>
+    <View className="flex-1 me-3">
+      <Text className="text-lg leading-1 font-semibold max-w-full text-inherit">{song.title}</Text>
       <Text className="text-sm text-muted-light dark:text-muted-dark">{song.author}</Text>
     </View>
-    <Text className="text-4xl text-inherit leading-[0.8]">{song.number}</Text>
+    <Text className="text-2xl text-inherit text-muted-light dark:text-muted-dark">{song.number}</Text>
   </TouchableOpacity>
 );
