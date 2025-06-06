@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Song } from "../models/SongsApiModels";
 
-const itemStructuralClasses = "flex-row items-center py-3 px-3 ";
+const itemStructuralClasses = "flex-row items-center py-3 px-3 me-1 ";
 const itemBackgroundClasses = "bg-background-light dark:bg-background-dark hover:bg-gray-200 active:bg-gray-300 hover:dark:bg-neutral-900 active:dark:bg-neutral-950 ";
 const itemBorderClasses = "border-slate-700 dark:border-neutral-600 ";
 const itemTextClasses = "text-typography-light dark:text-typography-dark hover:text-gray-950 "
