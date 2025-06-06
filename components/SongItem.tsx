@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Song } from "../models/SongsApiModels";
 
-const itemStructuralClasses = "flex-row items-center py-3 px-3 ";
+const itemStructuralClasses = "flex-row items-start py-3 px-3 ";
 const itemBackgroundClasses = "bg-background-light dark:bg-background-dark hover:bg-gray-200 active:bg-gray-300 hover:dark:bg-neutral-900 active:dark:bg-neutral-950 ";
 const itemBorderClasses = "border-slate-700 dark:border-neutral-600 ";
 const itemTextClasses = "text-typography-light dark:text-typography-dark hover:text-gray-950 "
@@ -13,6 +13,6 @@ export const SongItem = ({ song, onPress }: { song: Song; onPress: () => void })
       <Text className="text-lg leading-[1.2] font-semibold max-w-full text-inherit">{song.title}</Text>
       <Text className="text-sm text-muted-light dark:text-muted-dark">{song.author}</Text>
     </View>
-    <Text className="text-4xl me-1 text-inherit">{song.number}</Text>
+    <Text className="text-4xl text-inherit leading-[0.8]">{song.number}</Text>
   </TouchableOpacity>
 );
