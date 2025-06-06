@@ -32,9 +32,9 @@ export default function Layout() {
   document.documentElement.style.setProperty('font-size', window.localStorage.getItem("fontSize"));
 
   const isDark = colorScheme === "dark";
-  const headerBackground = isDark ? colors.neutral[900] : colors.lime[800];
-  const contentBackground = isDark ? colors.zinc[800] : colors.orange[50];
-  const textColor = isDark ? colors.slate[100] : colors.orange[50];
+  const headerBackground = isDark ? colors.neutral[900] : colors.zinc[800];
+  const contentBackground = isDark ? colors.zinc[800] : colors.gray[50];
+  const textColor = isDark ? colors.slate[100] : colors.gray[50];
 
   const navigation = useNavigation();
   return (

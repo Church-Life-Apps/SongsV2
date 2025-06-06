@@ -13,8 +13,8 @@ const SongList = ({ songs, onPress }: { songs: Song[]; onPress: (item: Song) => 
           data={songs}
           renderItem={({ item }: { item: Song }) => <SongItem song={item} onPress={() => onPress(item)} />}
           keyExtractor={(item: Song) => item.number.toString()}
-          className="w-full"
-          contentContainerClassName="w-full max-w-5xl self-center px-1 md:px-4"
+          className="w-full pt-5"
+          contentContainerClassName="w-full max-w-5xl self-center"
         />
       )}
     </>

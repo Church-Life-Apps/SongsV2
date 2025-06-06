@@ -47,11 +47,11 @@ export default function Page() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark items-center justify-start px-4">
+    <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark items-center justify-start">
       <StatusBar></StatusBar>
       <SearchBar
         placeholder="Search..."
-        className="text-typography-light dark:text-typography-dark"
+        className="text-typography-light dark:text-typography-dark focus:outline-none "
         onChange={search}
         style={{ width: "80%", maxWidth: 1000, marginHorizontal: 8, fontSize: 20, marginVertical: 8 }}
       />

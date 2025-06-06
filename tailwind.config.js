@@ -10,10 +10,10 @@ module.exports = {
     extend: {
       colors: {
         transparent: 'transparent',
-        brand: colors.lime,
+        brand: colors.stone,
         background: {
           dark: colors.zinc[800],
-          light: colors.orange[50]
+          light: colors.gray[50]
         },
         typography: {
           dark: colors.gray[200],
