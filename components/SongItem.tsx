@@ -13,6 +13,6 @@ export const SongItem = ({ song, onPress }: { song: Song; onPress: () => void })
       <Text className="text-lg leading-[1.2] font-semibold max-w-full text-inherit">{song.title}</Text>
       <Text className="text-sm text-muted-light dark:text-muted-dark">{song.author}</Text>
     </View>
-    <Text className="text-4xl me-5 text-inherit">{song.number}</Text>
+    <Text className="text-4xl me-1 text-inherit">{song.number}</Text>
   </TouchableOpacity>
 );
