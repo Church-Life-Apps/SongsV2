@@ -10,7 +10,7 @@ import { SECONDARY_COLOR } from "../utils/Constants";
 import "../styles/tailwind-styles.css";
 
 const navigateToSongbookPage = (songbook: Songbook) => {
-  router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id } } as Href<{ pathname: string }>);
+  router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id } });
 };
 
 export default function Page() {

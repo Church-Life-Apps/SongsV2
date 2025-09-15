@@ -15,9 +15,10 @@ export const unstable_settings = {
 };
 
 export default function Layout() {
+  console.log("Rendering Layout");
   const { colorScheme, setColorScheme } = useColorScheme();
   const pathName = usePathname();
-  
+
   const preferredColorScheme = window.localStorage.getItem("colorScheme") as "light" | "dark" | null;
 
   if (preferredColorScheme !== null) {
@@ -29,7 +30,7 @@ export default function Layout() {
   if (preferredFontSize === null) {
     window.localStorage.setItem("fontSize", "16px");
   }
-  document.documentElement.style.setProperty('font-size', window.localStorage.getItem("fontSize"));
+  document.documentElement.style.setProperty("font-size", window.localStorage.getItem("fontSize"));
 
   const isDark = colorScheme === "dark";
   const headerBackground = isDark ? colors.neutral[900] : colors.zinc[800];
@@ -47,16 +48,17 @@ export default function Layout() {
       <Stack
         screenOptions={{
           headerBackTitleVisible: false,
-          headerLeft: () => (
+          headerLeft: () =>
             // ensures the back arrow is consistent across platforms
-            <Feather
-              name="arrow-left"
-              style={{ marginHorizontal: 12, marginVertical: 4 }}
-              size={24}
-              color={textColor}
-              onPress={() => navigation.goBack()}
-            />
-          ),
+            router.canGoBack() && (
+              <Feather
+                name="arrow-left"
+                style={{ marginHorizontal: 12, marginVertical: 4 }}
+                size={24}
+                color={textColor}
+                onPress={() => router.back()}
+              />
+            ),
           headerRight: () => (
             <Feather
               name={"settings"}
@@ -64,7 +66,7 @@ export default function Layout() {
               style={{ marginHorizontal: 12, marginVertical: 4 }}
               size={24}
               color={textColor}
-              onPress={() => pathName !== "/settings" && router.push("/settings") }
+              onPress={() => pathName !== "/settings" && router.push("/settings")}
             />
           ),
           headerStyle: {
@@ -80,7 +82,7 @@ export default function Layout() {
           },
         }}
       >
-        <Stack.Screen name="index" options={{ title: "Hymns and Spiritual Songs", headerLeft: undefined }} />
+        <Stack.Screen name="index" options={{ title: "Hymns and Spiritual Songs" }} />
         <Stack.Screen name="[songbookId]/index" options={{ title: "" }} />
         <Stack.Screen name="[songbookId]/[songNumber]/index" options={{ title: "" }} />
         <Stack.Screen name="settings" options={{ title: "Settings" }} />
