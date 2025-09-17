@@ -21,7 +21,10 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
       <View className="mt-2 mb-10">
         {lyricBlocks.map((lyric, lyricIndex) => (
           <View key={`View ${lyricIndex}`} className="my-2">
-            <Text key={`${lyricIndex}:verseTitle`} className="text-xs mb-2 font-semibold uppercase text-zinc-500 dark:text-zinc-400">
+            <Text
+              key={`${lyricIndex}:verseTitle`}
+              className="text-xs mb-2 font-semibold uppercase text-zinc-500 dark:text-zinc-400"
+            >
               {lyric.verseTitle}
             </Text>
             {lyric.lyrics.map((lineWithChords, lineIndex) => (
@@ -31,7 +34,10 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
                     {expandChordMap(lineWithChords)}
                   </Text>
                 ) : null}
-                <Text key={`${lyric.verseShorthand} Line ${lineIndex}`} className="text-lg mb-1 leading-[1.25] ms-6 dark:text-gray-200">
+                <Text
+                  key={`${lyric.verseShorthand} Line ${lineIndex}`}
+                  className="text-lg mb-1 leading-[1.25] ms-6 dark:text-gray-200"
+                >
                   {lineWithChords.line}
                 </Text>
               </View>
@@ -39,7 +45,9 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
           </View>
         ))}
       </View>
-      { songData.author.length > 0 && <Text className="text-xs text-zinc-500 dark:text-gray-400 mb-2">Words by {songData.author}</Text>}
+      {songData.author.length > 0 && (
+        <Text className="text-xs text-zinc-500 dark:text-gray-400 mb-2">Words by {songData.author}</Text>
+      )}
     </>
   );
 

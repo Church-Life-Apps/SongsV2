@@ -11,17 +11,17 @@ const SheetMusicComponent: React.FC<SheetMusicComponentProps> = ({ imageUrl }) =
   const handleDownload = async () => {
     // TODO : ensure this works with mobile platforms, should we decide to expand from web-only
     fetch(imageUrl as string)
-      .then(response => response.blob())
-      .then(blob => {
+      .then((response) => response.blob())
+      .then((blob) => {
         const blobUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.download = imageUrl.replace(/^.*[\\/]/, '');
+        const a = document.createElement("a");
+        a.download = imageUrl.replace(/^.*[\\/]/, "");
         a.href = blobUrl;
         document.body.appendChild(a);
         a.click();
         a.remove();
-      })
-  }
+      });
+  };
 
   return (
     <View className="mt-4 mb-8">

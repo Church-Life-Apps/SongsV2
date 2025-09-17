@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import Button from "../Button";
 import { TextInputGroup } from "./components";
-import { useForm, Controller } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form";
 import LyricsCreator from "./components/LyricsCreator";
 import { LyricField } from "./components/VerseCreator";
 import { fetchSongbooks } from "../../services/SongsApi";
@@ -13,7 +13,7 @@ import { songFormInputToPendingSong, songFormInputToSongWithLyrics } from "../..
 
 interface CreateSongFormProps {
   onSubmit: (data: PendingSong) => void;
-  defaultValues? : ICreateSongFormInput;
+  defaultValues?: ICreateSongFormInput;
 }
 
 export interface ICreateSongFormInput {
@@ -27,15 +27,11 @@ export interface ICreateSongFormInput {
   lyrics: LyricField[];
 }
 
-export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProps) => {
+export const CreateSongForm = ({ onSubmit, defaultValues }: CreateSongFormProps) => {
   const [songbooks, setSongbooks] = useState<Songbook[]>([]);
   const [songPreview, setSongPreview] = useState<SongWithLyrics>();
 
-  const {
-    control,
-    watch,
-    handleSubmit,
-  } = useForm<ICreateSongFormInput>({
+  const { control, watch, handleSubmit } = useForm<ICreateSongFormInput>({
     defaultValues: {
       bookId: defaultValues?.bookId || "sfog",
       number: defaultValues?.number || "",
@@ -44,9 +40,9 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
       composer: defaultValues?.composer || "",
       presentationOrder: defaultValues?.presentationOrder || "",
       imageUrl: defaultValues?.imageUrl || "",
-      lyrics: defaultValues?.lyrics || [{ lyricType: LyricType.LYRIC_TYPE_VERSE, text: "" }]
+      lyrics: defaultValues?.lyrics || [{ lyricType: LyricType.LYRIC_TYPE_VERSE, text: "" }],
     },
-  })
+  });
 
   useEffect(() => {
     const loadSongbooks = async () => {
@@ -60,8 +56,10 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
       setSongPreview(songFormInputToSongWithLyrics(defaultValues!));
     }
 
-    const watchSubscription = watch((value) => setSongPreview(songFormInputToSongWithLyrics(value as ICreateSongFormInput)))
-    return () => watchSubscription.unsubscribe()
+    const watchSubscription = watch((value) =>
+      setSongPreview(songFormInputToSongWithLyrics(value as ICreateSongFormInput))
+    );
+    return () => watchSubscription.unsubscribe();
   }, [watch]);
 
   return (
@@ -111,13 +109,7 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
           required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-          <TextInputGroup
-            label="Title"
-            placeholder="Title"
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-          />
+          <TextInputGroup label="Title" placeholder="Title" value={value} onChangeText={onChange} onBlur={onBlur} />
         )}
         name="title"
       />
@@ -187,18 +179,26 @@ export const CreateSongForm = ( { onSubmit, defaultValues } : CreateSongFormProp
         rules={{
           required: true,
         }}
-        render={({ field: { onChange, value } }) => (      
-          <LyricsCreator
-            value={value as LyricField[]}
-            onChange={onChange}
-          />
-        )}
+        render={({ field: { onChange, value } }) => <LyricsCreator value={value as LyricField[]} onChange={onChange} />}
         name="lyrics"
       />
 
-      { !songPreview ? <></> : <View><LyricComponent songData={songPreview} removeDuplicates={false} displayChords={false} /></View> }
+      {!songPreview ? (
+        <></>
+      ) : (
+        <View>
+          <LyricComponent songData={songPreview} removeDuplicates={false} displayChords={false} />
+        </View>
+      )}
 
-      <Button variant="green" title="Submit" className="mt-5" onPress={handleSubmit((data) => { onSubmit(songFormInputToPendingSong(data))})} />
+      <Button
+        variant="green"
+        title="Submit"
+        className="mt-5"
+        onPress={handleSubmit((data) => {
+          onSubmit(songFormInputToPendingSong(data));
+        })}
+      />
     </View>
   );
 };

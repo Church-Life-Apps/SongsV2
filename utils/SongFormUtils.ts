@@ -3,7 +3,7 @@ import { PendingSong, LyricType, Lyric, SongWithLyrics } from "../models/SongsAp
 import { convertSongToLyricFields } from "./LyricUtils";
 import { v4 as uuidv4 } from "uuid";
 
-export const songWithLyricsToSongFormInput = (song: SongWithLyrics) : ICreateSongFormInput => {
+export const songWithLyricsToSongFormInput = (song: SongWithLyrics): ICreateSongFormInput => {
   return {
     bookId: song.songbookId,
     number: song.number.toString(),
@@ -12,16 +12,16 @@ export const songWithLyricsToSongFormInput = (song: SongWithLyrics) : ICreateSon
     composer: "",
     presentationOrder: song.presentationOrder,
     imageUrl: song.imageUrl,
-    lyrics: convertSongToLyricFields(song)
-  }
-}
+    lyrics: convertSongToLyricFields(song),
+  };
+};
 
-export const songFormInputToPendingSong = (data: ICreateSongFormInput) : PendingSong => {
+export const songFormInputToPendingSong = (data: ICreateSongFormInput): PendingSong => {
   const lyricCounts = {
     [LyricType.LYRIC_TYPE_BRIDGE]: 0,
     [LyricType.LYRIC_TYPE_CHORUS]: 0,
     [LyricType.LYRIC_TYPE_PRECHORUS]: 0,
-    [LyricType.LYRIC_TYPE_VERSE]: 0
+    [LyricType.LYRIC_TYPE_VERSE]: 0,
   };
   const songId = uuidv4().toString();
   const song: PendingSong = {
@@ -34,27 +34,27 @@ export const songFormInputToPendingSong = (data: ICreateSongFormInput) : Pending
     presentationOrder: data.presentationOrder,
     imageUrl: data.imageUrl,
     audioUrl: "",
-    lyrics: data.lyrics.map((value => {
+    lyrics: data.lyrics.map((value) => {
       return {
         songId: songId, // uuid
         lyricType: value.lyricType,
         verseNumber: ++lyricCounts[value.lyricType],
-        lyrics: value.text
+        lyrics: value.text,
       } as Lyric;
-    })),
+    }),
     requesterName: "",
     requesterEmail: "",
-    requesterNote: ""
+    requesterNote: "",
   };
   return song;
-}
+};
 
-export const songFormInputToSongWithLyrics = (data : ICreateSongFormInput) : SongWithLyrics => {
-  const lyricCounts = { 
+export const songFormInputToSongWithLyrics = (data: ICreateSongFormInput): SongWithLyrics => {
+  const lyricCounts = {
     [LyricType.LYRIC_TYPE_BRIDGE]: 0,
     [LyricType.LYRIC_TYPE_CHORUS]: 0,
     [LyricType.LYRIC_TYPE_PRECHORUS]: 0,
-    [LyricType.LYRIC_TYPE_VERSE]: 0
+    [LyricType.LYRIC_TYPE_VERSE]: 0,
   };
   return {
     id: "",
@@ -66,14 +66,13 @@ export const songFormInputToSongWithLyrics = (data : ICreateSongFormInput) : Son
     presentationOrder: data.presentationOrder,
     imageUrl: "",
     audioUrl: "",
-    lyrics: data.lyrics.map((value => {
+    lyrics: data.lyrics.map((value) => {
       return {
         songId: "", // uuid
         lyricType: value.lyricType,
         verseNumber: ++lyricCounts[value.lyricType],
-        lyrics: value.text
+        lyrics: value.text,
       } as Lyric;
-    }))
-    
+    }),
   };
-}
+};

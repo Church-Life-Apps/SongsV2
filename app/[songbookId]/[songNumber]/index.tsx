@@ -25,9 +25,7 @@ export default function Page() {
     };
     setIsLoading(true);
     fetchSong();
-    fetchSongbookMetadata(songbookId).then((meta) =>
-      navigation.setOptions({ title: `${meta.fullName}` })
-    );
+    fetchSongbookMetadata(songbookId).then((meta) => navigation.setOptions({ title: `${meta.fullName}` }));
     if (index === 1 && song?.imageUrl == null) {
       setIndex(0);
     }
@@ -44,11 +42,9 @@ export default function Page() {
           <TabBar className="justify-center mt-4" onChange={setIndex} value={index}>
             <Tab title="Lyrics" hide={song.imageUrl == ""} />
             {imageUrls.map((imageUrl: string, index: number) => {
-              const tabTitle = imageUrls.length > 1 ?
-              "Music " + (index + 1)
-              : "Music"
+              const tabTitle = imageUrls.length > 1 ? "Music " + (index + 1) : "Music";
 
-              return <Tab key={index} title={tabTitle} hide={imageUrl == ""} />
+              return <Tab key={index} title={tabTitle} hide={imageUrl == ""} />;
             })}
           </TabBar>
           <TabView active={index === 0}>
@@ -63,7 +59,6 @@ export default function Page() {
               </TabView>
             );
           })}
-          
         </SafeAreaView>
       )}
     </>

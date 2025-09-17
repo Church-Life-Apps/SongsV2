@@ -27,7 +27,7 @@ export default function Page() {
   return (
     <SafeAreaView className="pt-4 pb-5 text-typography-light dark:text-typography-dark bg-background-light dark:bg-background-dark items-center">
       <Text className="text-3xl text-inherit font-title mb-4">Settings</Text>
-      
+
       <View className="flex-row items-center justify-between max-w-sm w-full mb-4">
         <Text className="text-xl text-inherit font-bold">Color mode</Text>
         <Pressable>
@@ -45,7 +45,6 @@ export default function Page() {
         <Text className="text-xl text-inherit font-bold">Font size</Text>
         <FontSizeAdjustor />
       </View>
-
     </SafeAreaView>
   );
 }

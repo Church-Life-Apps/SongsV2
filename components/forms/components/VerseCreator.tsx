@@ -1,7 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import Button from "../../Button";
-import { LyricTypePicker, TextInputGroup } from ".";
+import LyricTypePicker from "./LyricTypePicker";
+import TextInputGroup from "./TextInputGroup";
 import { LyricType } from "../../../models/SongsApiModels";
 
 export type LyricField = {

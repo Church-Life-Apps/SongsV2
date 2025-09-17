@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   darkMode: "class",
@@ -9,22 +9,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        transparent: 'transparent',
+        transparent: "transparent",
         brand: colors.stone,
         background: {
           dark: colors.zinc[800],
-          light: colors.gray[50]
+          light: colors.gray[50],
         },
         typography: {
           dark: colors.gray[200],
-          light: colors.stone[950]
+          light: colors.stone[950],
         },
         muted: {
           dark: colors.slate[300],
-          light: colors.stone[700]
-        }
+          light: colors.stone[700],
+        },
       },
-    }
+    },
   },
   plugins: [],
 };

@@ -67,7 +67,7 @@ export function convertSongToLyricFields(song: SongWithLyrics): LyricField[] {
     const verseShorthand = getVerseShorthand(lyric);
     const lyricBlock: LyricField = {
       text: lyric.lyrics,
-      lyricType: lyric.lyricType
+      lyricType: lyric.lyricType,
     };
     lyricsMap.set(verseShorthand, lyricBlock);
   }

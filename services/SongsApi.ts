@@ -30,7 +30,7 @@ export async function createSong(song: PendingSong) {
   return await fetch(`${baseUrl}/songbooks/${song.songbookId}/songs/${song.number}`, {
     method: "PUT",
     body: JSON.stringify(song),
-    headers: { "Content-Type": "application/json", 'x-api-key': `${process.env.EXPO_PUBLIC_API_KEY}` }
+    headers: { "Content-Type": "application/json", "x-api-key": `${process.env.EXPO_PUBLIC_API_KEY}` },
   });
 }
 
