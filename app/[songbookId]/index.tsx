@@ -51,9 +51,8 @@ export default function Page() {
       <StatusBar></StatusBar>
       <SearchBar
         placeholder="Search..."
-        className="text-typography-light dark:text-typography-dark focus:outline-none "
+        className="text-typography-light dark:text-typography-dark focus:outline-none px-2 py-1 w-full max-w-[1000px] h-auto text-xl leading-[1.5] border-b-2 border-neutral-300"
         onChange={search}
-        style={{ width: "80%", maxWidth: 1000, marginHorizontal: 8, fontSize: 20, marginVertical: 8 }}
       />
       {isLoading ? (
         <ActivityIndicator />
