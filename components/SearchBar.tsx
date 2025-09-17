@@ -1,5 +1,5 @@
 import { TextInput, TextStyle, TouchableOpacity, View } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import { debounce } from "../utils/FunctionUtils";
 
@@ -13,9 +13,13 @@ interface SearchBarProps {
 }
 
 export const SearchBar = ({ onChange, placeholder, style, debounceWait = 500, className }: SearchBarProps) => {
-  const debounced = debounce((value) => {
-    onChange(value);
-  }, debounceWait);
+  const debounced = useCallback(
+    debounce((value) => {
+      onChange(value);
+    }, debounceWait),
+    [onChange, debounceWait]
+  );
+
   const inputRef = useRef<TextInput>(null);
   const [value, setValue] = useState<string>();
 
@@ -48,7 +52,7 @@ export const SearchBar = ({ onChange, placeholder, style, debounceWait = 500, cl
         placeholder={placeholder}
         ref={inputRef}
       />
-      {value && clearIcon}
+      {value ? clearIcon : <></>}
     </View>
   );
 };
