@@ -1,4 +1,4 @@
-import { router, Stack, useNavigation, usePathname } from "expo-router";
+import { router, Stack, usePathname } from "expo-router";
 import colors from "tailwindcss/colors";
 import Head from "expo-router/head";
 import React from "react";
@@ -37,7 +37,6 @@ export default function Layout() {
   const contentBackground = isDark ? colors.zinc[800] : colors.gray[50];
   const textColor = isDark ? colors.slate[100] : colors.gray[50];
 
-  const navigation = useNavigation();
   return (
     <>
       <Head>
@@ -59,16 +58,17 @@ export default function Layout() {
                 onPress={() => router.back()}
               />
             ),
-          headerRight: () => (
-            <Feather
-              name={"settings"}
-              className="flex-shrink"
-              style={{ marginHorizontal: 12, marginVertical: 4 }}
-              size={24}
-              color={textColor}
-              onPress={() => pathName !== "/settings" && router.push("/settings")}
-            />
-          ),
+          headerRight: () =>
+            pathName !== "/settings" && (
+              <Feather
+                name={"settings"}
+                className="flex-shrink"
+                style={{ marginHorizontal: 12, marginVertical: 4 }}
+                size={24}
+                color={textColor}
+                onPress={() => router.push("/settings")}
+              />
+            ),
           headerStyle: {
             backgroundColor: headerBackground,
           },
