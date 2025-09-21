@@ -34,7 +34,7 @@ export const SearchBar = ({ onChange, placeholder, style, debounceWait = 500, cl
       onPress={clearValue}
       className={"bg-transparent text-xl justify-center border-b-2 border-neutral-300"}
     >
-      <Feather name={"x"} className={"text-typography-light dark:text-typography-dark opacity-50"} size={16} />
+      <Feather name={"x"} className={"text-typography-light dark:text-typography-dark opacity-50 px-4"} size={18} />
     </TouchableOpacity>
   );
 
