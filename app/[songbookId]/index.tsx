@@ -1,6 +1,6 @@
 import { Href, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, ActivityIndicator, StatusBar } from "react-native";
+import { SafeAreaView, ActivityIndicator, StatusBar, View } from "react-native";
 
 import SongList from "../../components/SongList";
 import { Song } from "../../models/SongsApiModels";
@@ -27,7 +27,7 @@ export default function Page() {
         songbookId: song.songbookId,
         songNumber: song.number,
       },
-    } as Href<{ pathname: string }>);
+    });
   };
   useEffect(() => {
     loadSongs();
@@ -49,13 +49,17 @@ export default function Page() {
   return (
     <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark items-center justify-start">
       <StatusBar></StatusBar>
-      <SearchBar
-        placeholder="Search..."
-        className="text-typography-light dark:text-typography-dark focus:outline-none px-2 py-1 w-full max-w-[1000px] h-auto text-xl leading-[1.5] border-b-2 border-neutral-300"
-        onChange={search}
-      />
+      <View className="w-full justify-center items-center mt-4 mb-2">
+        <SearchBar
+          placeholder="Search..."
+          className="text-typography-light dark:text-typography-dark focus:outline-none px-2 py-1 w-full max-w-[1000px] h-auto text-xl leading-[1.5] border-b-2 border-neutral-300"
+          onChange={search}
+        />
+      </View>
       {isLoading ? (
-        <ActivityIndicator />
+        <View className="my-4">
+          <ActivityIndicator />
+        </View>
       ) : (
         <>
           <SongList songs={songs} onPress={navigateToSong} />
