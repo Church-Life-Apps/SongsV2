@@ -1,4 +1,4 @@
-import { Href, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView, ActivityIndicator, StatusBar, View } from "react-native";
 
