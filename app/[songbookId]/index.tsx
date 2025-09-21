@@ -6,6 +6,7 @@ import SongList from "../../components/SongList";
 import { Song } from "../../models/SongsApiModels";
 import { fetchSongs, fetchSongbookMetadata, searchSongs } from "../../services/SongsApi";
 import { SearchBar } from "../../components/SearchBar";
+import { SECONDARY_COLOR } from "../../utils/Constants";
 
 export default function Page() {
   const { songbookId }: { songbookId: string } = useLocalSearchParams();
@@ -58,7 +59,7 @@ export default function Page() {
       </View>
       {isLoading ? (
         <View className="my-4">
-          <ActivityIndicator />
+          <ActivityIndicator size="large" color={SECONDARY_COLOR} />
         </View>
       ) : (
         <>
