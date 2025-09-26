@@ -7,7 +7,7 @@ const SongList = ({ songs, onPress }: { songs: Song[]; onPress: (item: Song) => 
   return (
     <>
       {songs.length === 0 ? (
-        <Text>No songs found for this book.</Text>
+        <Text className="text-typography-light dark:text-typography-dark">No songs found for this book.</Text>
       ) : (
         <FlatList
           data={songs}

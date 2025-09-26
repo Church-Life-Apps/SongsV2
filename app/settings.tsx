@@ -3,8 +3,9 @@ import { useNavigation } from "expo-router";
 import { useColorScheme } from "nativewind";
 import { useEffect } from "react";
 import React from "react";
-import { Pressable, SafeAreaView, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import FontSizeAdjustor from "../components/FontSizeAdjustor";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
   const navigation = useNavigation();

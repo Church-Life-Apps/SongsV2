@@ -1,12 +1,13 @@
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, ActivityIndicator, StatusBar, View } from "react-native";
+import { ActivityIndicator, StatusBar, View } from "react-native";
 
 import SongList from "../../components/SongList";
 import { Song } from "../../models/SongsApiModels";
 import { fetchSongs, fetchSongbookMetadata, searchSongs } from "../../services/SongsApi";
 import { SearchBar } from "../../components/SearchBar";
 import { SECONDARY_COLOR } from "../../utils/Constants";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
   const { songbookId }: { songbookId: string } = useLocalSearchParams();

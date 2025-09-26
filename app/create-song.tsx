@@ -1,10 +1,10 @@
-import { SafeAreaView } from "react-native";
 import { CreateSongForm } from "../components/forms/CreateSongForm";
 import { useNavigation } from "expo-router";
 import { useEffect } from "react";
 import React from "react";
 import { PendingSong } from "../models/SongsApiModels";
 import { createSong } from "../services/SongsApi";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
   const navigation = useNavigation();

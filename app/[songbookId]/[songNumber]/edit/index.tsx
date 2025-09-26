@@ -1,10 +1,10 @@
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { SafeAreaView } from "react-native";
 import { PendingSong, SongWithLyrics } from "../../../../models/SongsApiModels";
 import { createSong, fetchSongDetails, fetchSongbookMetadata } from "../../../../services/SongsApi";
 import { CreateSongForm } from "../../../../components/forms/CreateSongForm";
 import { songWithLyricsToSongFormInput } from "../../../../utils/SongFormUtils";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
   const { songbookId, songNumber: songNumberStr }: { songbookId: string; songNumber: string } = useLocalSearchParams();

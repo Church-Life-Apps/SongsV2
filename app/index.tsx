@@ -1,4 +1,4 @@
-import { ActivityIndicator, SafeAreaView, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import SongbookList from "../components/SongbookList";
 import { useState, useEffect } from "react";
 import { Songbook } from "../models/SongsApiModels";
@@ -8,6 +8,7 @@ import React from "react";
 import { SECONDARY_COLOR } from "../utils/Constants";
 
 import "../styles/tailwind-styles.css";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const navigateToSongbookPage = (songbook: Songbook) => {
   router.push({ pathname: "/[songbookId]", params: { songbookId: songbook.id } });

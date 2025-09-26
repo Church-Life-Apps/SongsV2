@@ -1,11 +1,12 @@
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, SafeAreaView, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import LyricComponent from "../../../components/LyricComponent";
 import { SongWithLyrics } from "../../../models/SongsApiModels";
 import { fetchSongDetails, fetchSongbookMetadata } from "../../../services/SongsApi";
 import SheetMusicComponent from "../../../components/SheetMusicComponent";
 import { TabBar, Tab, TabView } from "../../../components/Tab";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
   const { songbookId, songNumber: songNumberStr }: { songbookId: string; songNumber: string } = useLocalSearchParams();

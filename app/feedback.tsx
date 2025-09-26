@@ -1,9 +1,10 @@
 import { useNavigation } from "expo-router";
 import { useEffect } from "react";
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import { Text } from "react-native";
 import { Feedback, FeedbackForm } from "../components/forms/FeedbackForm";
 import { submitFeedback } from "../services/FeedbackApi";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
   const navigation = useNavigation();
