@@ -1,13 +1,10 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import { submitFeedback } from "../../services/FeedbackApi";
 import { TextInputGroup } from "./components";
 import Button from "../Button";
-
-interface FeedbackFormProps {
-  onSubmit: (data: Feedback) => void;
-  defaultValues?: Feedback;
-}
+import { set } from "lodash";
 
 export interface Feedback {
   title: string;
@@ -15,7 +12,9 @@ export interface Feedback {
   message: string;
 }
 
-export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
+export const FeedbackForm = () => {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = React.useState(false);
   const { control, handleSubmit } = useForm<Feedback>({
     defaultValues: {
       title: "",
@@ -24,11 +23,15 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
     },
   });
   return (
-    <View>
+    <View  className="text-typography-light">
+      <Text className="text-typography-light dark:text-typography-dark px-4 pb-4">
+        Use the following form to provide feedback, such as new feature requests or song lyric corrections
+      </Text>
       <Controller
         name="from"
         control={control}
         rules={{ required: true }}
+        disabled={isSubmitting}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInputGroup label="Name" placeholder="" value={value} onChangeText={onChange} onBlur={onBlur} />
         )}
@@ -37,6 +40,7 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
         name="title"
         control={control}
         rules={{ required: true }}
+        disabled={isSubmitting}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInputGroup label="Title" placeholder="" value={value} onChangeText={onChange} onBlur={onBlur} />
         )}
@@ -45,12 +49,13 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
         name="message"
         control={control}
         rules={{ required: true }}
+        disabled={isSubmitting}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInputGroup
             label="Message"
             inputMode="text"
             multiline
-            numberOfLines={5}
+            numberOfLines={3}
             placeholder=""
             value={value}
             onChangeText={onChange}
@@ -58,12 +63,27 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
           />
         )}
       />
+      {showSuccessMessage && (
+        <Text className="text-green-600 my-2 text-center font-bold">
+          "Thank you for your feedback!"
+        </Text>
+      )}
       <Button
         variant="green"
         title="Submit"
-        className="mt-5"
+        className="mt-2"
+        disabled={isSubmitting}
         onPress={handleSubmit((data) => {
-          onSubmit(data);
+          setShowSuccessMessage(false);
+          setIsSubmitting(true);
+          submitFeedback(data)
+            .then((json) => {
+              if (json.ok) {
+                setShowSuccessMessage(true);
+              }
+              else alert("Error while submitting feedback. Please try again later.");
+            })
+            .then(() => { setIsSubmitting(false); });
         })}
       />
     </View>

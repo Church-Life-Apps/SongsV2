@@ -31,19 +31,19 @@ const FontSizeAdjustor = () => {
   return (
     <View className="flex-row items-center">
       <Button
-        variant={fontSizeIndex === 0 ? "lime" : "outlineSlate"}
+        variant={fontSizeIndex === 0 ? "slate" : "outlineSlate"}
         title="Small"
         onPress={() => onPress(0)}
         className="mx-1"
       />
       <Button
-        variant={fontSizeIndex === 1 ? "lime" : "outlineSlate"}
+        variant={fontSizeIndex === 1 ? "slate" : "outlineSlate"}
         title="Medium"
         onPress={() => onPress(1)}
         className="mx-1"
       />
       <Button
-        variant={fontSizeIndex === 2 ? "lime" : "outlineSlate"}
+        variant={fontSizeIndex === 2 ? "slate" : "outlineSlate"}
         title="Large"
         onPress={() => onPress(2)}
         className="mx-1"

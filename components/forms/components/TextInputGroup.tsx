@@ -8,7 +8,7 @@ interface TextInputGroupProps extends TextInputProps {
 
 const TextInputGroup = ({ label, error, ...rest }: TextInputGroupProps) => {
   return (
-    <View className="grow mx-2 mb-2">
+    <View className="grow mb-2">
       <View className="flex-row justify-between">
         <Text className="font-semibold text-sm mb-1 text-typography-light dark:text-typography-dark">{label}</Text>
         {error && <Text className="text-red-700">{error}</Text>}

@@ -4,7 +4,7 @@ import { Text, Pressable } from "react-native";
 
 const variantStyles = {
   blue: "bg-sky-500 text-black",
-  slate: "bg-gray-400 text-white",
+  slate: "bg-gray-500 text-white",
   lime: "bg-lime-800 hover:bg-lime-700 text-white",
   green: "bg-green-600 hover:bg-green-700 text-white",
   outlineBlue: "bg-transparent border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white",
@@ -31,7 +31,7 @@ const Button = (props: ButtonProps) => {
     <Pressable
       disabled={disabled}
       onPress={onPress}
-      className={`rounded-lg px-3 py-2 ${disabled ? variantStyles["disabled"] : variantStyles[variant]} ${className}`}
+      className={`rounded px-3 py-2 ${disabled ? variantStyles["disabled"] : variantStyles[variant]} ${className}`}
     >
       <Text className="text-center font-bold" style={{ color: "inherit", userSelect: "none" }}>
         {title}
