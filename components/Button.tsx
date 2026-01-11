@@ -4,9 +4,9 @@ import { Text, Pressable } from "react-native";
 
 const variantStyles = {
   blue: "bg-sky-500 text-black",
-  slate: "bg-gray-500 text-white",
+  slate: "bg-gray-600 dark:bg-gray-400 text-white hover:bg-gray-500 dark:hover:bg-gray-400",
   lime: "bg-lime-800 hover:bg-lime-700 text-white",
-  green: "bg-green-600 hover:bg-green-700 text-white",
+  green: "bg-green-600 hover:bg-green-500 text-white",
   outlineBlue: "bg-transparent border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white",
   outlineSlate: "bg-transparent border border-gray-400 text-gray-400 hover:bg-gray-400 hover:text-white",
   outlineRed: "bg-transparent border border-red-500 text-red-500 hover:bg-red-500 hover:text-white",

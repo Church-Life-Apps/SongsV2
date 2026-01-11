@@ -71,7 +71,7 @@ export const FeedbackForm = () => {
       <Button
         variant="green"
         title="Submit"
-        className="mt-2"
+        className="mt-2 ms-auto"
         disabled={isSubmitting}
         onPress={handleSubmit((data) => {
           setShowSuccessMessage(false);
