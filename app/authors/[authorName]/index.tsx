@@ -10,10 +10,11 @@ import SongList from "../../../components/SongList";
 export default function Page() {
   const { authorName }: { authorName: string } = useLocalSearchParams();
   const [songs, setSongs] = useState<Song[]>([]);
+  const [songsByBookId, setSongsByBookId] = useState<Record<string, Song[]>>({});
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigation = useNavigation();
   const router = useRouter();
-  
+
   useEffect(() => {
     const fetchSongs = async () => {
       const data = await fetchSongsByAuthor(authorName);
@@ -26,6 +27,16 @@ export default function Page() {
     navigation.setOptions({ title: `Songs by ${authorName}` });
   }, [authorName]);
 
+  useEffect(() => {
+    const groupedSongs: Record<string, Song[]> = {};
+    songs.forEach((song) => {
+      if (!groupedSongs[song.songbookId]) {
+        groupedSongs[song.songbookId] = [];
+      }
+      groupedSongs[song.songbookId].push(song);
+    });
+    setSongsByBookId(groupedSongs);
+  }, [songs]);
 
   const navigateToSong = (song: Song) => {
     router.push({
@@ -38,12 +49,15 @@ export default function Page() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark items-center justify-start">
-          <StatusBar></StatusBar>
-          <Text className="text-xl font-semibold text-zinc-500 dark:text-zinc-400">Songs By "{authorName}"</Text>
-          
+    <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark items-center justify-start my-4">
+      <StatusBar></StatusBar>
+      <Text className="text-xl font-semibold text-typography-light dark:text-typography-dark">
+        Songs By "{authorName}"
+      </Text>
+      <Text className="text-sm text-slate-500 dark:text-slate-300">{songs.length} songs found</Text>
+
       {isLoading ? (
-        <View className="my-4">
+        <View className="w-full">
           <ActivityIndicator size="large" color={SECONDARY_COLOR} />
         </View>
       ) : (

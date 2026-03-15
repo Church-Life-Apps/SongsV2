@@ -8,9 +8,7 @@ import { Feather } from "@expo/vector-icons";
 import "../styles/tailwind-styles.css";
 import { StatusBar } from "react-native";
 import { useColorScheme } from "nativewind";
-import {
-  SafeAreaProvider,
-} from 'react-native-safe-area-context';
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export const unstable_settings = {
   // Ensure that reloading on a subroute keeps a back button present.

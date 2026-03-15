@@ -23,7 +23,7 @@ export const FeedbackForm = () => {
     },
   });
   return (
-    <View  className="text-typography-light">
+    <View className="text-typography-light">
       <Text className="text-typography-light dark:text-typography-dark px-4 pb-4">
         Use the following form to provide feedback, such as new feature requests or song lyric corrections
       </Text>
@@ -64,9 +64,7 @@ export const FeedbackForm = () => {
         )}
       />
       {showSuccessMessage && (
-        <Text className="text-green-600 my-2 text-center font-bold">
-          "Thank you for your feedback!"
-        </Text>
+        <Text className="text-green-600 my-2 text-center font-bold">"Thank you for your feedback!"</Text>
       )}
       <Button
         variant="green"
@@ -80,10 +78,11 @@ export const FeedbackForm = () => {
             .then((json) => {
               if (json.ok) {
                 setShowSuccessMessage(true);
-              }
-              else alert("Error while submitting feedback. Please try again later.");
+              } else alert("Error while submitting feedback. Please try again later.");
             })
-            .then(() => { setIsSubmitting(false); });
+            .then(() => {
+              setIsSubmitting(false);
+            });
         })}
       />
     </View>

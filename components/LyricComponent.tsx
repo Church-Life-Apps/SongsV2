@@ -15,13 +15,13 @@ interface LyricComponentProps {
 const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplicates, displayChords }) => {
   const lyricBlocks = convertSongToLyricBlocks(songData, removeDuplicates);
   const router = useRouter();
-  
+
   function navigateToAuthor(author: string) {
     router.push({
       pathname: "/authors/[authorName]",
       params: {
-        authorName: author
-      }
+        authorName: author,
+      },
     });
   }
 
@@ -57,7 +57,12 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
         ))}
       </View>
       {songData.author.length > 0 && (
-        <Text className="text-xs text-zinc-500 dark:text-gray-400 mb-2" onPress={() => navigateToAuthor(songData.author)}>Words by {songData.author}</Text>
+        <Text
+          className="text-xs text-zinc-500 dark:text-gray-400 mb-2"
+          onPress={() => navigateToAuthor(songData.author)}
+        >
+          Words by <Text className="text-zinc-700 dark:text-gray-300 font-semibold">{songData.author}</Text>
+        </Text>
       )}
     </>
   );
@@ -70,4 +75,3 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
 };
 
 export default LyricComponent;
-
