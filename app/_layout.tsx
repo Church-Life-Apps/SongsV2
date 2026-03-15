@@ -89,6 +89,7 @@ export default function Layout() {
         <Stack.Screen name="[songbookId]/index" options={{ title: "" }} />
         <Stack.Screen name="[songbookId]/[songNumber]/index" options={{ title: "" }} />
         <Stack.Screen name="settings" options={{ title: "Settings" }} />
+        <Stack.Screen name="authors/[authorName]/index" options={{ title: "" }} />
       </Stack>
     </SafeAreaProvider>
   );

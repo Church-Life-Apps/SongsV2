@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 import { SongWithLyrics } from "../models/SongsApiModels";
 import { convertSongToLyricBlocks, expandChordMap } from "../utils/LyricUtils";
 import { isMobile } from "../utils/PlatformUtils";
+import { useRouter } from "expo-router";
 
 // Define the component props
 interface LyricComponentProps {
@@ -13,6 +14,16 @@ interface LyricComponentProps {
 
 const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplicates, displayChords }) => {
   const lyricBlocks = convertSongToLyricBlocks(songData, removeDuplicates);
+  const router = useRouter();
+  
+  function navigateToAuthor(author: string) {
+    router.push({
+      pathname: "/authors/[authorName]",
+      params: {
+        authorName: author
+      }
+    });
+  }
 
   const content = (
     <>
@@ -46,7 +57,7 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
         ))}
       </View>
       {songData.author.length > 0 && (
-        <Text className="text-xs text-zinc-500 dark:text-gray-400 mb-2">Words by {songData.author}</Text>
+        <Text className="text-xs text-zinc-500 dark:text-gray-400 mb-2" onPress={() => navigateToAuthor(songData.author)}>Words by {songData.author}</Text>
       )}
     </>
   );
@@ -59,3 +70,4 @@ const LyricComponent: React.FC<LyricComponentProps> = ({ songData, removeDuplica
 };
 
 export default LyricComponent;
+
