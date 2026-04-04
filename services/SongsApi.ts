@@ -14,6 +14,10 @@ export async function fetchSongs(songbookId: string): Promise<Song[]> {
   return await fetch(`${baseUrl}/songbooks/${songbookId}/songs`).then((response) => response.json());
 }
 
+export async function fetchSongsByAuthor(authorName: string): Promise<Song[]> {
+  return await fetch(`${baseUrl}/authors/${authorName}/songs`).then((response) => response.json());
+}
+
 export async function fetchSongDetails(songbookId: string, songNumber: number): Promise<SongWithLyrics> {
   return await fetch(`${baseUrl}/songbooks/${songbookId}/songs/${songNumber}`).then((response) => response.json());
 }
