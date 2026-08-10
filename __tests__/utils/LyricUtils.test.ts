@@ -46,6 +46,9 @@ test("Test LyricType toString Method", () => {
   expect(lyricTypeToString(LyricType.LYRIC_TYPE_BRIDGE)).toBe("Bridge");
   expect(lyricTypeToString(LyricType.LYRIC_TYPE_CHORUS)).toBe("Chorus");
   expect(lyricTypeToString(LyricType.LYRIC_TYPE_PRECHORUS)).toBe("Pre-Chorus");
+  expect(lyricTypeToString(LyricType.LYRIC_TYPE_TAG)).toBe("Tag");
+  expect(lyricTypeToString(LyricType.LYRIC_TYPE_ENDING)).toBe("Ending");
+  expect(lyricTypeToString(LyricType.LYRIC_TYPE_INTRO)).toBe("Intro");
   expect(lyricTypeToString(LyricType.LYRIC_TYPE_VERSE)).toBe("Verse");
 });
 
@@ -68,8 +71,23 @@ test("Test GetLyricShorthand Method", () => {
     ...TEST_CHORUS_C1,
     lyricType: LyricType.LYRIC_TYPE_PRECHORUS,
   };
+  const testTag: Lyric = {
+    ...TEST_CHORUS_C1,
+    lyricType: LyricType.LYRIC_TYPE_TAG,
+  };
+  const testEnding: Lyric = {
+    ...TEST_CHORUS_C1,
+    lyricType: LyricType.LYRIC_TYPE_ENDING,
+  };
+  const testIntro: Lyric = {
+    ...TEST_CHORUS_C1,
+    lyricType: LyricType.LYRIC_TYPE_INTRO,
+  };
   expect(getVerseShorthand(testBridge)).toBe("b1");
   expect(getVerseShorthand(testPrechorus)).toBe("p1");
+  expect(getVerseShorthand(testTag)).toBe("t1");
+  expect(getVerseShorthand(testEnding)).toBe("e1");
+  expect(getVerseShorthand(testIntro)).toBe("i1");
 });
 
 test("Test GetLyricTitle Method", () => {
@@ -84,10 +102,8 @@ test("Test Convert Song to Lyric Blocks", () => {
   assertJsonEquality(convertSongToLyricBlocks(TEST_SONG_WITH_LYRIC, true), [v1lb, c1lb, v2lb, v3lb]);
 
   const alternativeSong: SongWithLyrics = {
-    song: {
-      ...TEST_SONG,
-      presentationOrder: "   c1,.. v1,   v5 p1    v3 v3.. v3  ", // wonky on purpose to test for robustness.
-    },
+    ...TEST_SONG,
+    presentationOrder: "   c1,.. v1,   v5 p1    v3 v3.. v3  ", // wonky on purpose to test for robustness.
     lyrics: lyrics,
   };
 
@@ -149,6 +165,6 @@ test("Test ExpandChordMap Function", () => {
   expect(expandChordMap(linesWithChords[1])).toBe("Bb  Cm                  Gm");
 });
 
-function assertJsonEquality(one: any, two: any) {
+function assertJsonEquality(one: unknown, two: unknown) {
   expect(JSON.stringify(one, replacer)).toBe(JSON.stringify(two, replacer));
 }

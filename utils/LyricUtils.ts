@@ -116,6 +116,12 @@ export function lyricTypeToString(lyricType: LyricType): string {
     return "Chorus";
   } else if (lyricType === LyricType.LYRIC_TYPE_PRECHORUS) {
     return "Pre-Chorus";
+  } else if (lyricType === LyricType.LYRIC_TYPE_TAG) {
+    return "Tag";
+  } else if (lyricType === LyricType.LYRIC_TYPE_ENDING) {
+    return "Ending";
+  } else if (lyricType === LyricType.LYRIC_TYPE_INTRO) {
+    return "Intro";
   } else {
     return "Verse";
   }
@@ -132,6 +138,12 @@ export function getVerseShorthand(lyric: Lyric): string {
     lyricType = "c";
   } else if (lyric.lyricType === LyricType.LYRIC_TYPE_PRECHORUS) {
     lyricType = "p";
+  } else if (lyric.lyricType === LyricType.LYRIC_TYPE_TAG) {
+    lyricType = "t";
+  } else if (lyric.lyricType === LyricType.LYRIC_TYPE_ENDING) {
+    lyricType = "e";
+  } else if (lyric.lyricType === LyricType.LYRIC_TYPE_INTRO) {
+    lyricType = "i";
   } else {
     lyricType = "v";
   }

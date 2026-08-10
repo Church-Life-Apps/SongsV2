@@ -22,6 +22,9 @@ export const songFormInputToPendingSong = (data: ICreateSongFormInput): PendingS
     [LyricType.LYRIC_TYPE_CHORUS]: 0,
     [LyricType.LYRIC_TYPE_PRECHORUS]: 0,
     [LyricType.LYRIC_TYPE_VERSE]: 0,
+    [LyricType.LYRIC_TYPE_TAG]: 0,
+    [LyricType.LYRIC_TYPE_ENDING]: 0,
+    [LyricType.LYRIC_TYPE_INTRO]: 0,
   };
   const songId = uuidv4().toString();
   const song: PendingSong = {
@@ -55,6 +58,9 @@ export const songFormInputToSongWithLyrics = (data: ICreateSongFormInput): SongW
     [LyricType.LYRIC_TYPE_CHORUS]: 0,
     [LyricType.LYRIC_TYPE_PRECHORUS]: 0,
     [LyricType.LYRIC_TYPE_VERSE]: 0,
+    [LyricType.LYRIC_TYPE_TAG]: 0,
+    [LyricType.LYRIC_TYPE_ENDING]: 0,
+    [LyricType.LYRIC_TYPE_INTRO]: 0,
   };
   return {
     id: "",

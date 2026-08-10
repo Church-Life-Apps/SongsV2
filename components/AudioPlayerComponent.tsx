@@ -10,15 +10,15 @@ interface AudioPlayerComponentProps {
 const AudioPlayerComponent: React.FC<AudioPlayerComponentProps> = ({ audioUrl }) => {
   const [loaded, setLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio, setAudio] = useState(null);
+  const [audio, setAudio] = useState<Audio.Sound | null>(null);
 
   const loadAudio = async () => {
     try {
       // Creating and Loading our music object
       /* const audio = await Audio.Sound.createAsync(require("../assets/sound.mp3"), {}, null, true); */
-      const audio = await Audio.Sound.createAsync({ uri: audioUrl }, {}, null);
-      setLoaded(audio.sound._loaded);
-      setAudio(audio);
+      const result = await Audio.Sound.createAsync({ uri: audioUrl }, {}, null);
+      setLoaded(result.status.isLoaded);
+      setAudio(result.sound);
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +30,8 @@ const AudioPlayerComponent: React.FC<AudioPlayerComponentProps> = ({ audioUrl })
 
   const playAudio = async () => {
     try {
-      const status = await audio.sound.playAsync();
+      if (audio === null) return;
+      await audio.playAsync();
       setIsPlaying(true);
     } catch (err) {
       console.log(err);
@@ -39,7 +40,8 @@ const AudioPlayerComponent: React.FC<AudioPlayerComponentProps> = ({ audioUrl })
 
   const pauseAudio = async () => {
     try {
-      const status = await audio.sound.pauseAsync();
+      if (audio === null) return;
+      await audio.pauseAsync();
       setIsPlaying(false);
     } catch (err) {
       console.log(err);
